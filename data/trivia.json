@@ -1,0 +1,1199 @@
+{
+  "quizzes": [
+    {
+      "id": "0101e5e8-91aa-4ff0-8271-755c7fe93672",
+      "title": "Founding of the Green Mountain Club",
+      "publishDate": "2023/10/06",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "0281e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "What year was the Green Mountain Club Founded?",
+          "choices": [
+            {
+              "text": "1876"
+            },
+            {
+              "text": "1903"
+            },
+            {
+              "text": "1910"
+            },
+            {
+              "text": "1917"
+            }
+          ],
+          "correctAnswerIndex": 2,
+          "answerText": "The Green Mountain Club was officially founded on Friday, March 11, 1910.  It followed the founding of the Appalachian Mountain Club in 1876, and the Ascutney Mountain Association in 1903."
+        },
+        {
+          "id": "3381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "Where was the first meeting of the Green Mountain Club held?",
+          "choices": [
+            {
+              "text": "The True Temper Inn in Wallingford Vermont"
+            },
+            {
+              "text": "The Van Ness House in Burlington Vermont"
+            },
+            {
+              "text": "Roughan Hall in Boston Massachusetts"
+            },
+            {
+              "text": "The Beane Farm in Hanksville Vermont"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "According to an article published in The Vermonter magazine: “On Friday, March 11, 1910 a company of gentlemen from different parts of Vermont met at the Van Ness House for the purpose of forming a Green Mountain Club.  There were about twenty-five present.  Letters were read from many prominent gentlemen who could not come to the meeting, but who wished to express their approval of the project.”\nThe Van Ness House opened in 1897 and was named for Vermont Governor Cornelius P. Van Ness.   It burned in 1951.  Today, a historic marker commemorating the founding of the GMC marks the spot where the hotel once stood.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/6/6f/The_Van_Ness_House%2C_Burlington%2C_VT.jpg",
+          "answerImageCaption": "The Van Ness House from a 1910 postcard published by C. H. Bessey"
+        },
+        {
+          "id": "4381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "Who served as the first president of the Green Mountain Club and is considered to be its founder?",
+          "choices": [
+            {
+              "text": "Benton MacKaye"
+            },
+            {
+              "text": "Myron Avery"
+            },
+            {
+              "text": "Edward Pickering"
+            },
+            {
+              "text": "James Taylor"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "James P. Taylor was the Assistant Headmaster of the Vermont Academy in Saxtons River, Vermont who regularly took his students on hikes.  After growing frustrated with the lack of hiking trails in the state he posed the question “Should the Green Mountain Range continue to be sacrosanct to the spirits of the first ‘Green Mountain Boys,’ and to hedgehogs, and untouchable to everybody else?”\nHis answer was the promotion of a club dedicated to creating a trail stretching the entire length of Vermont across its highest peaks.  He recruited many like-minded Vermonters and in 1910, the first meeting of the GMC was held in Burlington Vermont where he was elected President.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2022/09/TaylorJamesP1918-610x992-2.jpg",
+          "answerImageCaption": "James P Taylor, first president of the Green Mountain Club"
+        },
+        {
+          "id": "5381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "Construction of the Long Trail began in 1912. What was the first completed section?",
+          "choices": [
+            {
+              "text": "Jay Peak to Hazen’s Notch"
+            },
+            {
+              "text": "Sterling Pond to Camel’s Hump"
+            },
+            {
+              "text": "Massachusetts Line to Maple Hill"
+            },
+            {
+              "text": "The “Monroe Skyline”, from Camel’s Hump to Mount Abraham"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "The Mount Mansfield Summit Hotel’s location just below the Nose on Mount Mansfield’s ridge line provided the perfect basecamp for trail crews cutting the first stretch of the Long Trail.  Existing trails to Sterling Pond were incorporated, while James P. Taylor led the crew cutting new trail from the Nose to Nebraska Notch, where Taylor Lodge sits today. Taylor also scouted the route from the Winooski River to Camel’s Hump, incorporating old lumber roads and existing trails.  The abandoned Randall Lumber Camp at the base of Camel’s Hump served as one of the first shelters on the Long Trail.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/07/Screenshot-2023-04-08-at-6.49.01-PM-1024x643.png",
+          "answerImageCaption": "Postcard featuring the Mount Mansfield Hotel which closed in 1959"
+        },
+        {
+          "id": "6381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "The Green Mountain Club is composed of 14 section clubs, each responsible for maintaining the trails in a geographic area.  What was the name of the first GMC section club?",
+          "choices": [
+            {
+              "text": "Mansfield Section"
+            },
+            {
+              "text": "Burlington Section"
+            },
+            {
+              "text": "Worcester Section"
+            },
+            {
+              "text": "Montpelier Section"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "The Mansfield Section was the first GMC section, founded in August 1910.  The section was responsible for the trail from Mount Mansfield to Bolton Mountain.  It started with 10 members. Under the leadership of Harry G. Burrough, the club languished for several years.  It 1916, in an attempt to save the section, it was reorganized and renamed the Burlington Section. A high school teacher and active suffragette, Joanna D. Croft was elected president. During her tenure the club was revitalized and became the GMC's largest section club.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/05/cropped-Joanna-D.-Croft-Read-jpg.webp",
+          "answerImageCaption": "Joanna D. Croft, Burlington Section President, 1916-1917"
+        }
+      ]
+    },
+    {
+      "id": "0281e5e8-91aa-4ff0-8271-755c7fe93674",
+      "title": "From MA to Canada",
+      "publishDate": "2023/10/13",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "9381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "Those who hike the entire Appalachian Trail are called “Thru-Hikers”.  What are folks called who hike the whole Long Trail?",
+          "choices": [
+            {
+              "text": "LT’ers"
+            },
+            {
+              "text": "Thru Hikers"
+            },
+            {
+              "text": "Blaze Runners"
+            },
+            {
+              "text": "End-to-Enders"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "People who hike the entire Long Trailare called “End-to-Enders”. End-to-Enders can hike the entire trail in one go or over time.  Ender-to-Enders can become certified by the Green Mountain Club by applying online, through the GMC website.  Each year, the list of End-to-Enders and their journals are archived at the Vermont Historical Society.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/end-to-end-patch.png",
+          "answerImageCaption": "End-to-End Rocker Patch"
+        },
+        {
+          "id": "8381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "The Long Trail is marked from Massachusetts to Quebec with white blazes.   The side trails are blazed blue and connect the Long Trail to shelters, parking lots, springs, overlooks and other points of interest.   Folks who hike the entire Long Trail are called 'End-to-Enders'.  What do we call folks who hike all of the blue-blazed side trails?",
+          "choices": [
+            {
+              "text": "Blue Blazers"
+            },
+            {
+              "text": "Dedicated Day Hikers"
+            },
+            {
+              "text": "Side-to-Siders"
+            },
+            {
+              "text": "There is no name for them"
+            }
+          ],
+          "correctAnswerIndex": 2,
+          "answerText": "Folks who complete all the blue blazed trails connecting to the Long Trail are called “Side-to-Siders”.  Those who accomplish this feat hike a total of 88 trails and 166 miles.  The Green Mountain Club issues certifications for Side-to-Siders.",
+          "answerImage": "https://www.greenmountainclub.org/wp-content/uploads/2021/07/Side-Trails-rock-garden-trail-by-Amy-Potter-1100px-1024x681.jpg",
+          "answerImageCaption": "The Rock Garden Trail is one of the 88 side trails. Photo by: Amy Potter"
+        },
+        {
+          "id": "7381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "As of the publication date of this quiz, who holds the record as the fastest end-to-ender?",
+          "choices": [
+            {
+              "text": "John Kelly "
+            },
+            {
+              "text": "Scott Jurek"
+            },
+            {
+              "text": "Alyssa Godesky"
+            },
+            {
+              "text": "Karel Sabbe"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "John Kelly is an American endurance athlete who specializes in ultra running.  On July 3, 2023 he completed the Long Trail in 4 days, 4 hours, 25 minutes, and 50 seconds.\nThe women’s record is currently held by Alyssa Godesky who completed the LT on July 31, 2018 with a time of  5 days, 2 hours, and 37 minutes.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/john-kelly-jpg.webp",
+          "answerImageCaption": "John Kelly, Endurance Athlete"
+        },
+        {
+          "id": "6381e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "The Long Trail was completed in 1930.  The following year, many picked up the challenge of hiking the trail.  What end-to-ender popularized end-to-ending by publishing an account of his hike entitled 'So Clear, So Cool, So Grand: A 1931 HIke on Vermont’s Long Trail'?",
+          "choices": [
+            {
+              "text": "Earl Victor Shaffer"
+            },
+            {
+              "text": "Roy O. Buchanan"
+            },
+            {
+              "text": "James P. Taylor"
+            },
+            {
+              "text": "James Gordon Hindes"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "In 1931, James Gordon Hindes and his friend John Eames, set out with 60 pound packs intending to be among the first end-to-enders.  His was one of the first published trail journals and serves as one the best depictions of the early days of long-distance hiking.\nHindes' journal is still in print and can be purchased on the Green Mountain Club website.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/Hindes-Ames-jpg.webp",
+          "answerImageCaption": "James Gordon Hindes and hiking partner John Eames"
+        },
+        {
+          "id": "5381e5e8-91aa-4ff0-8271-755c7fe93625",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL"
+          ],
+          "questionText": "What was the nickname given to the trio who were the first women to complete an end-to-end hike?",
+          "choices": [
+            {
+              "text": "The Three Musketeers"
+            },
+            {
+              "text": "The Lady Trampers"
+            },
+            {
+              "text": "Trail Angels"
+            },
+            {
+              "text": "The Three She-roes"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "Hilda M. Kurth and Kathleen M. Norris of Schenectady, New York, and Catherine E. Robbins of Cornwall Vermont set out 1927 to become the first women to complete the Long Trail.   Their 250 mile trek captured the attention of the media who followed them along the trail and dubbed them “The Three Musketeers”.\nTheir hike inspired many women to adopt outdoor sports, including Cara Clifford Nelson and Amity Clifford who hiked the Long Trail in 1997 in honor of their grandmother Catherine Robbins Clifford, the last surviving musketeer.",
+          "answerImage": "https://www.greenmountainclub.org/wp-content/uploads/2017/03/three-musketeers.jpg",
+          "answerImageCaption": "The Three Musketeers"
+        }
+      ]
+    },
+    {
+      "id": "0381e5e8-91aa-4ff0-8271-755c7fe93639",
+      "title": "Long Trail Geography",
+      "publishDate": "2023/10/20",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "1281e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "GEOGRAPHY",
+            "LONG TRAIL"
+          ],
+          "questionText": "Every hiker knows the Long Trail starts at the Massachusetts border and ends at the Canadian border.  What geographical feature is approximately halfway?",
+          "choices": [
+            {
+              "text": "Bread Loaf Mountain"
+            },
+            {
+              "text": "Winooski River"
+            },
+            {
+              "text": "Sherburne Pass"
+            },
+            {
+              "text": "Mount Ellen"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "The halfway mark changes every year due to trail re-locations but Bread Loaf Mountain is considered to be the unofficial halfway point.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/breadloaf-mountain-jpeg.webp",
+          "answerImageCaption": "Postcard of the Bread Loaf campus with a view of Bread Loaf Mountain"
+        },
+        {
+          "id": "2281e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "GEOGRAPHY",
+            "LONG TRAIL"
+          ],
+          "questionText": "What mountain inspired both the Long Trail and the Appalachian Trail?",
+          "choices": [
+            {
+              "text": "Mount Mansfield"
+            },
+            {
+              "text": "Stratton Mountain"
+            },
+            {
+              "text": "Camel’s Hump"
+            },
+            {
+              "text": "Mount Ellen"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "In 1900, while climbing a tree on the summit of Stratton Mountain, Benton MacKaye was struck with a vision.  “I felt as if atop the world, with a sort of ‘planetary feeling.’ … Would a footpath someday reach [far-southern peaks] from where I was then perched?”  That vision would lead to the construction of the Appalachian Trail.\nIn 1909, while sitting in his tent in the rain or the side of Stratton Mountain in 1909, James P. Taylor was struck with  the idea of a long trail running over the tallest peaks of the  Green Mountains from the Massachusetts line to the Canadian border.\nTaylor immediately  began acting on his idea, founding the Green Mountain Club in 1910.   Construction of the Long Trail began in 1912.   MacKaye wouldn’t propose the idea of building the Appalachian Trail until 1921.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/BentonMacKaye.jpg/640px-BentonMacKaye.jpg",
+          "answerImageCaption": "Benton MacKaye, Originator of the Appalachian Trail"
+        },
+        {
+          "id": "3281e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "GEOGRAPHY",
+            "LONG TRAIL"
+          ],
+          "questionText": "Of all the Long Trail peaks named for people, which is the only one named after a fictional character?",
+          "choices": [
+            {
+              "text": "Mount Abraham"
+            },
+            {
+              "text": "Jay Peak"
+            },
+            {
+              "text": "General Stark Mountain"
+            },
+            {
+              "text": "Mount Ellen"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "There are two theories as to how Mount Ellen got its name.  The first is that Joseph Battell, a publisher, environmentalist, and philanthropist from Middlebury, Vermont, named Mount Ellen after the fictional character in his book \"Ellen, or the Whisperings of an Old Pine\" published in 1903.  The other is that the mountain was named for Ellen Douglas, the heroine in Sir Walter Scott's poem The Lady of the Lake published in 1810.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/4/49/0030207d_%28cropped%29.jpg",
+          "answerImageCaption": "Ellen beheld as in a dream, / Then, starting, scarce suppressed a scream.' (Lady of the Lake, Canto IV, stanza 16)"
+        },
+        {
+          "id": "4281e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "GEOGRAPHY",
+            "LONG TRAIL"
+          ],
+          "questionText": "How many fire towers can a hiker climb while on the Long Trail?",
+          "choices": [
+            {
+              "text": "4"
+            },
+            {
+              "text": "3"
+            },
+            {
+              "text": "2"
+            },
+            {
+              "text": "1"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "Hikers can climb four lookout towers while hiking the Long Trail over Glastenbury, Stratton, Bromley, and Belvidere mountains.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/01/Screenshot-2023-01-30-at-5.23.19-PM.png",
+          "answerImageCaption": "The firetower on Belvidere Mountain"
+        },
+        {
+          "id": "5281e5e8-91aa-4ff0-8271-755c7fe93671",
+          "tags": [
+            "GEOGRAPHY",
+            "LONG TRAIL"
+          ],
+          "questionText": "The Chin on Mount Mansfield is the highest point on the Long Trail.  What’s the Lowest?",
+          "choices": [
+            {
+              "text": "Clarendon Gorge"
+            },
+            {
+              "text": "The Massachusetts Line"
+            },
+            {
+              "text": "Lamoille River Crossing"
+            },
+            {
+              "text": "Winooski River Crossing"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "The lowest point on the Long Trail is where the trail crosses the Winooski River, near the town of Jonesville. This point is located at an elevation of approximately 320 feet (98 meters) above sea level. The 224ft suspension bridge that crosses the river here was first authorized by the Vermont Legislature in 1912, but wasn't opened until 2015.  Before the bridge, hikers crossed the river after a long road walk to the Jonesville bridge or by taking a ferry ride provided by residents of Bolton.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/07/Crossing-the-Winooski-River-at-Bolton-1928-jpg.webp",
+          "answerImageCaption": "Crossing the Winooski River at Bolton, 1928"
+        }
+      ]
+    },
+    {
+      "id": "0481e5e8-91aa-4ff0-8271-755c7fe93639",
+      "title": "Gimme Shelters",
+      "publishDate": "2023/10/27",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "9181e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL",
+            "GREEN MOUNTAIN CLUB"
+          ],
+          "questionText": "What was the first official Long Trail shelter built by the Green Mountain Club?",
+          "choices": [
+            {
+              "text": "The Long Trail Lodge"
+            },
+            {
+              "text": "Emily Proctor Lodge"
+            },
+            {
+              "text": "Aeolus View Shelter"
+            },
+            {
+              "text": "Taft Lodge"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "The first shelter built by the GMC was the Emily Proctor Lodge in 1913. This was one of three shelters funded by Emily Proctor, daughter of Vermont Governor Redfield Proctor. A resident of Proctor Vermont, she helped run the family business, the Vermont Marble Company.  Emily was also a social reformer, promoting workers’ rights, women’s suffrage, and outdoor recreation.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/04/cropped-Emily-Proctor-Lodge-1918.jpg",
+          "answerImageCaption": "Emily Proctor Lodge, 1918"
+        },
+        {
+          "id": "2481e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "SHELTERS",
+            "LONG TRAIL"
+          ],
+          "questionText": "Who was the first official GMC shelter caretaker?",
+          "choices": [
+            {
+              "text": "Clarence “Judge” Cowles at Taft Lodge"
+            },
+            {
+              "text": "Roy Buchanan at Buchanan Lodge"
+            },
+            {
+              "text": "Daan Zwick at Taft Lodge"
+            },
+            {
+              "text": "Edward Cooper at the Killington Huts"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "Clarence Cowles was a Vermont probate judge and founding member of the Green Mountain Club.  In 1920, he supervised the construction of Taft Lodge on Mount Mansfield.  That summer he spent several weeks living in the lodge, becoming the first official caretaker.",
+          "answerImage": "https://www.greenmountainclub.org/wp-content/uploads/2020/06/1920-Taft-Lodge_Cowles.jpg\n",
+          "answerImageCaption": "Taft Lodge, 1920’s"
+        },
+        {
+          "id": "3481e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "SHELTERS",
+            "LONG TRAIL"
+          ],
+          "questionText": "How many women have had GMC shelters named for them?",
+          "choices": [
+            {
+              "text": "11"
+            },
+            {
+              "text": "4"
+            },
+            {
+              "text": "2"
+            },
+            {
+              "text": "0"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "Four women have had shelters named for them: Lula Tye, Minerva Hinchey, Emily Proctor, and Laura Woodward.\nLaura Woodward and Emily Proctor have had their namesakes replaced, relocated, and rededicated multiple times.\nThe Lula Tye shelter was removed in 2011.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/08/Lula-Tye-jpg.webp",
+          "answerImageCaption": "Lula M.Tye, GMC Corresponding Secretary from 1925 to 1955"
+        },
+        {
+          "id": "4481e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "SHELTERS",
+            "LONG TRAIL"
+          ],
+          "questionText": "The largest and oldest Long Trail shelter is Taft Lodge on Mount Mansfield.  What is the smallest?",
+          "choices": [
+            {
+              "text": "Hazen’s Notch Camp"
+            },
+            {
+              "text": "Puffer Shelter"
+            },
+            {
+              "text": "Jay Camp"
+            },
+            {
+              "text": "Atlas Valley Shelter"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "Located just north of route 242, this shelter is a small lean-to of plywood and plywood cores. It was built in 1967 by the Altas Plywood Division for the use of day hikers.  Maintained by the GMC, it houses no bunks, only a single small bench.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/04/Construction-of-Atlas-Valley-Shelter-1967-768x509.webp",
+          "answerImageCaption": "The Atlas Valley Shelter, shortly after construction in 1967"
+        },
+        {
+          "id": "1481e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "SHELTERS",
+            "LONG TRAIL"
+          ],
+          "questionText": "Cooper Lodge on Mount Killington is the highest LT shelter at 3,850 ft.  What is the lowest shelter on the Long Trail?",
+          "choices": [
+            {
+              "text": "Duck Brook Shelter"
+            },
+            {
+              "text": "Clarendon Shelter"
+            },
+            {
+              "text": "Corliss Camp"
+            },
+            {
+              "text": "Journey’s End Shelter"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "Clarendon Shelter sits at 1350 ft above sea level. Duck Brook Shelter is at 670 ft, but is no longer on the Long Trail after the Winooski River trail relocation in 2015.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/04/cropped-Clarendon-Shlelter-2011.jpeg",
+          "answerImageCaption": "Clarendon Shelter, 2011"
+        }
+      ]
+    },
+    {
+      "id": "0581e5e8-91aa-4ff0-8271-755c7fe93639",
+      "title": "Its News to Me",
+      "publishDate": "2023/11/03",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "8181e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL",
+            "GREEN MOUNTAIN CLUB"
+          ],
+          "questionText": "The first edition of the Green Mountain Club’s Newsletter was published in December, 1922.  However, it wasn’t called the “Long Trail News”.  What was the GMC’s original name for their newsletter?",
+          "choices": [
+            {
+              "text": "Long Trail Gazette"
+            },
+            {
+              "text": "The Outdoorsman"
+            },
+            {
+              "text": "The Mountaineer"
+            },
+            {
+              "text": "Green Mountain News"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "The original name for the GMC newsletter was the Green Mountain News.  The name was changed in 1925 because the GMC changed the name of its clubhouse from 'Green Mountain Clubhouse' to 'Long Trail Lodge' and it 'seemed best to follow suit and adopt a corresponding title.'",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/Green-Mountain-News-Masthead.png",
+          "answerImageCaption": "The masthead of the Green Mountain News"
+        },
+        {
+          "id": "8281e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL",
+            "GREEN MOUNTAIN CLUB"
+          ],
+          "questionText": "Each of the 14 section clubs publishes its own newsletter, which of these is NOT a section newsletter?",
+          "choices": [
+            {
+              "text": "Smoke and Blazes"
+            },
+            {
+              "text": "Stepping Stone"
+            },
+            {
+              "text": "Sterling e-Stomper"
+            },
+            {
+              "text": "Trail Tales"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "Smoke and Blazes is the newsletter for the Killington Section.  The Stepping Stone is the newsletter for the Bennington Section.  The Sterling e-Stomper is published by the Sterling Section.  Trail Tales is not a section newsletter.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/mastheader.png",
+          "answerImageCaption": "Mastheads of GMC Section newsletters."
+        },
+        {
+          "id": "8381e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL",
+            "GREEN MOUNTAIN CLUB"
+          ],
+          "questionText": "Which Vermont Governor created his own news-worthy moment while hiking on the Long Trail?",
+          "choices": [
+            {
+              "text": "Phil Scott"
+            },
+            {
+              "text": "Howard Dean"
+            },
+            {
+              "text": "Jim Douglass"
+            },
+            {
+              "text": "Madeleine Kunin"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "Governor Howard Dean wasn't invited to the dedication ceremony for the newly built Peru Peak shelter in 2000, but lucky for all he happened-by while out on an afternoon hike.  Always up for a photo-op, Dean conducted an impromptu ribbon-cutting using a roll of tape and an ax.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/05/Governor-Howard-Dean-who-just-happened-to-be-walking-by-at-the-Peru-Peak-ribbon-cutting-cermony-2000.png",
+          "answerImageCaption": "Governor Howard Dean cutting the ‘ribbon’ at the Peru Peak Shelter dedication"
+        },
+        {
+          "id": "8481e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL",
+            "GREEN MOUNTAIN CLUB"
+          ],
+          "questionText": "Which of these is the real headline.",
+          "choices": [
+            {
+              "text": "Hikers Elect Moose as Long Trail's New Trailblazing Ambassador"
+            },
+            {
+              "text": "Long Trail Trekkers Instantly Regret Adopting Baby Porcupine"
+            },
+            {
+              "text": "Girl Hikers Reach Canadian Line after Walking 300 Miles"
+            },
+            {
+              "text": "Bears Share Butler Lodge With Boy Scout Troop"
+            }
+          ],
+          "correctAnswerIndex": 2,
+          "answerText": "'Girl Hikers Reach Canadian Line after Walking 300 Miles' was the headline that ran in the Rutland Herald on August 25, 1927, after Hilda Kurth,Kathleen Norris, and  Catherine Robbins became the first women to hike the entire Long Trail.  \n\nTheir adventure made instant headlines with reporters staking out trailheads waiting for the trio to emerge so they could be interviewed.  They were dubbed “The Three Musketeers” by the press.\n",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2022/09/cropped-ThreeMuskateers1smaller.fddfb3df.jpg",
+          "answerImageCaption": "Catherine Robbins, Kathleen Norris, and Hilda Kurth"
+        },
+        {
+          "id": "8581e5e8-91aa-4ff0-8271-755c7fe93673",
+          "tags": [
+            "HISTORY",
+            "LONG TRAIL",
+            "GREEN MOUNTAIN CLUB"
+          ],
+          "questionText": "GMC Burlington Section’s newsletter, RidgeLines, was first published in May 1971.  The masthead depicted an Adirondack style shelter near the Long Trail.  What former Burlington Section president and Long Trail Patrol leader’s photo inspired the masthead?",
+          "choices": [
+            {
+              "text": "Roy Buchanan"
+            },
+            {
+              "text": "Kenn Boyd"
+            },
+            {
+              "text": "Shirley Strong"
+            },
+            {
+              "text": "Beverly Thorpe"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "RidgeLines Editor, Anne Clark borrowed Roy Buchanan’s collection of shelter photographs when designing the masthead.  The shelter was drawn from a photo of Sucker Brook shelter.  Sucker Brook shelter lies south of Ripton.  So, she exercised a bit of artistic license when she put Mount Mansfield in the background.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/Screenshot-2023-10-08-at-4.33.00-PM.png",
+          "answerImageCaption": "Masthead from the first RidgeLines newsletter"
+        }
+      ]
+    },
+    {
+      "id": "0681e5e8-91aa-4ff0-8271-755c7fe93639",
+      "title": "What's in a Name",
+      "publishDate": "2023/11/10",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "12345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Which is these is NOT the name of a former Long Trail shelter.",
+          "choices": [
+            {
+              "text": "High Hill Lodge"
+            },
+            {
+              "text": "Honted House Camp"
+            },
+            {
+              "text": "Porky Lodge"
+            },
+            {
+              "text": "Hell Hollow Camp"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "Honted House was a private camp that was open to hikers in the 1930’s.  It was located north of the Lamoille River and got its name from its delapidated appearance.\nPorky Lodge was located just below the summit of Killington Peak.  It was constructed from  stone in an effort to defeat destructive porcupines.\nHell Hollow Camp was located in Hell Hollow, which was named because its rocky soil and frequent flooding made life hell for farmers.\nHigh Hill Lodge was not a shelter on the Long Trail.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/04/Porcupine-Camp-on-Killington-Peak.jpg",
+          "answerImageCaption": "Porky Lodge, near the summit of Killington Peak"
+        },
+        {
+          "id": "22345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Which of these Long Trail peaks was NOT named after a president?",
+          "choices": [
+            {
+              "text": "Mount Wilson"
+            },
+            {
+              "text": "Lincoln Peak"
+            },
+            {
+              "text": "Mount Abraham"
+            },
+            {
+              "text": "Mount Cleveland"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "Mount Wilson is named after Woodrow Wilson.\nMount Abraham is named after Abraham Lincoln.\nMount Cleveland is named after Grover Cleveland.\nLincoln Peak is named after the nearby town of Lincoln, which was named after Major General Benjamin Lincoln, who was instrumental in the American Revolutionary War victory at Saratoga.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/b/b0/General_Benjamin_Lincoln-restored.jpg",
+          "answerImageCaption": "1784 portrait of Major General Benjamin Lincoln by Charles Wilson Peale"
+        },
+        {
+          "id": "32345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "How did Kid Gore shelter get its name?",
+          "choices": [
+            {
+              "text": "Gores are what they call unorganized towns in Vermont; the shelter lies in Kid Gore."
+            },
+            {
+              "text": "It was named after Al Gore’s grandson."
+            },
+            {
+              "text": "It was named after an obnoxious goat that frequented the area."
+            },
+            {
+              "text": "It was named after Harold Martin 'Kid' Gore."
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "In 1924, Harold Martin “Kid” Gore  founded Camp Najerog, a boys’ camp in Wilmington Vermont.  Gore was a proponent of outdoor recreation and helped maintain 5 miles of the Long Trail. In 1971, Connecticut Section volunteers and Camp Najerog alumni built the shelter in his honor.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/05/Harold-Kid-Gore-746x1024.webp",
+          "answerImageCaption": "Harold Martin “Kid” Gore (1891– 1969)"
+        },
+        {
+          "id": "42345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "What is the most popular trail name?",
+          "choices": [
+            {
+              "text": "Scout"
+            },
+            {
+              "text": "Mountain Goat"
+            },
+            {
+              "text": "Sunshine"
+            },
+            {
+              "text": "Happy Feet"
+            }
+          ],
+          "correctAnswerIndex": 2,
+          "answerText": "After collecting nearly 30,000 trail names from records kept by the   Pacific Crest Trail Association, the Continental Divide Trail Coalition, and the Appalachian Trail Conservancy, Mac, from the popular hiking blog, 'Halfway Anywhere', determined that “Sunshine” is the most popular trail name.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/sunshine.jpeg",
+          "answerImageCaption": ""
+        },
+        {
+          "id": "52345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "What’s another name for a Wampahoofus?",
+          "choices": [
+            {
+              "text": "Catamount"
+            },
+            {
+              "text": "Fisher Cat"
+            },
+            {
+              "text": "Fur Bearing Trout"
+            },
+            {
+              "text": "Sidehill Gouger"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "The Wampahoofus, or Sidehill Gouger, is a four-footer creature that continuously circles Mount Mansfield in only one direction.  To adapt to this strange method of locomotion, its uphill legs are shorter than its downhill legs.\nUndoubtedly, the best place to encounter an elusive Wampahoofus is along the Wampahoofus Trail, which connects Butler Lodge to the Frost Trail.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Sidehillgouger.jpg/453px-Sidehillgouger.jpg?20180526121705",
+          "answerImageCaption": "Artist rendering of the fabled Wampahoofus, AKA Sidehill Gouger"
+        }
+      ]
+    },
+    {
+      "id": "0781e5e8-91aa-4ff0-8271-755c7fe93639",
+      "title": "The Appalachian Trail",
+      "publishDate": "2023/11/17",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "19345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Today's Appalachian Trail runs from Springer Mountain in Georgia to Mount Katahdin in Maine. Previously, the AT started south of Springer Mountain. What was the original southern terminus of the AT?",
+          "choices": [
+            {
+              "text": "The Oasis Visitor Center in Ochopee, Florida"
+            },
+            {
+              "text": "Flagg Mountain in Alabama"
+            },
+            {
+              "text": "Big Creek in the Great Smoky Mountains National Park"
+            },
+            {
+              "text": "Mount Oglethorpe in Georgia"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "The original southern terminus of the Appalachian Trail was at the summit of Mount Oglethorpe in Georgia. Shortly after the decision was made to extend the Trail to this mountaintop, a monument was constructed at the terminus in memory of Jame Oglethorpe, the founder of the Georgia colony. Dedicated in 1930, the monument was moved about 20 miles to the northeast to the town of Jasper, Georgia in 1958 after the terminus of the Trail was moved to Springer Mountain in order to avoid the encroachment of several large chicken farms on the Trail.",
+          "answerImage": "http://gmcburlington.org/wp-content/uploads/2023/10/Mount-Oglethorpe-jpeg.webp",
+          "answerImageCaption": "George Masa’s photo of the Mount Oglethorpe Monument"
+        },
+        {
+          "id": "19445678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Which US president has a monument on the Appalachian Trail in Maryland that predates his monument in Washington DC?",
+          "choices": [
+            {
+              "text": "George Washington"
+            },
+            {
+              "text": "Thomas Jefferson"
+            },
+            {
+              "text": "Abraham Lincoln"
+            },
+            {
+              "text": "Calvin Coolidge"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "The Washington Monument at the summit of  South Mountain, was initially erected by the citizens of Boonsboro in 1827.   The the monument in Washington DC wasn't completed until 1888.\nOriginally constructed from local stones, this small milk bottle shaped tower has been rebuilt twice.  Today the Maryland State Department of Parks maintains the tower.  AT hikers can climb the tower and get views of the valley below",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/3/33/First_monument_to_George_Washington%2C_near_U._S._40%2C_Boonsboro%2C_Maryland_%2870563%29.jpg",
+          "answerImageCaption": "Postcard depicting the first Washington Monument"
+        },
+        {
+          "id": "19545678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Which state has the shortest section of the Appalachian Trail",
+          "choices": [
+            {
+              "text": "Vermont"
+            },
+            {
+              "text": "Connecticut"
+            },
+            {
+              "text": "West Virginia"
+            },
+            {
+              "text": "New York"
+            }
+          ],
+          "correctAnswerIndex": 2,
+          "answerText": "The trail through West Virginia is a mere 4 miles.  It passes through the town of Harper's Ferry, which is the home to the Appalachian Trail Conservancy, and the honorary, not actual, half-way point.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Hiker_being_photographed_at_ATC_for_the_thru-hiker_album.jpg/640px-Hiker_being_photographed_at_ATC_for_the_thru-hiker_album.jpg",
+          "answerImageCaption": "Taking a celebratory, half-way photo at the ATC headquarters in Harper’s Ferry is a long-standing, thru-hiker tradition"
+        },
+        {
+          "id": "19645678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Thru-hikers pass by the National War Correspondents Memorial,  dedicated to journalists who have died in wars.  If you’re looking at from the AT, what state are you in?",
+          "choices": [
+            {
+              "text": "Maryland"
+            },
+            {
+              "text": "West Virginia"
+            },
+            {
+              "text": "Pennsylvania"
+            },
+            {
+              "text": "Connecticut"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "The National War Correspondents Memorial looks like a castle wall with three Roman arches above a Moorish arch.  The three roman arches represent Description, Depiction and Photography.  The wall also contains a statue of the Greek god Hermes, the messenger of the gods.\nIt was built by Civil War correspondent George Alfred Townsend, in 1896. The memorial sits in Gatland State Park in Western Maryland and has 157 names inscribed upon it.  The names are assumed to be war correspondents.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/e/ec/War_Correspondents_Arch_MD1.jpg",
+          "answerImageCaption": "The National War Correspondents Memorial in Maryland's Gathland State Park"
+        },
+        {
+          "id": "19745678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Dragon’s Tooth, McAfee Knob, and Tinker Cliffs are three scenic spots along Virginia’s stretch of the AT.  What are these three spots collectively called?",
+          "choices": [
+            {
+              "text": "The Three Amigos"
+            },
+            {
+              "text": "The Triple Crown"
+            },
+            {
+              "text": "The Virginian Views"
+            },
+            {
+              "text": "The Virginian Dominions"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "Virginia’s Triple Crown is among the most memorable sections of a thru-hiker's journey.  For non-thru-hikers, the Triple Crown loop is a 35 mile, 3 day hike that takes you over all three locations.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/2/27/VT_Student_enjoying_the_view_at_McAfee%27s_Knob_-_panoramio.jpg",
+          "answerImageCaption": "Mcafee Knob"
+        }
+      ]
+    },
+    {
+      "id": "0881e5e8-91aa-4ff0-8271-755c7fe93639",
+      "title": "The AT in VT",
+      "publishDate": "2023/11/24",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "29345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "The Appalachian Trail traverses Vermont for about 151 miles.  It travels north from Massachusetts, sharing its path with the Long Trail before turning east towards New Hampshire.  How long (approximately) do the AT and LT run together, before parting ways?",
+          "choices": [
+            {
+              "text": "52 Miles"
+            },
+            {
+              "text": "95 miles"
+            },
+            {
+              "text": "105 miles"
+            },
+            {
+              "text": "120 miles"
+            }
+          ],
+          "correctAnswerIndex": 2,
+          "answerText": "The AT and the LT run together for about 105 miles, from the Massachusetts border to Main Junction.",
+          "answerImage": "https://www.greenmountainclub.org/wp-content/uploads/2022/11/Nika-Meyers-FinishingPhoto_FKT_OCT22021-1024x768.jpg",
+          "answerImageCaption": "The Long Trail's southern terminus"
+        },
+        {
+          "id": "19345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "The Appalachian and Long trails at Maine Junction.  However, Maine Junction is a nexus for 3 hiking trails.  What is the third trail?",
+          "choices": [
+            {
+              "text": "Cross Vermont Trail"
+            },
+            {
+              "text": "American Discovery Trail"
+            },
+            {
+              "text": "TAM Trail"
+            },
+            {
+              "text": "North Country Trail"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "The North Country Trail is a 4,800 mile hiking trail running from Lake Sakakawea State Park in North Dakota to Maine Junction in Vermont.  When it was established in 1980, it stopped at Crown Point in New York. In 2019 it was connected to the AT via 45 miles extension through Vermont.\nThe Vermont section of the NCT passes through scenic public lands including the Green Mountain National Forest and Moosalamoo National Recreation Area, and follows the Trail Around Middlebury (TAM).",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/North_Country_National_Scenic_Trail_-_Maplewood_State_Park%2C_Minnesota_%2837124196363%29.jpg/640px-North_Country_National_Scenic_Trail_-_Maplewood_State_Park%2C_Minnesota_%2837124196363%29.jpg\n",
+          "answerImageCaption": "North Country Trail Blaze"
+        },
+        {
+          "id": "39345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "The Long Trail is marked with white blazes.  When the Appalachian trail was constructed from Maine Junction to New Hampshire what color was it blazed?",
+          "choices": [
+            {
+              "text": "Blue"
+            },
+            {
+              "text": "White"
+            },
+            {
+              "text": "Yellow"
+            },
+            {
+              "text": "Pink"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "The original path for the AT, from Maine Junction to New Hampshire, mostly followed old logging roads, at low elevations.  For this reason it was considered a side trail, connecting the Long Trail to the AT proper, and blazed blue.   It was eventually re-blazed white, and in the 1970’s a major relocation effort moved the trail off the logging roads, up to the ridgelines where it is today.",
+          "answerImage": "https://www.greenmountainclub.org/wp-content/uploads/2020/10/caretaker-Naomi-painting-blue-blaze-KC-1024x1024.jpg",
+          "answerImageCaption": "Painting blue blazes"
+        },
+        {
+          "id": "49345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Who maintains the Appalachian Trail from Maine Junction to New Hampshire?",
+          "choices": [
+            {
+              "text": "Montpelier Section"
+            },
+            {
+              "text": "Upper Valley Ottauquechee Section"
+            },
+            {
+              "text": "Worcester Section"
+            },
+            {
+              "text": "No one"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "When the AT relocation project was completed in 1979,The Upper Valley Ottauquechee Section was created to maintain the new trail.\nBefore 1979, the trail was maintained by a few dedicated individuals.  One of those was Mauri Wintturi, a large, Finnish man,  known for his love of beer and this underloved stretch of the AT.  For years, Winturri painted blazes, cleared blowdowns, and cleaned shelters. After Wintturi’s death in 1982, the GMC approved a proposal that the old Gulf Shelter be moved, reconstructed and renamed the Mauri Wintturi Shelter.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/05/Screenshot-2023-05-23-at-8.24.21-PM.png",
+          "answerImageCaption": "Mauri Wintturi"
+        },
+        {
+          "id": "59345678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "What unofficial AT shelter offers hikers a rooftop view of the White Mountains?",
+          "choices": [
+            {
+              "text": "Happy Hill"
+            },
+            {
+              "text": "Luce’s Lookout"
+            },
+            {
+              "text": "Cloudland Shelter"
+            },
+            {
+              "text": "Woodstock Cabin"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "Often simply referred to as “The Lookout”, this private, rustic cabin north of Woodstock lies a short hike from the Appalachian Trail, and features a rooftop platform providing commanding views of the White Mountains.  The cabin and short access trail are both privately maintained, but are open to hikers.\nThe 2.5 mile out-and-back hike from the trailhead on Green Gate Road to Luce’s Lookout is a popular day hike.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/05/The-Lookout-2023-2048x1536.webp",
+          "answerImageCaption": "Inu at Luce's Lookout"
+        }
+      ]
+    },
+    {
+      "id": "0981e5e8-91aa-4ff0-8271-755c7fe93639",
+      "title": "Other Vermont Trails",
+      "publishDate": "2023/12/01",
+      "image": null,
+      "author": "John Need",
+      "questions": [
+        {
+          "id": "09015678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": " “TAM” is the acronym for a 20-mile loop trail.  What does “TAM” stand for?",
+          "choices": [
+            {
+              "text": "Trail Around Middlebury"
+            },
+            {
+              "text": "Thetford And Morey Trail"
+            },
+            {
+              "text": "Twilight Agricultural Museum Trail"
+            },
+            {
+              "text": "Theodore Augustus Mead Trail"
+            }
+          ],
+          "correctAnswerIndex": 0,
+          "answerText": "The Trail Around Middlebury is a 20-mile loop around the town of Middlebury, Vermont.    The TAM stitches together smaller trails that take hikers through the Middlebury College campus, the Otter Creek Gorge Preserve, Wright Park , Chipman Hill,  Battell & Means Woods , and the Jeffrey Murdock Nature Preserve.\nLying at a lower elevation than the Long Trail, the TAM is the perfect trail for early and late season hiking.   Although long, it is mostly flat, and can be completed in a day by enthusiastic early-risers.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/10/tam-trail.png\n",
+          "answerImageCaption": "TAM Trail marker"
+        },
+        {
+          "id": "09025678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "What is longest trail that passes through Vermont",
+          "choices": [
+            {
+              "text": "The Long Trail"
+            },
+            {
+              "text": "The Appalachian Trail"
+            },
+            {
+              "text": "The American Discovery Trail"
+            },
+            {
+              "text": "The North Country Trail"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "The North Country Trail (NCT)  is a 4,500 mile trail that starts in North Dakota and ends at Maine Junction in Vermont, where it meets the AT.  The NCT beats the AT’s length by about 2310 miles.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/6/68/North_Country_National_Scenic_Trail_-_Maplewood_State_Park%2C_Minnesota_%2837124196363%29.jpg",
+          "answerImageCaption": "North Country National Scenic Trail marker"
+        },
+        {
+          "id": "09035678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "Which of these trails passes through New York, Vermont, Quebec, New Hampshire, and Maine?",
+          "choices": [
+            {
+              "text": "The North Country Trail"
+            },
+            {
+              "text": "The Appalachian Trail"
+            },
+            {
+              "text": "The Northern Forest Canoe Trail"
+            },
+            {
+              "text": "The East Coast Greenway"
+            }
+          ],
+          "correctAnswerIndex": 2,
+          "answerText": "The Northern Forest Canoe Trail is a 740 mile paddling route extending from Old Forge, New York to Fort Kent, Maine.   It passes through Vermont twice.  It enters Vermont from Lake Champlain and travels up the Missisquoi River to Quebec.  It re-enters Vermont from Lake Memphremagog and then travels to New Hampshire via a series of ponds and rivers.\nIn total, the trail traverses: 2 countries, 4 states,  23 rivers and streams, 59 lakes and ponds, and 45 communities.  There are a total of 65 portages totaling 70 miles.",
+          "answerImage": "https://upload.wikimedia.org/wikipedia/commons/5/52/Northern_Forest_Canoe_Trail_sign_in_Enosburg_Falls.JPG\n",
+          "answerImageCaption": "Northern Forest Canoe Trail sign"
+        },
+        {
+          "id": "09045678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "What is the name of the longest, continuous bike trail in New England?",
+          "choices": [
+            {
+              "text": "The East Coast Greenway"
+            },
+            {
+              "text": "The Lamoille Valley Rail Trail"
+            },
+            {
+              "text": "Ammonoosuc Recreational Rail Trail"
+            },
+            {
+              "text": "Island Line Trail"
+            }
+          ],
+          "correctAnswerIndex": 1,
+          "answerText": "At 93 miles, the Lamoille Valley Rail Trail is currently the longest, continuous rail trail  in New England. It runs from St. Johnsbury to Swanton, Vermont.\nIt was completed in 2023, but was destroyed a few months later by catastrophic floods.    While large sections have reopened, a few bridges will not be replaced until 2024.",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2022/04/20220423_143530-1-scaled.jpg",
+          "answerImageCaption": "A good place to stop on the LVRT"
+        },
+        {
+          "id": "09015678-91aa-4ff0-8271-755c7fe93673",
+          "tags": [],
+          "questionText": "The Long Trail isn’t the only trail that runs from Massachusetts to Canada.  What other famous trail runs from the bottom to the top of Vermont?",
+          "choices": [
+            {
+              "text": "The Green Mountain Trail"
+            },
+            {
+              "text": "The Appalachian Trail"
+            },
+            {
+              "text": "The North Country Trail"
+            },
+            {
+              "text": "The Catamount Trail"
+            }
+          ],
+          "correctAnswerIndex": 3,
+          "answerText": "The Catamount Trail is a 300+ mile backcountry, ski trail running from the MA border near Readsboro to the Quebec border near Troy, Vermont.\nThe trail began in 1982 when three Vermonters decided to ski from Massachusetts  to Quebec. It was completed in 2007 and is maintained by the Catamount Trail Association",
+          "answerImage": "https://gmcburlington.org/wp-content/uploads/2023/02/pexels-simon-berger-877864-scaled.jpg",
+          "answerImageCaption": "Backcountry skiing"
+        }
+      ]
+    }
+  ]
+}
