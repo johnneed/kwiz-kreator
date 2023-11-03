@@ -43,10 +43,20 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 402, 2935))
+        self.scrollAreaWidgetContents_2.setEnabled(False)
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 402, 2968))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_4.setObjectName("gridLayout_4")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.saveQuizButton = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
+        self.saveQuizButton.setObjectName("saveQuizButton")
+        self.horizontalLayout.addWidget(self.saveQuizButton)
+        self.resetQuizButton = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
+        self.resetQuizButton.setObjectName("resetQuizButton")
+        self.horizontalLayout.addWidget(self.resetQuizButton)
+        self.gridLayout_4.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         self.quizVerticalLayout = QtWidgets.QVBoxLayout()
         self.quizVerticalLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.quizVerticalLayout.setContentsMargins(1, 1, 1, 1)
@@ -75,9 +85,10 @@ class Ui_MainWindow(object):
         self.publishOnLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.publishOnLabel.setObjectName("publishOnLabel")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.publishOnLabel)
-        self.dateEdit = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_2)
-        self.dateEdit.setObjectName("dateEdit")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.dateEdit)
+        self.publishOnDateEdit = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_2)
+        self.publishOnDateEdit.setCalendarPopup(True)
+        self.publishOnDateEdit.setObjectName("publishOnDateEdit")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.publishOnDateEdit)
         self.quizVerticalLayout.addLayout(self.formLayout)
         self.line = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
@@ -103,10 +114,10 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.q1ChoiceHorizontalLayout_1 = QtWidgets.QHBoxLayout()
         self.q1ChoiceHorizontalLayout_1.setObjectName("q1ChoiceHorizontalLayout_1")
-        self.q1ChoiceRadioButton_ = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
-        self.q1ChoiceRadioButton_.setText("")
-        self.q1ChoiceRadioButton_.setObjectName("q1ChoiceRadioButton_")
-        self.q1ChoiceHorizontalLayout_1.addWidget(self.q1ChoiceRadioButton_)
+        self.q1ChoiceRadioButton_1 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
+        self.q1ChoiceRadioButton_1.setText("")
+        self.q1ChoiceRadioButton_1.setObjectName("q1ChoiceRadioButton_1")
+        self.q1ChoiceHorizontalLayout_1.addWidget(self.q1ChoiceRadioButton_1)
         self.q1Choice1LineEdit_1 = QtWidgets.QLineEdit(self.q1ChoiceGroupBox)
         self.q1Choice1LineEdit_1.setObjectName("q1Choice1LineEdit_1")
         self.q1ChoiceHorizontalLayout_1.addWidget(self.q1Choice1LineEdit_1)
@@ -133,10 +144,10 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addLayout(self.q1ChoiceHorizontalLayout_3, 2, 0, 1, 1)
         self.q1ChoiceHorizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.q1ChoiceHorizontalLayout_4.setObjectName("q1ChoiceHorizontalLayout_4")
-        self.q1ChoiceRadioButton = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
-        self.q1ChoiceRadioButton.setText("")
-        self.q1ChoiceRadioButton.setObjectName("q1ChoiceRadioButton")
-        self.q1ChoiceHorizontalLayout_4.addWidget(self.q1ChoiceRadioButton)
+        self.q1ChoiceRadioButton_4 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
+        self.q1ChoiceRadioButton_4.setText("")
+        self.q1ChoiceRadioButton_4.setObjectName("q1ChoiceRadioButton_4")
+        self.q1ChoiceHorizontalLayout_4.addWidget(self.q1ChoiceRadioButton_4)
         self.q1Choice1LineEdit_4 = QtWidgets.QLineEdit(self.q1ChoiceGroupBox)
         self.q1Choice1LineEdit_4.setObjectName("q1Choice1LineEdit_4")
         self.q1ChoiceHorizontalLayout_4.addWidget(self.q1Choice1LineEdit_4)
@@ -187,10 +198,10 @@ class Ui_MainWindow(object):
         self.gridLayout_31.setObjectName("gridLayout_31")
         self.q2ChoiceHorizontalLayout_1 = QtWidgets.QHBoxLayout()
         self.q2ChoiceHorizontalLayout_1.setObjectName("q2ChoiceHorizontalLayout_1")
-        self.q2ChoiceRadioButton_ = QtWidgets.QRadioButton(self.q2ChoiceGroupBox)
-        self.q2ChoiceRadioButton_.setText("")
-        self.q2ChoiceRadioButton_.setObjectName("q2ChoiceRadioButton_")
-        self.q2ChoiceHorizontalLayout_1.addWidget(self.q2ChoiceRadioButton_)
+        self.q2ChoiceRadioButton_1 = QtWidgets.QRadioButton(self.q2ChoiceGroupBox)
+        self.q2ChoiceRadioButton_1.setText("")
+        self.q2ChoiceRadioButton_1.setObjectName("q2ChoiceRadioButton_1")
+        self.q2ChoiceHorizontalLayout_1.addWidget(self.q2ChoiceRadioButton_1)
         self.q2Choice1LineEdit_1 = QtWidgets.QLineEdit(self.q2ChoiceGroupBox)
         self.q2Choice1LineEdit_1.setObjectName("q2Choice1LineEdit_1")
         self.q2ChoiceHorizontalLayout_1.addWidget(self.q2Choice1LineEdit_1)
@@ -217,10 +228,10 @@ class Ui_MainWindow(object):
         self.gridLayout_31.addLayout(self.q2ChoiceHorizontalLayout_3, 2, 0, 1, 1)
         self.q2ChoiceHorizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.q2ChoiceHorizontalLayout_4.setObjectName("q2ChoiceHorizontalLayout_4")
-        self.q2ChoiceRadioButton = QtWidgets.QRadioButton(self.q2ChoiceGroupBox)
-        self.q2ChoiceRadioButton.setText("")
-        self.q2ChoiceRadioButton.setObjectName("q2ChoiceRadioButton")
-        self.q2ChoiceHorizontalLayout_4.addWidget(self.q2ChoiceRadioButton)
+        self.q2ChoiceRadioButton_4 = QtWidgets.QRadioButton(self.q2ChoiceGroupBox)
+        self.q2ChoiceRadioButton_4.setText("")
+        self.q2ChoiceRadioButton_4.setObjectName("q2ChoiceRadioButton_4")
+        self.q2ChoiceHorizontalLayout_4.addWidget(self.q2ChoiceRadioButton_4)
         self.q2Choice1LineEdit_4 = QtWidgets.QLineEdit(self.q2ChoiceGroupBox)
         self.q2Choice1LineEdit_4.setObjectName("q2Choice1LineEdit_4")
         self.q2ChoiceHorizontalLayout_4.addWidget(self.q2Choice1LineEdit_4)
@@ -272,10 +283,10 @@ class Ui_MainWindow(object):
         self.gridLayout_32.setObjectName("gridLayout_32")
         self.q3ChoiceHorizontalLayout_1 = QtWidgets.QHBoxLayout()
         self.q3ChoiceHorizontalLayout_1.setObjectName("q3ChoiceHorizontalLayout_1")
-        self.q3ChoiceRadioButton_ = QtWidgets.QRadioButton(self.q3ChoiceGroupBox)
-        self.q3ChoiceRadioButton_.setText("")
-        self.q3ChoiceRadioButton_.setObjectName("q3ChoiceRadioButton_")
-        self.q3ChoiceHorizontalLayout_1.addWidget(self.q3ChoiceRadioButton_)
+        self.q3ChoiceRadioButton_1 = QtWidgets.QRadioButton(self.q3ChoiceGroupBox)
+        self.q3ChoiceRadioButton_1.setText("")
+        self.q3ChoiceRadioButton_1.setObjectName("q3ChoiceRadioButton_1")
+        self.q3ChoiceHorizontalLayout_1.addWidget(self.q3ChoiceRadioButton_1)
         self.q3Choice1LineEdit_1 = QtWidgets.QLineEdit(self.q3ChoiceGroupBox)
         self.q3Choice1LineEdit_1.setObjectName("q3Choice1LineEdit_1")
         self.q3ChoiceHorizontalLayout_1.addWidget(self.q3Choice1LineEdit_1)
@@ -302,10 +313,10 @@ class Ui_MainWindow(object):
         self.gridLayout_32.addLayout(self.q3ChoiceHorizontalLayout_3, 2, 0, 1, 1)
         self.q3ChoiceHorizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.q3ChoiceHorizontalLayout_4.setObjectName("q3ChoiceHorizontalLayout_4")
-        self.q3ChoiceRadioButton = QtWidgets.QRadioButton(self.q3ChoiceGroupBox)
-        self.q3ChoiceRadioButton.setText("")
-        self.q3ChoiceRadioButton.setObjectName("q3ChoiceRadioButton")
-        self.q3ChoiceHorizontalLayout_4.addWidget(self.q3ChoiceRadioButton)
+        self.q3ChoiceRadioButton_4 = QtWidgets.QRadioButton(self.q3ChoiceGroupBox)
+        self.q3ChoiceRadioButton_4.setText("")
+        self.q3ChoiceRadioButton_4.setObjectName("q3ChoiceRadioButton_4")
+        self.q3ChoiceHorizontalLayout_4.addWidget(self.q3ChoiceRadioButton_4)
         self.q3Choice1LineEdit_4 = QtWidgets.QLineEdit(self.q3ChoiceGroupBox)
         self.q3Choice1LineEdit_4.setObjectName("q3Choice1LineEdit_4")
         self.q3ChoiceHorizontalLayout_4.addWidget(self.q3Choice1LineEdit_4)
@@ -355,10 +366,10 @@ class Ui_MainWindow(object):
         self.gridLayout_33.setObjectName("gridLayout_33")
         self.q4ChoiceHorizontalLayout_1 = QtWidgets.QHBoxLayout()
         self.q4ChoiceHorizontalLayout_1.setObjectName("q4ChoiceHorizontalLayout_1")
-        self.q4ChoiceRadioButton_ = QtWidgets.QRadioButton(self.q4ChoiceGroupBox)
-        self.q4ChoiceRadioButton_.setText("")
-        self.q4ChoiceRadioButton_.setObjectName("q4ChoiceRadioButton_")
-        self.q4ChoiceHorizontalLayout_1.addWidget(self.q4ChoiceRadioButton_)
+        self.q4ChoiceRadioButton_1 = QtWidgets.QRadioButton(self.q4ChoiceGroupBox)
+        self.q4ChoiceRadioButton_1.setText("")
+        self.q4ChoiceRadioButton_1.setObjectName("q4ChoiceRadioButton_1")
+        self.q4ChoiceHorizontalLayout_1.addWidget(self.q4ChoiceRadioButton_1)
         self.q4Choice1LineEdit_1 = QtWidgets.QLineEdit(self.q4ChoiceGroupBox)
         self.q4Choice1LineEdit_1.setObjectName("q4Choice1LineEdit_1")
         self.q4ChoiceHorizontalLayout_1.addWidget(self.q4Choice1LineEdit_1)
@@ -385,10 +396,10 @@ class Ui_MainWindow(object):
         self.gridLayout_33.addLayout(self.q4ChoiceHorizontalLayout_3, 2, 0, 1, 1)
         self.q4ChoiceHorizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.q4ChoiceHorizontalLayout_4.setObjectName("q4ChoiceHorizontalLayout_4")
-        self.q4ChoiceRadioButton = QtWidgets.QRadioButton(self.q4ChoiceGroupBox)
-        self.q4ChoiceRadioButton.setText("")
-        self.q4ChoiceRadioButton.setObjectName("q4ChoiceRadioButton")
-        self.q4ChoiceHorizontalLayout_4.addWidget(self.q4ChoiceRadioButton)
+        self.q4ChoiceRadioButton_4 = QtWidgets.QRadioButton(self.q4ChoiceGroupBox)
+        self.q4ChoiceRadioButton_4.setText("")
+        self.q4ChoiceRadioButton_4.setObjectName("q4ChoiceRadioButton_4")
+        self.q4ChoiceHorizontalLayout_4.addWidget(self.q4ChoiceRadioButton_4)
         self.q4Choice1LineEdit_4 = QtWidgets.QLineEdit(self.q4ChoiceGroupBox)
         self.q4Choice1LineEdit_4.setObjectName("q4Choice1LineEdit_4")
         self.q4ChoiceHorizontalLayout_4.addWidget(self.q4Choice1LineEdit_4)
@@ -437,10 +448,10 @@ class Ui_MainWindow(object):
         self.gridLayout_34.setObjectName("gridLayout_34")
         self.q5ChoiceHorizontalLayout_1 = QtWidgets.QHBoxLayout()
         self.q5ChoiceHorizontalLayout_1.setObjectName("q5ChoiceHorizontalLayout_1")
-        self.q5ChoiceRadioButton_ = QtWidgets.QRadioButton(self.q5ChoiceGroupBox)
-        self.q5ChoiceRadioButton_.setText("")
-        self.q5ChoiceRadioButton_.setObjectName("q5ChoiceRadioButton_")
-        self.q5ChoiceHorizontalLayout_1.addWidget(self.q5ChoiceRadioButton_)
+        self.q5ChoiceRadioButton_1 = QtWidgets.QRadioButton(self.q5ChoiceGroupBox)
+        self.q5ChoiceRadioButton_1.setText("")
+        self.q5ChoiceRadioButton_1.setObjectName("q5ChoiceRadioButton_1")
+        self.q5ChoiceHorizontalLayout_1.addWidget(self.q5ChoiceRadioButton_1)
         self.q5Choice1LineEdit_1 = QtWidgets.QLineEdit(self.q5ChoiceGroupBox)
         self.q5Choice1LineEdit_1.setObjectName("q5Choice1LineEdit_1")
         self.q5ChoiceHorizontalLayout_1.addWidget(self.q5Choice1LineEdit_1)
@@ -467,10 +478,10 @@ class Ui_MainWindow(object):
         self.gridLayout_34.addLayout(self.q5ChoiceHorizontalLayout_3, 2, 0, 1, 1)
         self.q5ChoiceHorizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.q5ChoiceHorizontalLayout_4.setObjectName("q5ChoiceHorizontalLayout_4")
-        self.q5ChoiceRadioButton = QtWidgets.QRadioButton(self.q5ChoiceGroupBox)
-        self.q5ChoiceRadioButton.setText("")
-        self.q5ChoiceRadioButton.setObjectName("q5ChoiceRadioButton")
-        self.q5ChoiceHorizontalLayout_4.addWidget(self.q5ChoiceRadioButton)
+        self.q5ChoiceRadioButton_4 = QtWidgets.QRadioButton(self.q5ChoiceGroupBox)
+        self.q5ChoiceRadioButton_4.setText("")
+        self.q5ChoiceRadioButton_4.setObjectName("q5ChoiceRadioButton_4")
+        self.q5ChoiceHorizontalLayout_4.addWidget(self.q5ChoiceRadioButton_4)
         self.q5Choice1LineEdit_4 = QtWidgets.QLineEdit(self.q5ChoiceGroupBox)
         self.q5Choice1LineEdit_4.setObjectName("q5Choice1LineEdit_4")
         self.q5ChoiceHorizontalLayout_4.addWidget(self.q5Choice1LineEdit_4)
@@ -495,7 +506,7 @@ class Ui_MainWindow(object):
         self.q5ImageCaptionLineEdit.setObjectName("q5ImageCaptionLineEdit")
         self.q5VerticalLayout.addWidget(self.q5ImageCaptionLineEdit)
         self.quizVerticalLayout.addLayout(self.q5VerticalLayout)
-        self.gridLayout_4.addLayout(self.quizVerticalLayout, 0, 0, 1, 1)
+        self.gridLayout_4.addLayout(self.quizVerticalLayout, 2, 0, 1, 1)
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.gridLayout.addWidget(self.splitter, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -519,6 +530,7 @@ class Ui_MainWindow(object):
         self.actionOpen.setIcon(icon)
         self.actionOpen.setObjectName("actionOpen")
         self.actionSave = QtWidgets.QAction(MainWindow)
+        self.actionSave.setEnabled(False)
         icon = QtGui.QIcon.fromTheme("document-save")
         self.actionSave.setIcon(icon)
         self.actionSave.setObjectName("actionSave")
@@ -542,9 +554,14 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon.fromTheme("system-shutdown")
         self.actionQuit.setIcon(icon)
         self.actionQuit.setObjectName("actionQuit")
+        self.actionSave_As = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("document-save-as")
+        self.actionSave_As.setIcon(icon)
+        self.actionSave_As.setObjectName("actionSave_As")
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
+        self.menuFile.addAction(self.actionSave_As)
         self.menuFile.addAction(self.actionNew_Quiz)
         self.menuFile.addAction(self.actionPreview)
         self.menuFile.addAction(self.actionRemove_Quiz)
@@ -554,11 +571,14 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
+        self.actionQuit.triggered.connect(MainWindow.close) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Kwiz Kreator"))
+        self.saveQuizButton.setText(_translate("MainWindow", "Save Quiz"))
+        self.resetQuizButton.setText(_translate("MainWindow", "Reset Quiz"))
         self.titleLabel.setText(_translate("MainWindow", "Title"))
         self.titleLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Main\n"
 "                                                                    Quiz Title</p></body></html>\n"
@@ -573,15 +593,16 @@ class Ui_MainWindow(object):
 "                                                                    wrote the quiz?</p></body></html>\n"
 "                                                                "))
         self.publishOnLabel.setText(_translate("MainWindow", "Publish On"))
-        self.dateEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\n"
+        self.publishOnDateEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\n"
 "                                                                    date do you want to quiz to appear on?</p></body></html>\n"
 "                                                                "))
+        self.publishOnDateEdit.setDisplayFormat(_translate("MainWindow", "yyyy/MM/dd"))
         self.q1Question1Label.setText(_translate("MainWindow", "Question 1"))
         self.q1QuestionTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\'s\n"
 "                                                                    the question you want folks to answer?</p></body></html>\n"
 "                                                                "))
         self.q1ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
-        self.q1ChoiceRadioButton_.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q1ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
 "                                                                                        answer</p></body></html>\n"
 "                                                                                    "))
@@ -602,7 +623,7 @@ class Ui_MainWindow(object):
         self.q1Choice1LineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
 "                                                                                        third possible answer</p></body></html>\n"
 "                                                                                    "))
-        self.q1ChoiceRadioButton.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q1ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
 "                                                                                        answer</p></body></html>\n"
 "                                                                                    "))
@@ -622,6 +643,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                    </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                     </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                     </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                 </p></body></html>"))
         self.q1ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q1ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
@@ -637,7 +659,7 @@ class Ui_MainWindow(object):
 "                                                                            the question you want folks to answer?</p></body></html>\n"
 "                                                                        "))
         self.q2ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
-        self.q2ChoiceRadioButton_.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q2ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                                which choice is the\n"
 "                                                                                                correct answer</p></body></html>\n"
 "                                                                                            "))
@@ -658,7 +680,7 @@ class Ui_MainWindow(object):
         self.q2Choice1LineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
 "                                                                                                third possible answer</p></body></html>\n"
 "                                                                                            "))
-        self.q2ChoiceRadioButton.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q2ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                                which choice is the\n"
 "                                                                                                correct answer</p></body></html>\n"
 "                                                                                            "))
@@ -678,6 +700,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                            </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                             </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                             </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                         </p></body></html>"))
         self.q2ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q2ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
@@ -693,7 +716,7 @@ class Ui_MainWindow(object):
 "                                                                            the question you want folks to answer?</p></body></html>\n"
 "                                                                        "))
         self.q3ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
-        self.q3ChoiceRadioButton_.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q3ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                                which choice is the\n"
 "                                                                                                correct answer</p></body></html>\n"
 "                                                                                            "))
@@ -714,7 +737,7 @@ class Ui_MainWindow(object):
         self.q3Choice1LineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
 "                                                                                                third possible answer</p></body></html>\n"
 "                                                                                            "))
-        self.q3ChoiceRadioButton.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q3ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                                which choice is the\n"
 "                                                                                                correct answer</p></body></html>\n"
 "                                                                                            "))
@@ -734,6 +757,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                            </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                             </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                             </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                         </p></body></html>"))
         self.q3ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q3ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
@@ -749,7 +773,7 @@ class Ui_MainWindow(object):
 "                                                                    the question you want folks to answer?</p></body></html>\n"
 "                                                                "))
         self.q4ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
-        self.q4ChoiceRadioButton_.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q4ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
 "                                                                                        answer</p></body></html>\n"
 "                                                                                    "))
@@ -770,7 +794,7 @@ class Ui_MainWindow(object):
         self.q4Choice1LineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
 "                                                                                        third possible answer</p></body></html>\n"
 "                                                                                    "))
-        self.q4ChoiceRadioButton.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q4ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
 "                                                                                        answer</p></body></html>\n"
 "                                                                                    "))
@@ -790,6 +814,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                    </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                     </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                     </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                 </p></body></html>"))
         self.q4ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q4ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
@@ -805,7 +830,7 @@ class Ui_MainWindow(object):
 "                                                                    the question you want folks to answer?</p></body></html>\n"
 "                                                                "))
         self.q5ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
-        self.q5ChoiceRadioButton_.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q5ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
 "                                                                                        answer</p></body></html>\n"
 "                                                                                    "))
@@ -826,7 +851,7 @@ class Ui_MainWindow(object):
         self.q5Choice1LineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
 "                                                                                        third possible answer</p></body></html>\n"
 "                                                                                    "))
-        self.q5ChoiceRadioButton.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+        self.q5ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
 "                                                                                        answer</p></body></html>\n"
 "                                                                                    "))
@@ -846,6 +871,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                    </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                     </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                     </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">                                                                 </p></body></html>"))
         self.q5ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q5ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
@@ -858,13 +884,13 @@ class Ui_MainWindow(object):
 "                                                                "))
         self.menuFile.setTitle(_translate("MainWindow", "&File"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
-        self.actionNew.setText(_translate("MainWindow", "&New"))
+        self.actionNew.setText(_translate("MainWindow", "New"))
         self.actionNew.setToolTip(_translate("MainWindow", "Create a new Trail Trivia File"))
         self.actionNew.setShortcut(_translate("MainWindow", "Ctrl+N"))
-        self.actionOpen.setText(_translate("MainWindow", "&Open"))
+        self.actionOpen.setText(_translate("MainWindow", "Open"))
         self.actionOpen.setToolTip(_translate("MainWindow", "Open a Trail Trivia file"))
         self.actionOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
-        self.actionSave.setText(_translate("MainWindow", "&Save"))
+        self.actionSave.setText(_translate("MainWindow", "Save"))
         self.actionSave.setToolTip(_translate("MainWindow", "Save your Trail Trivia file"))
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
@@ -872,6 +898,8 @@ class Ui_MainWindow(object):
         self.actionPreview.setText(_translate("MainWindow", "Preview"))
         self.actionRemove_Quiz.setText(_translate("MainWindow", "Remove Quiz"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
+        self.actionSave_As.setText(_translate("MainWindow", "Save As"))
+        self.actionSave_As.setShortcut(_translate("MainWindow", "Ctrl+Shift+S"))
 
 
 if __name__ == "__main__":

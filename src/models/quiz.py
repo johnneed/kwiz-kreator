@@ -6,27 +6,74 @@ from .question import Question
 
 
 class Quiz:
-    def __init__(self, title="", sub_title="", publish_date=None, author="", questions=None, id_=None):
+    def __init__(self, title="", subtitle="", publish_date=None, author="", questions=None, id_=None):
+        if id_ is None:
+            id_ = str(uuid.uuid4())
         if questions is None:
             questions = []
-        self.id_ = id_ or uuid.uuid4()
-        self.title = title
-        self.sub_title = sub_title
-        self.publish_date = publish_date or datetime.now().strftime("%Y/%m/%d")
-        self.author = author or ""
-        self.questions = (questions + [Question() for i in range(5)])[0:5]
+        if publish_date is None:
+            publish_date = datetime.now().strftime("%Y/%m/%d")
+        self._id = id_
+        self._title = title
+        self._subtitle = subtitle
+        self._publish_date = publish_date
+        self._author = author
+        self._questions = questions + [Question()] * (5 - len(questions))
+
+    @property
+    def id(self):
+        return self._id
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        self._title = title
+
+    @property
+    def subtitle(self):
+        return self._subtitle
+
+    @subtitle.setter
+    def subtitle(self, subtitle):
+        self._subtitle = subtitle
+
+    @property
+    def publish_date(self):
+        return self._publish_date
+
+    @publish_date.setter
+    def publish_date(self, publish_date):
+        self._publish_date = publish_date
+
+    @property
+    def author(self):
+        return self._author
+
+    @author.setter
+    def author(self, author):
+        self._author = author
+
+    @property
+    def questions(self):
+        return self._questions
+
+    @questions.setter
+    def questions(self, questions):
+        self._questions = questions
+
 
     def to_json(self):
-        quiz = {
-            'id': self.id_,
-            'title': self.title,
-            'subTitle': self.sub_title,
-            'publishDate': self.publish_date,
-            'author': self.author,
-            'questions': [q.to_json() for q in self.questions]
+        return {
+            'id': self._id,
+            'title': self._title,
+            'subTitle': self._subtitle,
+            'publishDate': self._publish_date,
+            'author': self._author,
+            'questions': [q.to_json() for q in self._questions]
         }
-
-        return json.dumps(quiz)
 
     @staticmethod
     def from_json(quiz):
@@ -40,8 +87,8 @@ class Quiz:
         )
 
     def __str__(self):
-        return f'Quiz: {self.id_} - {self.title}'
+        return f'Quiz: {self._id} - {self._title}'
 
     def __repr__(self):
-        return f'Quiz(title={self.title}, subTitle={self.sub_title}, publishDate={self.publish_date}, ' \
-               f'author={self.author}, questions={self.questions}, id_={self.id_})'
+        return f'Quiz(title="{self._title}", subtitle="{self._subtitle}", publish_date="{self._publish_date}", ' \
+               f'author="{self._author}", questions="{self._questions}", id_="{self._id}")'

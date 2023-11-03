@@ -56,16 +56,37 @@
         <bool>true</bool>
        </property>
        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
           <width>402</width>
-          <height>2935</height>
+          <height>2968</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QPushButton" name="saveQuizButton">
+             <property name="text">
+              <string>Save Quiz</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="resetQuizButton">
+             <property name="text">
+              <string>Reset Quiz</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
           <layout class="QVBoxLayout" name="quizVerticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0">
            <property name="spacing">
             <number>20</number>
@@ -144,11 +165,17 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QDateEdit" name="dateEdit">
+              <widget class="QDateEdit" name="publishOnDateEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What
                                                                     date do you want to quiz to appear on?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                 </string>
+               </property>
+               <property name="displayFormat">
+                <string>yyyy/MM/dd</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -200,7 +227,7 @@
                 <item row="0" column="0">
                  <layout class="QHBoxLayout" name="q1ChoiceHorizontalLayout_1">
                   <item>
-                   <widget class="QRadioButton" name="q1ChoiceRadioButton_">
+                   <widget class="QRadioButton" name="q1ChoiceRadioButton_1">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                         which choice is the correct
@@ -278,7 +305,7 @@
                 <item row="3" column="0">
                  <layout class="QHBoxLayout" name="q1ChoiceHorizontalLayout_4">
                   <item>
-                   <widget class="QRadioButton" name="q1ChoiceRadioButton">
+                   <widget class="QRadioButton" name="q1ChoiceRadioButton_4">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                         which choice is the correct
@@ -327,6 +354,7 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                    &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -415,7 +443,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <item row="0" column="0">
                    <layout class="QHBoxLayout" name="q2ChoiceHorizontalLayout_1">
                     <item>
-                     <widget class="QRadioButton" name="q2ChoiceRadioButton_">
+                     <widget class="QRadioButton" name="q2ChoiceRadioButton_1">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                                 which choice is the
@@ -493,7 +521,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <item row="3" column="0">
                    <layout class="QHBoxLayout" name="q2ChoiceHorizontalLayout_4">
                     <item>
-                     <widget class="QRadioButton" name="q2ChoiceRadioButton">
+                     <widget class="QRadioButton" name="q2ChoiceRadioButton_4">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                                 which choice is the
@@ -542,6 +570,7 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                            &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                         &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
@@ -632,7 +661,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <item row="0" column="0">
                    <layout class="QHBoxLayout" name="q3ChoiceHorizontalLayout_1">
                     <item>
-                     <widget class="QRadioButton" name="q3ChoiceRadioButton_">
+                     <widget class="QRadioButton" name="q3ChoiceRadioButton_1">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                                 which choice is the
@@ -710,7 +739,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <item row="3" column="0">
                    <layout class="QHBoxLayout" name="q3ChoiceHorizontalLayout_4">
                     <item>
-                     <widget class="QRadioButton" name="q3ChoiceRadioButton">
+                     <widget class="QRadioButton" name="q3ChoiceRadioButton_4">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                                 which choice is the
@@ -759,6 +788,7 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                            &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                         &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
@@ -847,7 +877,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item row="0" column="0">
                  <layout class="QHBoxLayout" name="q4ChoiceHorizontalLayout_1">
                   <item>
-                   <widget class="QRadioButton" name="q4ChoiceRadioButton_">
+                   <widget class="QRadioButton" name="q4ChoiceRadioButton_1">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                         which choice is the correct
@@ -925,7 +955,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item row="3" column="0">
                  <layout class="QHBoxLayout" name="q4ChoiceHorizontalLayout_4">
                   <item>
-                   <widget class="QRadioButton" name="q4ChoiceRadioButton">
+                   <widget class="QRadioButton" name="q4ChoiceRadioButton_4">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                         which choice is the correct
@@ -974,6 +1004,7 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                    &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -1060,7 +1091,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item row="0" column="0">
                  <layout class="QHBoxLayout" name="q5ChoiceHorizontalLayout_1">
                   <item>
-                   <widget class="QRadioButton" name="q5ChoiceRadioButton_">
+                   <widget class="QRadioButton" name="q5ChoiceRadioButton_1">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                         which choice is the correct
@@ -1138,7 +1169,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item row="3" column="0">
                  <layout class="QHBoxLayout" name="q5ChoiceHorizontalLayout_4">
                   <item>
-                   <widget class="QRadioButton" name="q5ChoiceRadioButton">
+                   <widget class="QRadioButton" name="q5ChoiceRadioButton_4">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                         which choice is the correct
@@ -1187,6 +1218,7 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                    &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -1252,9 +1284,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
     <addaction name="actionNew_Quiz"/>
     <addaction name="actionPreview"/>
-    <addaction name="actionRemove_Quiz"/>
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -1273,7 +1305,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>&amp;New</string>
+    <string>New</string>
    </property>
    <property name="toolTip">
     <string>Create a new Trail Trivia File</string>
@@ -1288,7 +1320,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>&amp;Open</string>
+    <string>Open</string>
    </property>
    <property name="toolTip">
     <string>Open a Trail Trivia file</string>
@@ -1298,12 +1330,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
   </action>
   <action name="actionSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset theme="document-save">
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>&amp;Save</string>
+    <string>Save</string>
    </property>
    <property name="toolTip">
     <string>Save your Trail Trivia file</string>
@@ -1357,7 +1392,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Quit</string>
    </property>
   </action>
+  <action name="actionSave_As">
+   <property name="icon">
+    <iconset theme="document-save-as"/>
+   </property>
+   <property name="text">
+    <string>Save As</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>461</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>426</x>
+     <y>414</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

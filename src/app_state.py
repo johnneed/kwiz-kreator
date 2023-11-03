@@ -1,7 +1,8 @@
 import queue
 
-from .models.trivia import Trivia
 from .models.quiz import Quiz
+from .models.trivia import Trivia
+
 
 class AppState:
 
@@ -9,13 +10,15 @@ class AppState:
         self.message_queue = queue.Queue()
         self.subscribers = []
         self.trivia = Trivia()
-        self.selected_quiz_id = None
-        self.selected_quiz = Quiz()
+        self.selected_quiz = None
+        self.selected_quiz_is_dirty = False
+        self.trivia_is_dirty = False
 
     def subscribe(self, subscriber):
         self.subscribers.append(subscriber)
 
     def publish(self, message):
+        print('publishing message: ', message)
         self.message_queue.put(message)
         for subscriber in self.subscribers:
             subscriber.receive(message)
@@ -25,36 +28,89 @@ class AppState:
 
     def set_trivia(self, trivia):
         self.trivia = trivia
+        if len(trivia.quizzes) > 0:
+            self.trivia.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
+            self.selected_quiz = Quiz(trivia.quizzes[0].title, trivia.quizzes[0].subtitle,
+                                      trivia.quizzes[0].publish_date, trivia.quizzes[0].author,
+                                      trivia.quizzes[0].questions, trivia.quizzes[0].id)
+        self.set_trivia_is_dirty(False)
         self.publish('trivia_loaded')
 
-    def get_selected_quiz_id(self):
-        return self.selected_quiz_id
 
-    def set_selected_quiz_id(self, quiz_id):
-        self.selected_quiz_id = quiz_id
-        self.publish('selected-quiz-changed')
+    def add_quiz(self, quiz):
+        self.trivia.quizzes.append(quiz)
+        self.selected_quiz = Quiz(quiz.title, quiz.subtitle, quiz.publish_date, quiz.author, quiz.questions, quiz.id)
+        self.trivia.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
+        self.set_trivia_is_dirty(True)
+        self.publish('quiz_added')
+
+    def delete_quiz(self, quiz_id):
+        new_quizzes = [quiz for quiz in self.trivia.quizzes if quiz.id != quiz_id]
+        self.trivia.quizzes = new_quizzes
+        self.publish('quiz_deleted')
+        self.set_trivia_is_dirty(False)
+        if quiz_id == self.selected_quiz.id:
+            self.selected_quiz = None
+            self.publish('quiz_selected')
 
     def get_selected_quiz(self):
         return self.selected_quiz
 
-    def set_selected_quiz(self, quiz):
-        self.selected_quiz = quiz
-        self.publish('selected-quiz-changed')
+    def set_selected_quiz_by_id(self, quiz_id):
+        quiz = next((quiz for quiz in self.trivia.quizzes if quiz.id == quiz_id), None)
+        if quiz is None:
+            self.selected_quiz = None
+        else:
+            # use a clone of the quiz so that we can isolate changes
+            self.selected_quiz = Quiz(quiz.title, quiz.subtitle, quiz.publish_date, quiz.author, quiz.questions,
+                                      quiz.id)
+        self.publish('quiz_selected')
+
+    def clear_selected_quiz(self):
+        self.selected_quiz = None
+        self.publish('selected_quiz_cleared')
 
     def set_selected_quiz_property(self, prop, value):
         setattr(self.selected_quiz, prop, value)
-        self.publish('selected-quiz-changed')
+        self.publish('selected_quiz_changed')
+        self.set_selected_quiz_is_dirty(True)
 
-    def set_question_property(self, question_id, prop, value):
-        questions = self.selected_quiz.questions
-        for question in questions:
-            if question.id_ == question_id:
-                setattr(question, prop, value)
-                break
-        self.publish('selected-quiz-changed')
+    def set_question_property(self, index, prop, value=''):
+        question = self.selected_quiz.questions[index]
+        setattr(question, prop, value)
+        self.publish('selected_quiz_changed')
+        self.set_selected_quiz_is_dirty(True)
 
-    def set_choice_text(self, choice_id, value):
-        choice = [choice for choice in question.choices if choice_id == choice.id_][0]
+    def set_choice_text(self, question_index, choice_index, value):
+        question = self.selected_quiz.questions[question_index]
+        choice = question.choices[choice_index]
         setattr(choice, "text", value)
-        self.publish('selected-quiz-changed')
+        self.publish('selected_quiz_changed')
+        self.set_selected_quiz_is_dirty(True)
 
+    def set_trivia_is_dirty(self, value=True):
+        self.trivia_is_dirty = value
+        self.publish('trivia_dirty_changed')
+
+    def set_selected_quiz_is_dirty(self, value=True):
+        self.selected_quiz_is_dirty = value
+        self.publish('selected_quiz_dirty_changed')
+
+    def save_selected_quiz(self):
+        for quiz in self.trivia.quizzes:
+            if quiz.id == self.selected_quiz.id:
+                quiz.title = self.selected_quiz.title
+                quiz.subtitle = self.selected_quiz.subtitle
+                quiz.publish_date = self.selected_quiz.publish_date
+                quiz.author = self.selected_quiz.author
+                quiz.questions = self.selected_quiz.questions
+                break
+
+        self.set_selected_quiz_is_dirty(False)
+        self.set_trivia_is_dirty(True)
+        self.publish('quiz_updated')
+
+    def reset_selected_quiz(self):
+        self.selected_quiz = Quiz(self.selected_quiz)
+        self.set_selected_quiz_is_dirty(False)
+        self.publish('selected_quiz_reset')

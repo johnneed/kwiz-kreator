@@ -4,16 +4,28 @@ import uuid
 
 class Choice:
     def __init__(self, text="", id_=None):
-        self.id_ = id_ or uuid.uuid4()
-        self.text = text or ''
+        if id_ is None:
+            id_ = str(uuid.uuid4())
+        self._id = id_
+        self._text = text
+
+    @property
+    def id_self(self):
+        return self._id
+
+    @property
+    def text(self):
+        return self._text
+
+    @text.setter
+    def text(self, text):
+        self._text = text
 
     def to_json(self):
-        choice = {
-            'id': self.id_,
-            'text': self.text,
+        return{
+            'id': self._id,
+            'text': self._text,
         }
-
-        return json.dumps(choice)
 
     @staticmethod
     def from_json(choice):
@@ -23,7 +35,7 @@ class Choice:
         )
 
     def __str__(self):
-        return f'Choice {self.id_} - {self.text}'
+        return f'Choice {self._id} - {self._text}'
 
     def __repr__(self):
-        return f'Choice(text={self.text}, id_={self.id_})'
+        return f'Choice(text="{self._text}", id_="{self._id}")'
