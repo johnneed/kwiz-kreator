@@ -90,7 +90,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionSave.triggered.connect(self.save_file)
         self.actionSave_As.triggered.connect(self.save_file_as)
         # self.action_Find_Replace.triggered.connect(self.findAndReplace)
-        self.action_About.triggered.connect(self.about)
+        self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
         # Quiz Controls
         self.saveQuizButton.clicked.connect(self.app_state.save_selected_quiz)
