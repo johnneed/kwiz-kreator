@@ -20,11 +20,14 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QScrollArea" name="scrollArea">
+      <widget class="QScrollArea" name="scrollArea_1">
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
+       <widget class="QWidget" name="scrollAreaWidgetContents_1">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -64,29 +67,11 @@
           <x>0</x>
           <y>0</y>
           <width>402</width>
-          <height>2968</height>
+          <height>2935</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QPushButton" name="saveQuizButton">
-             <property name="text">
-              <string>Save Quiz</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="resetQuizButton">
-             <property name="text">
-              <string>Reset Quiz</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="0">
+         <item row="1" column="0">
           <layout class="QVBoxLayout" name="quizVerticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0">
            <property name="spacing">
             <number>20</number>
@@ -1285,18 +1270,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
-    <addaction name="actionNew_Quiz"/>
-    <addaction name="actionPreview"/>
     <addaction name="actionQuit"/>
    </widget>
-   <widget class="QMenu" name="menuHelp">
+   <widget class="QMenu" name="menu_Edit">
     <property name="title">
-     <string>Help</string>
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionNew_Quiz"/>
+    <addaction name="actionRevert_ChangesUndo_All"/>
+    <addaction name="actionSpell_Check"/>
+    <addaction name="actionPreview"/>
+    <addaction name="actionRemove_Quiz"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuHelp"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNew">
@@ -1347,16 +1341,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionAbout">
-   <property name="icon">
-    <iconset theme="help-about">
-     <normaloff>.</normaloff>.</iconset>
-   </property>
-   <property name="text">
-    <string>About</string>
-   </property>
-  </action>
   <action name="actionNew_Quiz">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset theme="list-add">
      <normaloff>.</normaloff>.</iconset>
@@ -1375,6 +1363,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
   </action>
   <action name="actionRemove_Quiz">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset theme="list-remove">
      <normaloff>.</normaloff>.</iconset>
@@ -1393,14 +1384,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
   </action>
   <action name="actionSave_As">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
-    <iconset theme="document-save-as"/>
+    <iconset theme="document-save-as">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Save As</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset theme="help-about">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionRevert_ChangesUndo_All">
+   <property name="icon">
+    <iconset theme="edit-undo"/>
+   </property>
+   <property name="text">
+    <string>Revert Changes</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionSpell_Check">
+   <property name="icon">
+    <iconset theme="edit-find">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Spell Check</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
    </property>
   </action>
  </widget>
@@ -1413,8 +1440,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>461</x>
-     <y>150</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>426</x>

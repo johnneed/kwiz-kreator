@@ -25,73 +25,34 @@ class App(QMainWindow, Ui_MainWindow):
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
 
+    def subscribe(self):
+        self.app_state.subscribe(self)
+
     def receive(self, message):
         match message:
             case "trivia_loaded":
                 self.__update_trivia_list()
+                self.__set_menu_state()
             case "trivia_updated":
-                pass
+                self.__set_menu_state()
             case "quiz_added":
                 self.__update_trivia_list()
+                self.__set_menu_state()
             case "quiz_selected":
                 self.__display_selected_quiz()
+                self.__set_menu_state()
             case "quiz_updated":
                 self.__update_trivia_list()
+                self.__set_menu_state()
             case "selected_quiz_cleared":
-                self.__set_quiz_enabled(False)
-            case "selected_quiz_dirty_status_changed":
-                pass
-            case "trivia_dirty_status_changed":
-                pass
-            case "selected_quiz_dirty_changed":
-                self.saveQuizButton.setEnabled(self.app_state.selected_quiz_is_dirty)
-            case "quiz_saved":
+                self.__set_menu_state()
+            case "dirty_changed":
+                self.__set_menu_state()
+            case "quiz_updated":
                 self.__update_trivia_list()
+                self.__set_menu_state()
             case _:
                 pass
-
-    def __set_quiz_enabled(self, is_enabled=True):
-        self.scrollAreaWidgetContents_2.setEnabled(is_enabled)
-
-    def __update_trivia_list(self):
-        trivia = self.app_state.get_trivia()
-        selected_quiz = self.app_state.get_selected_quiz()
-        selected_quiz_id = selected_quiz.id if selected_quiz else None
-        self.listWidget.clear()
-        if len(trivia.quizzes) > 0:
-            for idx, quiz in enumerate(trivia.quizzes):
-                list_item = QListWidgetItem(quiz.title)
-                list_item.setData(1, quiz.id)
-                self.listWidget.addItem(list_item)
-                if quiz.id == selected_quiz_id:
-                    self.listWidget.setCurrentRow(idx)
-            if selected_quiz_id is None:
-                self.app_state.set_selected_quiz_by_id(trivia.quizzes[0].id)
-                self.listWidget.setCurrentRow(0)
-            self.scrollAreaWidgetContents_2.setEnabled(True)
-        else:
-            self.app_state.clear_selected_quiz()
-
-    def __select_quiz(self):
-        quiz_id = self.listWidget.currentItem().data(1)
-
-        if self.app_state.selected_quiz_is_dirty:
-            reply = QMessageBox.question(self, 'Message',
-                                         "You have unsaved changes. Do you want to save them?",
-                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
-            if reply == QMessageBox.Yes:
-                self.app_state.save_selected_quiz()
-
-        self.app_state.set_selected_quiz_by_id(quiz_id)
-
-    def __add_new_quiz(self):
-        first_friday = self.app_state.get_trivia().get_first_available_friday().strftime("%Y/%m/%d")
-        quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_friday, author="", questions=[])
-        self.app_state.add_quiz(quiz)
-
-
-    def subscribe(self):
-        self.app_state.subscribe(self)
 
     def connect_signals_slots(self):
         self.actionNew.triggered.connect(self.__create_new_trivia)
@@ -103,8 +64,6 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
         # Quiz Controls
-        self.saveQuizButton.clicked.connect(self.app_state.save_selected_quiz)
-        self.resetQuizButton.clicked.connect(self.app_state.reset_selected_quiz)
         self.titleLineEdit.textChanged.connect(partial(self.app_state.set_selected_quiz_property, 'title'))
         self.subtitleLineEdit.textChanged.connect(partial(self.app_state.set_selected_quiz_property, 'subtitle'))
         self.authorLineEdit.textChanged.connect(partial(self.app_state.set_selected_quiz_property, 'author'))
@@ -186,12 +145,40 @@ class App(QMainWindow, Ui_MainWindow):
         self.q5Choice1LineEdit_3.textChanged.connect(partial(self.app_state.set_choice_text, 0, 2, 'text'))
         self.q5Choice1LineEdit_4.textChanged.connect(partial(self.app_state.set_choice_text, 0, 3, 'text'))
 
+    def __update_trivia_list(self):
+        trivia = self.app_state.get_trivia()
+        self.listWidget.clear()
+        if len(trivia.quizzes) == 0:
+            self.app_state.clear_selected_quiz()
+            return
+        for idx, quiz in enumerate(trivia.quizzes):
+            list_item = QListWidgetItem(quiz.title)
+            list_item.setData(1, quiz.id)
+            self.listWidget.addItem(list_item)
+
+    def __select_quiz(self):
+        quiz_id = self.listWidget.currentItem().data(1)
+        if self.app_state.is_dirty:
+            reply = QMessageBox.question(self, 'Message',
+                                         "You have unsaved changes. Do you want to save them?",
+                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+            if reply == QMessageBox.Yes:
+                self.app_state.update_trivia_with_selected_quiz()
+        if quiz_id is None:
+            return
+        self.app_state.set_selected_quiz_by_id(quiz_id)
+
+    def __add_new_quiz(self):
+        first_friday = self.app_state.get_trivia().get_first_available_friday().strftime("%Y/%m/%d")
+        quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_friday, author="", questions=[])
+        self.app_state.add_quiz(quiz)
 
     def __create_new_trivia(self):
         new_trivia = Trivia(quizzes=[Quiz(title="New Quiz")])
         self.app_state.set_trivia(new_trivia)
         self.opened_file_name = None
-        self.actionSave.setEnabled(False)
+        self.listWidget.setCurrentRow(0)
+
     def open_file(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -207,36 +194,42 @@ class App(QMainWindow, Ui_MainWindow):
                     trivia = Trivia.from_json(data)
                     self.app_state.set_trivia(trivia)
                 self.opened_file_name = file_name
-                self.actionSave.setEnabled(True)
             except Exception as e:
                 QMessageBox.about(self, "Error", "That does not look like a valid Trail Trivia file\n\n " + str(e))
 
     def save_file_as(self):
-        trivia_data = self.app_state.get_trivia().to_json()
+        original_file_path = self.opened_file_name or ""
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        file_name = QFileDialog.getSaveFileName(self, "Save Trivia File", "",
+        file_name = QFileDialog.getSaveFileName(self, "Save Trivia File", original_file_path,
                                                 "JSON Files (*.json)",
                                                 options=options)
 
         if file_name[0]:
             full_path = file_name[0] + ".json" if not file_name[0].endswith(".json") else file_name[0]
+            if self.app_state.is_dirty:
+                self.app_state.update_trivia_with_selected_quiz()
+            trivia_data = self.app_state.get_trivia().to_json()
             try:
                 with open(full_path, 'w') as outfile:
                     json.dump(trivia_data, outfile)
                     outfile.close()
                 self.opened_file_name = full_path
-                self.actionSave.setEnabled(True)
-                self.app_state.set_trivia_is_dirty(False)
+                self.app_state.set_dirty(False)
             except Exception as e:
-                QMessageBox.about(self, "Error", "Unable to save file\n\n " + str(e))
+                QMessageBox.about(self, "Error",
+                                  "<p>Unable to save to file " + full_path + "</p><p>" + str(e) + "</p>")
 
     def save_file(self):
         if self.opened_file_name is not None:
+            if self.app_state.is_dirty:
+                self.app_state.update_trivia_with_selected_quiz()
+            trivia_data = self.app_state.get_trivia().to_json()
             with open(self.opened_file_name, 'w') as outfile:
-                json.dump(self.app_state.get_trivia().to_json(), outfile)
+                json.dump(trivia_data, outfile)
                 outfile.close()
-            self.app_state.set_trivia_is_dirty(False)
+            self.app_state.set_dirty(False)
+
     def __display_selected_quiz(self):
         quiz = self.app_state.get_selected_quiz()
         if quiz:
@@ -303,10 +296,20 @@ class App(QMainWindow, Ui_MainWindow):
         else:
             pass
 
+    def __set_menu_state(self):
+        has_quizzes = len(self.app_state.get_trivia().quizzes) > 0
+        self.actionNew_Quiz.setEnabled(has_quizzes)
+        self.actionSave.setEnabled(has_quizzes and self.app_state.is_dirty)
+        self.actionSave_As.setEnabled(has_quizzes)
+        self.scrollAreaWidgetContents_1.setEnabled(has_quizzes)
+        quiz_is_selected = self.app_state.get_selected_quiz() is not None
+        self.scrollAreaWidgetContents_2.setEnabled(quiz_is_selected)
+
     def about(self):
         QMessageBox.about(
             self,
             "About Kwiz Kreator",
-            "<p>A UI for creating Trail Trivia files</p>"
-            "<p>Play Trail Trivia at https://gmcburlington.org/trail-trivia/</p>"
+            "<p>An editor for creating Trail Trivia files.</p>"
+            "<p>Play Trail Trivia at:</p>"
+            "<p><a src='https://gmcburlington.org/trail-trivia/'>https://gmcburlington.org/trail-trivia/</a></p>"
         )
