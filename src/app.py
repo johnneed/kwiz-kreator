@@ -45,6 +45,8 @@ class App(QMainWindow, Ui_MainWindow):
                 pass
             case "selected_quiz_dirty_changed":
                 self.saveQuizButton.setEnabled(self.app_state.selected_quiz_is_dirty)
+            case "quiz_saved":
+                self.__update_trivia_list()
             case _:
                 pass
 
@@ -72,13 +74,21 @@ class App(QMainWindow, Ui_MainWindow):
 
     def __select_quiz(self):
         quiz_id = self.listWidget.currentItem().data(1)
+
+        if self.app_state.selected_quiz_is_dirty:
+            reply = QMessageBox.question(self, 'Message',
+                                         "You have unsaved changes. Do you want to save them?",
+                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+            if reply == QMessageBox.Yes:
+                self.app_state.save_selected_quiz()
+
         self.app_state.set_selected_quiz_by_id(quiz_id)
 
     def __add_new_quiz(self):
         first_friday = self.app_state.get_trivia().get_first_available_friday().strftime("%Y/%m/%d")
         quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_friday, author="", questions=[])
         self.app_state.add_quiz(quiz)
-        self.app_state.set_selected_quiz_is_dirty(False)
+
 
     def subscribe(self):
         self.app_state.subscribe(self)
