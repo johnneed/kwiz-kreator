@@ -65,7 +65,7 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>-2097</y>
           <width>402</width>
           <height>2935</height>
          </rect>
@@ -189,7 +189,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="q1QuestionTextEdit">
+              <widget class="QPlainTextEdit" name="q1QuestionPlainTextEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                     the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -225,11 +225,9 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q1Choice1LineEdit_1">
+                   <widget class="QLineEdit" name="q1ChoiceLineEdit_1">
                     <property name="toolTip">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
-                                                                                        first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-                                                                                    </string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -251,7 +249,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q1Choice1LineEdit_2">
+                   <widget class="QLineEdit" name="q1ChoiceLineEdit_2">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         second possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -277,7 +275,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q1Choice1LineEdit_3">
+                   <widget class="QLineEdit" name="q1ChoiceLineEdit_3">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         third possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -303,7 +301,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q1Choice1LineEdit_4">
+                   <widget class="QLineEdit" name="q1ChoiceLineEdit_4">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         fourth possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -324,24 +322,11 @@
               </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="q1AnswerTextEdit">
+              <widget class="QPlainTextEdit" name="q1AnswerPlainTextEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                     longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                 </string>
-               </property>
-               <property name="html">
-                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                    &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -405,7 +390,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </widget>
                </item>
                <item>
-                <widget class="QTextEdit" name="q2QuestionTextEdit">
+                <widget class="QPlainTextEdit" name="q2QuestionPlainTextEdit">
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                             the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -441,7 +426,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q2Choice1LineEdit_1">
+                     <widget class="QLineEdit" name="q2ChoiceLineEdit_1">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -467,7 +452,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q2Choice1LineEdit_2">
+                     <widget class="QLineEdit" name="q2ChoiceLineEdit_2">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 second possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -493,7 +478,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q2Choice1LineEdit_3">
+                     <widget class="QLineEdit" name="q2ChoiceLineEdit_3">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 third possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -519,7 +504,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q2Choice1LineEdit_4">
+                     <widget class="QLineEdit" name="q2ChoiceLineEdit_4">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 fourth possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -540,24 +525,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </widget>
                </item>
                <item>
-                <widget class="QTextEdit" name="q2AnswerTextEdit">
+                <widget class="QPlainTextEdit" name="q2AnswerPlainTextEdit">
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                             longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                         </string>
-                 </property>
-                 <property name="html">
-                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                            &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                         &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                </item>
@@ -623,7 +595,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </widget>
                </item>
                <item>
-                <widget class="QTextEdit" name="q3QuestionTextEdit">
+                <widget class="QPlainTextEdit" name="q3QuestionPlainTextEdit">
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                             the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -659,7 +631,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q3Choice1LineEdit_1">
+                     <widget class="QLineEdit" name="q3ChoiceLineEdit_1">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -685,7 +657,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q3Choice1LineEdit_2">
+                     <widget class="QLineEdit" name="q3ChoiceLineEdit_2">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 second possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -711,7 +683,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q3Choice1LineEdit_3">
+                     <widget class="QLineEdit" name="q3ChoiceLineEdit_3">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 third possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -737,7 +709,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="q3Choice1LineEdit_4">
+                     <widget class="QLineEdit" name="q3ChoiceLineEdit_4">
                       <property name="toolTip">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                                 fourth possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -758,24 +730,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </widget>
                </item>
                <item>
-                <widget class="QTextEdit" name="q3AnswerTextEdit">
+                <widget class="QPlainTextEdit" name="q3AnswerPlainTextEdit">
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                             longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                         </string>
-                 </property>
-                 <property name="html">
-                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                            &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                             &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                         &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                </item>
@@ -839,7 +798,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="q4QuestionTextEdit">
+              <widget class="QPlainTextEdit" name="q4QuestionPlainTextEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                     the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -875,7 +834,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q4Choice1LineEdit_1">
+                   <widget class="QLineEdit" name="q4ChoiceLineEdit_1">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -901,7 +860,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q4Choice1LineEdit_2">
+                   <widget class="QLineEdit" name="q4ChoiceLineEdit_2">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         second possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -927,7 +886,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q4Choice1LineEdit_3">
+                   <widget class="QLineEdit" name="q4ChoiceLineEdit_3">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         third possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -953,7 +912,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q4Choice1LineEdit_4">
+                   <widget class="QLineEdit" name="q4ChoiceLineEdit_4">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         fourth possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -974,24 +933,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="q4AnswerTextEdit">
+              <widget class="QPlainTextEdit" name="q4AnswerPlainTextEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                     longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                 </string>
-               </property>
-               <property name="html">
-                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                    &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -1053,7 +999,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="q5QuestionTextEdit">
+              <widget class="QPlainTextEdit" name="q5QuestionPlainTextEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                     the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -1089,7 +1035,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q5Choice1LineEdit_1">
+                   <widget class="QLineEdit" name="q5ChoiceLineEdit_1">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -1115,7 +1061,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q5Choice1LineEdit_2">
+                   <widget class="QLineEdit" name="q5ChoiceLineEdit_2">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         second possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -1141,7 +1087,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q5Choice1LineEdit_3">
+                   <widget class="QLineEdit" name="q5ChoiceLineEdit_3">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         third possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -1167,7 +1113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q5Choice1LineEdit_4">
+                   <widget class="QLineEdit" name="q5ChoiceLineEdit_4">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         fourth possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -1188,24 +1134,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </widget>
              </item>
              <item>
-              <widget class="QTextEdit" name="q5AnswerTextEdit">
+              <widget class="QPlainTextEdit" name="q5AnswerPlainTextEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                     longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                 </string>
-               </property>
-               <property name="html">
-                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                    &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                     &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;                                                                 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -1409,7 +1342,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
   </action>
   <action name="actionRevert_ChangesUndo_All">
    <property name="icon">
-    <iconset theme="edit-undo"/>
+    <iconset theme="edit-undo">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Revert Changes</string>

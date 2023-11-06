@@ -1,0 +1,3 @@
+PyQt5~=5.15.10
+toolz~=0.12.0
+setuptools~=65.5.1

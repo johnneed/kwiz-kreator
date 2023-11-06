@@ -1,14 +1,13 @@
 import json
-from functools import partial
 
 from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
 )
 
-from . import Quiz
 from .app_state import AppState
-from .models import Trivia
+from .lib.connect_controls import extract_text_area_value, set_answer_index
+from .models import Trivia, Quiz
 from .ui import Ui_MainWindow
 
 
@@ -64,89 +63,113 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
         # Quiz Controls
-        self.titleLineEdit.textChanged.connect(partial(self.app_state.set_selected_quiz_property, 'title'))
-        self.subtitleLineEdit.textChanged.connect(partial(self.app_state.set_selected_quiz_property, 'subtitle'))
-        self.authorLineEdit.textChanged.connect(partial(self.app_state.set_selected_quiz_property, 'author'))
+        self.titleLineEdit.textChanged.connect(self.app_state.set_selected_quiz_property('title'))
+        self.subtitleLineEdit.textChanged.connect(self.app_state.set_selected_quiz_property('subtitle'))
+        self.authorLineEdit.textChanged.connect(self.app_state.set_selected_quiz_property('author'))
         self.publishOnDateEdit.dateChanged.connect(
             lambda q_date: self.app_state.set_selected_quiz_property('publish_date', q_date.toString('yyyy/MM/dd')))
         # Question 1
-        self.q1QuestionTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'question_text'))
-        self.q1AnswerTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_text'))
-        self.q1ImageUrlLineEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_image'))
-        self.q1ImageCaptionLineEdit.textChanged.connect(
-            partial(self.app_state.set_question_property, 0, 'answer_image_caption'))
+        self.q1QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q1QuestionPlainTextEdit,
+                                                                                 self.app_state.set_question_property(0,
+                                                                                                                      'question_text')))
+        self.q1AnswerPlainTextEdit.textChanged.connect(
+            extract_text_area_value(self.q1AnswerPlainTextEdit, self.app_state.set_question_property(0, 'answer_text')))
+        self.q1ImageUrlLineEdit.textChanged.connect(self.app_state.set_question_property(0, 'answer_image'))
+        self.q1ImageCaptionLineEdit.textChanged.connect(self.app_state.set_question_property(0, 'answer_image_caption'))
         question_1_choice_radios = [self.q1ChoiceRadioButton_1, self.q1ChoiceRadioButton_2, self.q1ChoiceRadioButton_3,
                                     self.q1ChoiceRadioButton_4]
         for idx, radio in enumerate(question_1_choice_radios):
-            radio.toggled.connect(lambda _: self.app_state.set_question_property(0, 'correct_answer_index', idx))
+            radio.toggled.connect(
+                set_answer_index(self.app_state.set_question_property, 0, 'correct_answer_index', idx))
 
-        self.q1Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 0, 'text'))
-        self.q1Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 1, 'text'))
-        self.q1Choice1LineEdit_3.textChanged.connect(partial(self.app_state.set_choice_text, 0, 2, 'text'))
-        self.q1Choice1LineEdit_4.textChanged.connect(partial(self.app_state.set_choice_text, 0, 3, 'text'))
+        self.q1ChoiceLineEdit_1.textChanged.connect(self.app_state.set_choice_text(0, 0))
+        self.q1ChoiceLineEdit_2.textChanged.connect(self.app_state.set_choice_text(0, 1))
+        self.q1ChoiceLineEdit_3.textChanged.connect(self.app_state.set_choice_text(0, 2))
+        self.q1ChoiceLineEdit_4.textChanged.connect(self.app_state.set_choice_text(0, 3))
+
         # Question 2
-        self.q2QuestionTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'question_text'))
-        self.q2AnswerTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_text'))
-        self.q2ImageUrlLineEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_image'))
+        self.q2QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q2QuestionPlainTextEdit,
+                                                                                 self.app_state.set_question_property(1,
+                                                                                                                      'question_text')))
+        self.q2AnswerPlainTextEdit.textChanged.connect(
+            extract_text_area_value(self.q2AnswerPlainTextEdit, self.app_state.set_question_property(1, 'answer_text')))
+        self.q2ImageUrlLineEdit.textChanged.connect(self.app_state.set_question_property(1, 'answer_image'))
         self.q2ImageCaptionLineEdit.textChanged.connect(
-            partial(self.app_state.set_question_property, 0, 'answer_image_caption'))
-        question_1_choice_radios = [self.q2ChoiceRadioButton_1, self.q2ChoiceRadioButton_2, self.q2ChoiceRadioButton_3,
+            self.app_state.set_question_property(1, 'answer_image_caption'))
+        question_2_choice_radios = [self.q2ChoiceRadioButton_1, self.q2ChoiceRadioButton_2, self.q2ChoiceRadioButton_3,
                                     self.q2ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
-            radio.toggled.connect(lambda _: self.app_state.set_question_property(0, 'correct_answer_index', idx))
+        for idx, radio in enumerate(question_2_choice_radios):
+            radio.toggled.connect(
+                set_answer_index(self.app_state.set_question_property, 1, 'correct_answer_index', idx))
 
-        self.q2Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 0, 'text'))
-        self.q2Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 1, 'text'))
-        self.q2Choice1LineEdit_3.textChanged.connect(partial(self.app_state.set_choice_text, 0, 2, 'text'))
-        self.q2Choice1LineEdit_4.textChanged.connect(partial(self.app_state.set_choice_text, 0, 3, 'text'))
+        self.q2ChoiceLineEdit_1.textChanged.connect(self.app_state.set_choice_text(1, 0))
+        self.q2ChoiceLineEdit_2.textChanged.connect(self.app_state.set_choice_text(1, 1))
+        self.q2ChoiceLineEdit_3.textChanged.connect(self.app_state.set_choice_text(1, 2))
+        self.q2ChoiceLineEdit_4.textChanged.connect(self.app_state.set_choice_text(1, 3))
+
         # Question 3
-        self.q3QuestionTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'question_text'))
-        self.q3AnswerTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_text'))
-        self.q3ImageUrlLineEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_image'))
+        self.q3QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionPlainTextEdit,
+                                                                                 self.app_state.set_question_property(2,
+                                                                                                                      'question_text')))
+        self.q3AnswerPlainTextEdit.textChanged.connect(
+            extract_text_area_value(self.q3AnswerPlainTextEdit, self.app_state.set_question_property(2, 'answer_text')))
+        self.q3ImageUrlLineEdit.textChanged.connect(self.app_state.set_question_property(2, 'answer_image'))
         self.q3ImageCaptionLineEdit.textChanged.connect(
-            partial(self.app_state.set_question_property, 0, 'answer_image_caption'))
-        question_1_choice_radios = [self.q3ChoiceRadioButton_1, self.q3ChoiceRadioButton_2, self.q3ChoiceRadioButton_3,
+            self.app_state.set_question_property(2, 'answer_image_caption'))
+        question_3_choice_radios = [self.q3ChoiceRadioButton_1, self.q3ChoiceRadioButton_2, self.q3ChoiceRadioButton_3,
                                     self.q3ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
-            radio.toggled.connect(lambda _: self.app_state.set_question_property(0, 'correct_answer_index', idx))
+        for idx, radio in enumerate(question_3_choice_radios):
+            radio.toggled.connect(
+                set_answer_index(self.app_state.set_question_property, 2, 'correct_answer_index', idx))
 
-        self.q3Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 0, 'text'))
-        self.q3Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 1, 'text'))
-        self.q3Choice1LineEdit_3.textChanged.connect(partial(self.app_state.set_choice_text, 0, 2, 'text'))
-        self.q3Choice1LineEdit_4.textChanged.connect(partial(self.app_state.set_choice_text, 0, 3, 'text'))
+        self.q3ChoiceLineEdit_1.textChanged.connect(self.app_state.set_choice_text(2, 0))
+        self.q3ChoiceLineEdit_2.textChanged.connect(self.app_state.set_choice_text(2, 1))
+        self.q3ChoiceLineEdit_3.textChanged.connect(self.app_state.set_choice_text(2, 2))
+        self.q3ChoiceLineEdit_4.textChanged.connect(self.app_state.set_choice_text(2, 3))
+
         # Question 4
-        self.q4QuestionTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'question_text'))
-        self.q4AnswerTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_text'))
-        self.q4ImageUrlLineEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_image'))
+        self.q4QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q4QuestionPlainTextEdit,
+                                                                                 self.app_state.set_question_property(3,
+                                                                                                                      'question_text')))
+        self.q4AnswerPlainTextEdit.textChanged.connect(
+            extract_text_area_value(self.q4AnswerPlainTextEdit, self.app_state.set_question_property(3, 'answer_text')))
+        self.q4ImageUrlLineEdit.textChanged.connect(self.app_state.set_question_property(3, 'answer_image'))
         self.q4ImageCaptionLineEdit.textChanged.connect(
-            partial(self.app_state.set_question_property, 0, 'answer_image_caption'))
-        question_1_choice_radios = [self.q4ChoiceRadioButton_1, self.q4ChoiceRadioButton_2, self.q4ChoiceRadioButton_3,
+            self.app_state.set_question_property(3, 'answer_image_caption'))
+        question_4_choice_radios = [self.q4ChoiceRadioButton_1, self.q4ChoiceRadioButton_2, self.q4ChoiceRadioButton_3,
                                     self.q4ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
-            radio.toggled.connect(lambda _: self.app_state.set_question_property(0, 'correct_answer_index', idx))
+        for idx, radio in enumerate(question_4_choice_radios):
+            radio.toggled.connect(
+                set_answer_index(self.app_state.set_question_property, 3, 'correct_answer_index', idx))
 
-        self.q4Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 0, 'text'))
-        self.q4Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 1, 'text'))
-        self.q4Choice1LineEdit_3.textChanged.connect(partial(self.app_state.set_choice_text, 0, 2, 'text'))
-        self.q4Choice1LineEdit_4.textChanged.connect(partial(self.app_state.set_choice_text, 0, 3, 'text'))
-        # Question 1
-        self.q5QuestionTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'question_text'))
-        self.q5AnswerTextEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_text'))
-        self.q5ImageUrlLineEdit.textChanged.connect(partial(self.app_state.set_question_property, 0, 'answer_image'))
+        self.q4ChoiceLineEdit_1.textChanged.connect(self.app_state.set_choice_text(3, 0))
+        self.q4ChoiceLineEdit_2.textChanged.connect(self.app_state.set_choice_text(3, 1))
+        self.q4ChoiceLineEdit_3.textChanged.connect(self.app_state.set_choice_text(3, 2))
+        self.q4ChoiceLineEdit_4.textChanged.connect(self.app_state.set_choice_text(3, 3))
+
+        # Question 5
+        self.q5QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q5QuestionPlainTextEdit,
+                                                                                 self.app_state.set_question_property(4,
+                                                                                                                      'question_text')))
+        self.q5AnswerPlainTextEdit.textChanged.connect(
+            extract_text_area_value(self.q5AnswerPlainTextEdit, self.app_state.set_question_property(4, 'answer_text')))
+        self.q5ImageUrlLineEdit.textChanged.connect(self.app_state.set_question_property(4, 'answer_image'))
         self.q5ImageCaptionLineEdit.textChanged.connect(
-            partial(self.app_state.set_question_property, 0, 'answer_image_caption'))
-        question_1_choice_radios = [self.q5ChoiceRadioButton_1, self.q5ChoiceRadioButton_2, self.q5ChoiceRadioButton_3,
+            self.app_state.set_question_property(4, 'answer_image_caption'))
+        question_5_choice_radios = [self.q5ChoiceRadioButton_1, self.q5ChoiceRadioButton_2, self.q5ChoiceRadioButton_3,
                                     self.q5ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
-            radio.toggled.connect(lambda _: self.app_state.set_question_property(0, 'correct_answer_index', idx))
+        for idx, radio in enumerate(question_5_choice_radios):
+            radio.toggled.connect(
+                set_answer_index(self.app_state.set_question_property, 4, 'correct_answer_index', idx))
 
-        self.q5Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 0, 'text'))
-        self.q5Choice1LineEdit_2.textChanged.connect(partial(self.app_state.set_choice_text, 0, 1, 'text'))
-        self.q5Choice1LineEdit_3.textChanged.connect(partial(self.app_state.set_choice_text, 0, 2, 'text'))
-        self.q5Choice1LineEdit_4.textChanged.connect(partial(self.app_state.set_choice_text, 0, 3, 'text'))
+        self.q5ChoiceLineEdit_1.textChanged.connect(self.app_state.set_choice_text(4, 0))
+        self.q5ChoiceLineEdit_2.textChanged.connect(self.app_state.set_choice_text(4, 1))
+        self.q5ChoiceLineEdit_3.textChanged.connect(self.app_state.set_choice_text(4, 2))
+        self.q5ChoiceLineEdit_4.textChanged.connect(self.app_state.set_choice_text(4, 3))
 
     def __update_trivia_list(self):
         trivia = self.app_state.get_trivia()
+        current_index = self.listWidget.currentRow()
         self.listWidget.clear()
         if len(trivia.quizzes) == 0:
             self.app_state.clear_selected_quiz()
@@ -155,6 +178,8 @@ class App(QMainWindow, Ui_MainWindow):
             list_item = QListWidgetItem(quiz.title)
             list_item.setData(1, quiz.id)
             self.listWidget.addItem(list_item)
+        if current_index >= 0:
+            self.listWidget.setCurrentRow(current_index)
 
     def __select_quiz(self):
         quiz_id = self.listWidget.currentItem().data(1)
@@ -164,6 +189,7 @@ class App(QMainWindow, Ui_MainWindow):
                                          QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
             if reply == QMessageBox.Yes:
                 self.app_state.update_trivia_with_selected_quiz()
+
         if quiz_id is None:
             return
         self.app_state.set_selected_quiz_by_id(quiz_id)
@@ -239,58 +265,58 @@ class App(QMainWindow, Ui_MainWindow):
             self.publishOnDateEdit.setDate(QDate.fromString(quiz.publish_date, 'yyyy/MM/dd'))
             self.authorLineEdit.setText(quiz.author)
             # Update Question 1
-            self.q1QuestionTextEdit.setText(quiz.questions[0].question_text)
-            self.q1AnswerTextEdit.setText(quiz.questions[0].answer_text)
+            self.q1QuestionPlainTextEdit.setPlainText(quiz.questions[0].question_text)
+            self.q1AnswerPlainTextEdit.setPlainText(quiz.questions[0].answer_text)
             self.q1ImageUrlLineEdit.setText(quiz.questions[0].answer_image)
             self.q1ImageCaptionLineEdit.setText(quiz.questions[0].answer_image_caption)
-            self.q1Choice1LineEdit_1.setText(quiz.questions[0].choices[0].text)
-            self.q1Choice1LineEdit_2.setText(quiz.questions[0].choices[1].text)
-            self.q1Choice1LineEdit_3.setText(quiz.questions[0].choices[2].text)
-            self.q1Choice1LineEdit_4.setText(quiz.questions[0].choices[3].text)
+            self.q1ChoiceLineEdit_1.setText(quiz.questions[0].choices[0].text)
+            self.q1ChoiceLineEdit_2.setText(quiz.questions[0].choices[1].text)
+            self.q1ChoiceLineEdit_3.setText(quiz.questions[0].choices[2].text)
+            self.q1ChoiceLineEdit_4.setText(quiz.questions[0].choices[3].text)
             [self.q1ChoiceRadioButton_1, self.q1ChoiceRadioButton_2, self.q1ChoiceRadioButton_3,
              self.q1ChoiceRadioButton_4][quiz.questions[0].correct_answer_index].setChecked(True)
             # Update Question 2
-            self.q2QuestionTextEdit.setText(quiz.questions[1].question_text)
-            self.q2AnswerTextEdit.setText(quiz.questions[1].answer_text)
+            self.q2QuestionPlainTextEdit.setPlainText(quiz.questions[1].question_text)
+            self.q2AnswerPlainTextEdit.setPlainText(quiz.questions[1].answer_text)
             self.q2ImageUrlLineEdit.setText(quiz.questions[1].answer_image)
             self.q2ImageCaptionLineEdit.setText(quiz.questions[1].answer_image_caption)
-            self.q2Choice1LineEdit_1.setText(quiz.questions[1].choices[0].text)
-            self.q2Choice1LineEdit_2.setText(quiz.questions[1].choices[1].text)
-            self.q2Choice1LineEdit_3.setText(quiz.questions[1].choices[2].text)
-            self.q2Choice1LineEdit_4.setText(quiz.questions[1].choices[3].text)
+            self.q2ChoiceLineEdit_1.setText(quiz.questions[1].choices[0].text)
+            self.q2ChoiceLineEdit_2.setText(quiz.questions[1].choices[1].text)
+            self.q2ChoiceLineEdit_3.setText(quiz.questions[1].choices[2].text)
+            self.q2ChoiceLineEdit_4.setText(quiz.questions[1].choices[3].text)
             [self.q2ChoiceRadioButton_1, self.q2ChoiceRadioButton_2, self.q2ChoiceRadioButton_3,
              self.q2ChoiceRadioButton_4][quiz.questions[1].correct_answer_index].setChecked(True)
             # Update Question 3
-            self.q3QuestionTextEdit.setText(quiz.questions[2].question_text)
-            self.q3AnswerTextEdit.setText(quiz.questions[2].answer_text)
+            self.q3QuestionPlainTextEdit.setPlainText(quiz.questions[2].question_text)
+            self.q3AnswerPlainTextEdit.setPlainText(quiz.questions[2].answer_text)
             self.q3ImageUrlLineEdit.setText(quiz.questions[2].answer_image)
             self.q3ImageCaptionLineEdit.setText(quiz.questions[2].answer_image_caption)
-            self.q3Choice1LineEdit_1.setText(quiz.questions[2].choices[0].text)
-            self.q3Choice1LineEdit_2.setText(quiz.questions[2].choices[1].text)
-            self.q3Choice1LineEdit_3.setText(quiz.questions[2].choices[2].text)
-            self.q3Choice1LineEdit_4.setText(quiz.questions[2].choices[3].text)
+            self.q3ChoiceLineEdit_1.setText(quiz.questions[2].choices[0].text)
+            self.q3ChoiceLineEdit_2.setText(quiz.questions[2].choices[1].text)
+            self.q3ChoiceLineEdit_3.setText(quiz.questions[2].choices[2].text)
+            self.q3ChoiceLineEdit_4.setText(quiz.questions[2].choices[3].text)
             [self.q3ChoiceRadioButton_1, self.q3ChoiceRadioButton_2, self.q3ChoiceRadioButton_3,
              self.q3ChoiceRadioButton_4][quiz.questions[2].correct_answer_index].setChecked(True)
             # Update Question 4
-            self.q4QuestionTextEdit.setText(quiz.questions[3].question_text)
-            self.q4AnswerTextEdit.setText(quiz.questions[3].answer_text)
+            self.q4QuestionPlainTextEdit.setPlainText(quiz.questions[3].question_text)
+            self.q4AnswerPlainTextEdit.setPlainText(quiz.questions[3].answer_text)
             self.q4ImageUrlLineEdit.setText(quiz.questions[3].answer_image)
             self.q4ImageCaptionLineEdit.setText(quiz.questions[3].answer_image_caption)
-            self.q4Choice1LineEdit_1.setText(quiz.questions[3].choices[0].text)
-            self.q4Choice1LineEdit_2.setText(quiz.questions[3].choices[1].text)
-            self.q4Choice1LineEdit_3.setText(quiz.questions[3].choices[2].text)
-            self.q4Choice1LineEdit_4.setText(quiz.questions[3].choices[3].text)
+            self.q4ChoiceLineEdit_1.setText(quiz.questions[3].choices[0].text)
+            self.q4ChoiceLineEdit_2.setText(quiz.questions[3].choices[1].text)
+            self.q4ChoiceLineEdit_3.setText(quiz.questions[3].choices[2].text)
+            self.q4ChoiceLineEdit_4.setText(quiz.questions[3].choices[3].text)
             [self.q4ChoiceRadioButton_1, self.q4ChoiceRadioButton_2, self.q4ChoiceRadioButton_3,
              self.q4ChoiceRadioButton_4][quiz.questions[3].correct_answer_index].setChecked(True)
             # Update Question 5
-            self.q5QuestionTextEdit.setText(quiz.questions[4].question_text)
-            self.q5AnswerTextEdit.setText(quiz.questions[4].answer_text)
+            self.q5QuestionPlainTextEdit.setPlainText(quiz.questions[4].question_text)
+            self.q5AnswerPlainTextEdit.setPlainText(quiz.questions[4].answer_text)
             self.q5ImageUrlLineEdit.setText(quiz.questions[4].answer_image)
             self.q5ImageCaptionLineEdit.setText(quiz.questions[4].answer_image_caption)
-            self.q5Choice1LineEdit_1.setText(quiz.questions[4].choices[0].text)
-            self.q5Choice1LineEdit_2.setText(quiz.questions[4].choices[1].text)
-            self.q5Choice1LineEdit_3.setText(quiz.questions[4].choices[2].text)
-            self.q5Choice1LineEdit_4.setText(quiz.questions[4].choices[3].text)
+            self.q5ChoiceLineEdit_1.setText(quiz.questions[4].choices[0].text)
+            self.q5ChoiceLineEdit_2.setText(quiz.questions[4].choices[1].text)
+            self.q5ChoiceLineEdit_3.setText(quiz.questions[4].choices[2].text)
+            self.q5ChoiceLineEdit_4.setText(quiz.questions[4].choices[3].text)
             [self.q5ChoiceRadioButton_1, self.q5ChoiceRadioButton_2, self.q5ChoiceRadioButton_3,
              self.q5ChoiceRadioButton_4][quiz.questions[4].correct_answer_index].setChecked(True)
         else:

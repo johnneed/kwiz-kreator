@@ -2,7 +2,7 @@ import queue
 
 from .models.quiz import Quiz
 from .models.trivia import Trivia
-
+from toolz import curry
 
 class AppState:
 
@@ -65,21 +65,24 @@ class AppState:
         self.is_dirty = False
         self.publish('selected_quiz_cleared')
 
+    @curry
     def set_selected_quiz_property(self, prop, value):
-        if value != getattr(self.selected_quiz, prop):
+        if self.selected_quiz is not None and value != getattr(self.selected_quiz, prop):
             setattr(self.selected_quiz, prop, value)
             self.is_dirty = True
             self.publish('selected_quiz_changed')
 
-    def set_question_property(self, index, prop, value=''):
-        if value != getattr(self.selected_quiz.questions[index], prop):
+    @curry
+    def set_question_property(self, index, prop, value):
+        if self.selected_quiz is not None and value != getattr(self.selected_quiz.questions[index], prop):
             question = self.selected_quiz.questions[index]
             setattr(question, prop, value)
             self.is_dirty = True
             self.publish('selected_quiz_changed')
 
+    @curry
     def set_choice_text(self, question_index, choice_index, value):
-        if value != getattr(self.selected_quiz.questions[question_index].choices[choice_index], "text"):
+        if self.selected_quiz is not None and value != getattr(self.selected_quiz.questions[question_index].choices[choice_index], "text"):
             question = self.selected_quiz.questions[question_index]
             choice = question.choices[choice_index]
             setattr(choice, "text", value)
