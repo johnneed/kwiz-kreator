@@ -108,6 +108,17 @@ class Question:
                         question.get('answerImageCaption', ''),
                         question.get('id', None))
 
+    @staticmethod
+    def clone(question):
+        return Question(question.question_text,
+                        [Choice.clone(c) for c in question.choices],
+                        question.tags,
+                        question.correct_answer_index,
+                        question.answer_text,
+                        question.answer_image,
+                        question.answer_image_caption,
+                        question.id)
+
     def __str__(self):
         return f'Question: {self._id} - {self._question_text}'
 

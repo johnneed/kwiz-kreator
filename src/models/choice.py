@@ -10,7 +10,7 @@ class Choice:
         self._text = text
 
     @property
-    def id_self(self):
+    def id(self):
         return self._id
 
     @property
@@ -34,6 +34,12 @@ class Choice:
             choice.get('id', None)
         )
 
+    @staticmethod
+    def clone(choice):
+        return Choice(
+            choice.text,
+            choice.id
+        )
     def __str__(self):
         return f'Choice {self._id} - {self._text}'
 

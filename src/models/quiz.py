@@ -86,6 +86,17 @@ class Quiz:
             quiz.get('id', None)
         )
 
+
+    @staticmethod
+    def clone(quiz):
+        return Quiz(
+            quiz.title,
+            quiz.subtitle,
+            quiz.publish_date,
+            quiz.author,
+            [Question.clone(q) for q in quiz.questions],
+            quiz.id
+        )
     def __str__(self):
         return f'Quiz: {self._id} - {self._title}'
 

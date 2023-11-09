@@ -1,8 +1,10 @@
 import queue
 
+from toolz import curry
+
 from .models.quiz import Quiz
 from .models.trivia import Trivia
-from toolz import curry
+
 
 class AppState:
 
@@ -17,10 +19,10 @@ class AppState:
         self.subscribers.append(subscriber)
 
     def publish(self, message):
-        print('publishing message: ', message)
         self.message_queue.put(message)
         for subscriber in self.subscribers:
             subscriber.receive(message)
+        print('State Change: ' + message)
 
     def get_trivia(self):
         return self.trivia
@@ -33,7 +35,7 @@ class AppState:
 
     def add_quiz(self, quiz):
         self.trivia.quizzes.append(quiz)
-        self.selected_quiz = Quiz(quiz.title, quiz.subtitle, quiz.publish_date, quiz.author, quiz.questions, quiz.id)
+        self.selected_quiz = Quiz.clone(quiz)
         self.trivia.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
         self.is_dirty = True
         self.publish('quiz_added')
@@ -54,10 +56,7 @@ class AppState:
         if quiz is None:
             self.selected_quiz = None
         else:
-            # use a clone of the quiz so that we can isolate changes
-            self.selected_quiz = Quiz(quiz.title, quiz.subtitle, quiz.publish_date, quiz.author, quiz.questions,
-                                      quiz.id)
-        self.is_dirty = False
+            self.selected_quiz = Quiz.clone(quiz)
         self.publish('quiz_selected')
 
     def clear_selected_quiz(self):
@@ -82,7 +81,8 @@ class AppState:
 
     @curry
     def set_choice_text(self, question_index, choice_index, value):
-        if self.selected_quiz is not None and value != getattr(self.selected_quiz.questions[question_index].choices[choice_index], "text"):
+        if self.selected_quiz is not None and value != getattr(
+                self.selected_quiz.questions[question_index].choices[choice_index], "text"):
             question = self.selected_quiz.questions[question_index]
             choice = question.choices[choice_index]
             setattr(choice, "text", value)
@@ -94,21 +94,16 @@ class AppState:
         self.publish('dirty_changed')
 
     def update_trivia_with_selected_quiz(self):
-        for quiz in self.trivia.quizzes:
+        for idx, quiz in enumerate(self.trivia.quizzes):
             if quiz.id == self.selected_quiz.id:
-                quiz.title = self.selected_quiz.title
-                quiz.subtitle = self.selected_quiz.subtitle
-                quiz.publish_date = self.selected_quiz.publish_date
-                quiz.author = self.selected_quiz.author
-                quiz.questions = self.selected_quiz.questions
+                self.trivia.quizzes[idx] = Quiz.clone(self.selected_quiz)
                 break
 
         self.is_dirty = False
         self.publish('quiz_updated')
 
-
     def reset_selected_quiz(self):
-        self.selected_quiz = Quiz(self.selected_quiz)
-        self.is_dirty = False
-        self.publish('selected_quiz_reset')
-        self.publish('selected_quiz_dirty_changed')
+        for idx, quiz in enumerate(self.trivia.quizzes):
+            self.selected_quiz = Quiz.clone(self.trivia.quizzes[idx])
+            self.is_dirty = False
+            self.publish('selected_quiz_reset')
