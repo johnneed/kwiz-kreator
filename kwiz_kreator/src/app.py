@@ -19,7 +19,8 @@ class App(QMainWindow, Ui_MainWindow):
         super().__init__(parent)
         self.app_state = AppState()
         self.setupUi(self)
-        self.connect_signals_slots()
+        self.connect_main_signals_slots()
+        self.connect_selected_quiz_signal_slots()
         self.subscribe()
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
@@ -53,7 +54,7 @@ class App(QMainWindow, Ui_MainWindow):
             case _:
                 pass
 
-    def disconnect_signal_slots(self):
+    def disconnect_selected_quiz_signal_slots(self):
         self.titleLineEdit.disconnect()
         self.subtitleLineEdit.disconnect()
         self.authorLineEdit.disconnect()
@@ -119,7 +120,8 @@ class App(QMainWindow, Ui_MainWindow):
         self.q5ChoiceLineEdit_3.disconnect()
         self.q5ChoiceLineEdit_4.disconnect()
 
-    def connect_signals_slots(self):
+    def connect_main_signals_slots(self):
+        print('Connecting Signals and Slots')
         self.actionNew.triggered.connect(self.__create_new_trivia)
         self.actionOpen.triggered.connect(self.open_file)
         self.actionNew_Quiz.triggered.connect(self.__add_new_quiz)
@@ -129,6 +131,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
 
+    def connect_selected_quiz_signal_slots(self):
         # Quiz Controls
         self.titleLineEdit.textEdited.connect(self.app_state.set_selected_quiz_property('title'))
         self.subtitleLineEdit.textEdited.connect(self.app_state.set_selected_quiz_property('subtitle'))
@@ -270,9 +273,9 @@ class App(QMainWindow, Ui_MainWindow):
                     self.save_file()
                 else:
                     self.save_file_as()
-        self.disconnect_signal_slots()
+        self.disconnect_selected_quiz_signal_slots()
         self.app_state.set_selected_quiz_by_id(quiz_id)
-        self.connect_signals_slots()
+        self.connect_selected_quiz_signal_slots()
         print('New Quiz Selected: ' + quiz_id)
 
     def __add_new_quiz(self):

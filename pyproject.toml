@@ -5,6 +5,9 @@ description = "An editor for creating Trail Trivia quizzes"
 authors = ["Inu Labs <91296986+john-need@users.noreply.github.com>"]
 license = "Apache 2.0"
 readme = "README.md"
+packages = [
+    { include = "main.py" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
