@@ -1,6 +1,7 @@
 import json
 
 from PyQt5.QtCore import QDate
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
 )
@@ -9,7 +10,9 @@ from .app_state import AppState
 from .lib.connect_controls import extract_text_area_value, set_answer_index
 from .models import Trivia, Quiz
 from .ui import Ui_MainWindow
+from spellchecker import SpellChecker
 
+spell = SpellChecker()
 
 # from autocorrect import Speller
 class App(QMainWindow, Ui_MainWindow):
@@ -24,6 +27,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.subscribe()
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
+        self.setWindowIcon(QIcon("./images/icon.png"))
 
     def subscribe(self):
         self.app_state.subscribe(self)
@@ -166,36 +170,39 @@ class App(QMainWindow, Ui_MainWindow):
                                                                                  self.app_state.set_question_property(1,
                                                                                                                       'question_text')))
         self.q2AnswerPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q2AnswerPlainTextEdit, self.app_state.set_question_property(0, 'answer_text')))
-        self.q2ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image'))
-        self.q2ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image_caption'))
-        question_1_choice_radios = [self.q2ChoiceRadioButton_1,
+            extract_text_area_value(self.q2AnswerPlainTextEdit, self.app_state.set_question_property(1, 'answer_text')))
+        self.q2ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image'))
+        self.q2ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image_caption'))
+        question_2_choice_radios = [self.q2ChoiceRadioButton_1,
                                     self.q2ChoiceRadioButton_2,
                                     self.q2ChoiceRadioButton_3,
                                     self.q2ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
+        for idx, radio in enumerate(question_2_choice_radios):
             radio.toggled.connect(
-                set_answer_index(self.app_state.set_question_property, 0, 'correct_answer_index', idx)
+                set_answer_index(self.app_state.set_question_property, 1, 'correct_answer_index', idx)
             )
 
-        self.q2ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(0, 0))
-        self.q2ChoiceLineEdit_2.textEdited.connect(self.app_state.set_choice_text(0, 1))
-        self.q2ChoiceLineEdit_3.textEdited.connect(self.app_state.set_choice_text(0, 2))
-        self.q2ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(0, 3))
+        self.q2ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(1, 0))
+        self.q2ChoiceLineEdit_2.textEdited.connect(self.app_state.set_choice_text(1, 1))
+        self.q2ChoiceLineEdit_3.textEdited.connect(self.app_state.set_choice_text(1, 2))
+        self.q2ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(1, 3))
 
         # Question 3
-        self.q3QuestionPlainTextEdit.textChanged.connect(self.app_state.set_question_property(2, 'question_text'))
-        self.q3AnswerPlainTextEdit.textChanged.connect(self.app_state.set_question_property(2, 'answer_text'))
+        self.q3QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionPlainTextEdit,
+                                                                                 self.app_state.set_question_property(2,
+                                                                                                                      'question_text')))
+        self.q3AnswerPlainTextEdit.textChanged.connect(
+            extract_text_area_value(self.q3AnswerPlainTextEdit, self.app_state.set_question_property(2, 'answer_text')))
         self.q3ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(2, 'answer_image'))
         self.q3ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(2,
                                                                                             'answer_image_caption'))
-        question_1_choice_radios = [self.q3ChoiceRadioButton_1, self.q3ChoiceRadioButton_2, self.q3ChoiceRadioButton_3,
+        question_3_choice_radios = [self.q3ChoiceRadioButton_1, self.q3ChoiceRadioButton_2, self.q3ChoiceRadioButton_3,
                                     self.q3ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
+        for idx, radio in enumerate(question_3_choice_radios):
             radio.toggled.connect(
                 set_answer_index(self.app_state.set_question_property, 2, 'correct_answer_index', idx))
 
-        self.q3ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(2, 2))
+        self.q3ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(2, 0))
         self.q3ChoiceLineEdit_2.textEdited.connect(self.app_state.set_choice_text(2, 1))
         self.q3ChoiceLineEdit_3.textEdited.connect(self.app_state.set_choice_text(2, 2))
         self.q3ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(2, 3))
@@ -209,15 +216,15 @@ class App(QMainWindow, Ui_MainWindow):
                                     self.app_state.set_question_property(3, 'answer_text')))
         self.q4ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image'))
         self.q4ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image_caption'))
-        question_1_choice_radios = [self.q4ChoiceRadioButton_1,
+        question_4_choice_radios = [self.q4ChoiceRadioButton_1,
                                     self.q4ChoiceRadioButton_2,
                                     self.q4ChoiceRadioButton_3,
                                     self.q4ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
+        for idx, radio in enumerate(question_4_choice_radios):
             radio.toggled.connect(
                 set_answer_index(self.app_state.set_question_property, 3, 'correct_answer_index', idx))
 
-        self.q4ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(3, 3))
+        self.q4ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(3, 0))
         self.q4ChoiceLineEdit_2.textEdited.connect(self.app_state.set_choice_text(3, 1))
         self.q4ChoiceLineEdit_3.textEdited.connect(self.app_state.set_choice_text(3, 2))
         self.q4ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(3, 3))
@@ -231,15 +238,15 @@ class App(QMainWindow, Ui_MainWindow):
                                     self.app_state.set_question_property(4, 'answer_text')))
         self.q5ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image'))
         self.q5ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image_caption'))
-        question_1_choice_radios = [self.q5ChoiceRadioButton_1,
+        question_5_choice_radios = [self.q5ChoiceRadioButton_1,
                                     self.q5ChoiceRadioButton_2,
                                     self.q5ChoiceRadioButton_3,
                                     self.q5ChoiceRadioButton_4]
-        for idx, radio in enumerate(question_1_choice_radios):
+        for idx, radio in enumerate(question_5_choice_radios):
             radio.toggled.connect(
                 set_answer_index(self.app_state.set_question_property, 4, 'correct_answer_index', idx))
 
-        self.q5ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(4, 4))
+        self.q5ChoiceLineEdit_1.textEdited.connect(self.app_state.set_choice_text(4, 0))
         self.q5ChoiceLineEdit_2.textEdited.connect(self.app_state.set_choice_text(4, 1))
         self.q5ChoiceLineEdit_3.textEdited.connect(self.app_state.set_choice_text(4, 2))
         self.q5ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(4, 3))
@@ -414,7 +421,7 @@ class App(QMainWindow, Ui_MainWindow):
     def __set_menu_state(self):
         has_quizzes = len(self.app_state.get_trivia().quizzes) > 0
         self.actionNew_Quiz.setEnabled(has_quizzes)
-        self.actionSave.setEnabled(has_quizzes and self.app_state.is_dirty)
+        self.actionSave.setEnabled(self.app_state.is_dirty)
         self.actionSave_As.setEnabled(has_quizzes)
         self.scrollAreaWidgetContents_1.setEnabled(has_quizzes)
         quiz_is_selected = self.app_state.get_selected_quiz() is not None

@@ -65,9 +65,9 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-2097</y>
+          <y>-2952</y>
           <width>402</width>
-          <height>2935</height>
+          <height>4241</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
@@ -93,13 +93,6 @@
            </property>
            <item>
             <layout class="QFormLayout" name="formLayout">
-             <item row="0" column="0">
-              <widget class="QLabel" name="titleLabel">
-               <property name="text">
-                <string>Title</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="1">
               <widget class="QLineEdit" name="titleLineEdit">
                <property name="toolTip">
@@ -126,14 +119,14 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="0">
+             <item row="3" column="0">
               <widget class="QLabel" name="authorLabel">
                <property name="text">
                 <string>Author</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
+             <item row="3" column="1">
               <widget class="QLineEdit" name="authorLineEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Who
@@ -142,14 +135,14 @@
                </property>
               </widget>
              </item>
-             <item row="3" column="0">
+             <item row="4" column="0">
               <widget class="QLabel" name="publishOnLabel">
                <property name="text">
                 <string>Publish On</string>
                </property>
               </widget>
              </item>
-             <item row="3" column="1">
+             <item row="4" column="1">
               <widget class="QDateEdit" name="publishOnDateEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What
@@ -161,6 +154,13 @@
                </property>
                <property name="calendarPopup">
                 <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="titleLabel">
+               <property name="text">
+                <string>Title</string>
                </property>
               </widget>
              </item>
@@ -190,6 +190,18 @@
              </item>
              <item>
               <widget class="QPlainTextEdit" name="q1QuestionPlainTextEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>200</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                     the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -209,10 +221,10 @@
                 <string>Choices</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_3">
-                <item row="0" column="0">
-                 <layout class="QHBoxLayout" name="q1ChoiceHorizontalLayout_1">
+                <item row="2" column="0">
+                 <layout class="QHBoxLayout" name="q1ChoiceHorizontalLayout_3">
                   <item>
-                   <widget class="QRadioButton" name="q1ChoiceRadioButton_1">
+                   <widget class="QRadioButton" name="q1ChoiceRadioButton_3">
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
                                                                                         which choice is the correct
@@ -225,9 +237,11 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="q1ChoiceLineEdit_1">
+                   <widget class="QLineEdit" name="q1ChoiceLineEdit_3">
                     <property name="toolTip">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
+                                                                                        third possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                                                    </string>
                     </property>
                    </widget>
                   </item>
@@ -253,32 +267,6 @@
                     <property name="toolTip">
                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
                                                                                         second possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-                                                                                    </string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="2" column="0">
-                 <layout class="QHBoxLayout" name="q1ChoiceHorizontalLayout_3">
-                  <item>
-                   <widget class="QRadioButton" name="q1ChoiceRadioButton_3">
-                    <property name="toolTip">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
-                                                                                        which choice is the correct
-                                                                                        answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-                                                                                    </string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="q1ChoiceLineEdit_3">
-                    <property name="toolTip">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The
-                                                                                        third possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                                     </string>
                     </property>
                    </widget>
@@ -311,6 +299,30 @@
                   </item>
                  </layout>
                 </item>
+                <item row="0" column="0">
+                 <layout class="QHBoxLayout" name="q1ChoiceHorizontalLayout_1">
+                  <item>
+                   <widget class="QRadioButton" name="q1ChoiceRadioButton_1">
+                    <property name="toolTip">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose
+                                                                                        which choice is the correct
+                                                                                        answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                                                    </string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="q1ChoiceLineEdit_1">
+                    <property name="toolTip">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The first possible answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
                </layout>
               </widget>
              </item>
@@ -323,6 +335,12 @@
              </item>
              <item>
               <widget class="QPlainTextEdit" name="q1AnswerPlainTextEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>200</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                     longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -391,6 +409,12 @@
                </item>
                <item>
                 <widget class="QPlainTextEdit" name="q2QuestionPlainTextEdit">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>200</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                             the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -526,6 +550,12 @@
                </item>
                <item>
                 <widget class="QPlainTextEdit" name="q2AnswerPlainTextEdit">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>200</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                             longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -596,6 +626,12 @@
                </item>
                <item>
                 <widget class="QPlainTextEdit" name="q3QuestionPlainTextEdit">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>200</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                             the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -731,6 +767,12 @@
                </item>
                <item>
                 <widget class="QPlainTextEdit" name="q3AnswerPlainTextEdit">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>200</height>
+                  </size>
+                 </property>
                  <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                             longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -799,6 +841,12 @@
              </item>
              <item>
               <widget class="QPlainTextEdit" name="q4QuestionPlainTextEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>200</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                     the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -934,6 +982,12 @@
              </item>
              <item>
               <widget class="QPlainTextEdit" name="q4AnswerPlainTextEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>200</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                     longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -1000,6 +1054,12 @@
              </item>
              <item>
               <widget class="QPlainTextEdit" name="q5QuestionPlainTextEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>200</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                     the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
@@ -1135,6 +1195,12 @@
              </item>
              <item>
               <widget class="QPlainTextEdit" name="q5AnswerPlainTextEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>200</height>
+                </size>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A
                                                                     longer explanation about the correct answer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;

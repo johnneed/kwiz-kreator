@@ -30,14 +30,14 @@ class AppState:
     def set_trivia(self, trivia):
         self.trivia = trivia
         self.selected_quiz = None
-        self.is_dirty = False
+        self.set_dirty(False)
         self.publish('trivia_loaded')
 
     def add_quiz(self, quiz):
         self.trivia.quizzes.append(quiz)
         self.selected_quiz = Quiz.clone(quiz)
         self.trivia.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
-        self.is_dirty = True
+        self.set_dirty(True)
         self.publish('quiz_added')
 
     def delete_selected_quiz(self):
@@ -45,7 +45,7 @@ class AppState:
         new_quizzes = [quiz for quiz in self.trivia.quizzes if quiz.id != quiz_id]
         self.trivia.quizzes = new_quizzes
         self.selected_quiz = None
-        self.is_dirty = True
+        self.set_dirty(True)
         self.publish('quiz_deleted')
 
     def get_selected_quiz(self):
@@ -61,14 +61,14 @@ class AppState:
 
     def clear_selected_quiz(self):
         self.selected_quiz = None
-        self.is_dirty = False
+        self.set_dirty(False)
         self.publish('selected_quiz_cleared')
 
     @curry
     def set_selected_quiz_property(self, prop, value):
         if self.selected_quiz is not None and value != getattr(self.selected_quiz, prop):
             setattr(self.selected_quiz, prop, value)
-            self.is_dirty = True
+            self.set_dirty(True)
             self.publish('selected_quiz_changed')
 
     @curry
@@ -76,7 +76,7 @@ class AppState:
         if self.selected_quiz is not None and value != getattr(self.selected_quiz.questions[index], prop):
             question = self.selected_quiz.questions[index]
             setattr(question, prop, value)
-            self.is_dirty = True
+            self.set_dirty(True)
             self.publish('selected_quiz_changed')
 
     @curry
@@ -86,8 +86,9 @@ class AppState:
             question = self.selected_quiz.questions[question_index]
             choice = question.choices[choice_index]
             setattr(choice, "text", value)
+            self.set_dirty(True)
             self.publish('selected_quiz_changed')
-            self.is_dirty = True
+
 
     def set_dirty(self, value=True):
         self.is_dirty = value
@@ -99,11 +100,11 @@ class AppState:
                 self.trivia.quizzes[idx] = Quiz.clone(self.selected_quiz)
                 break
 
-        self.is_dirty = False
+        self.set_dirty(False)
         self.publish('quiz_updated')
 
     def reset_selected_quiz(self):
         for idx, quiz in enumerate(self.trivia.quizzes):
             self.selected_quiz = Quiz.clone(self.trivia.quizzes[idx])
-            self.is_dirty = False
+            self.set_dirty(False)
             self.publish('selected_quiz_reset')

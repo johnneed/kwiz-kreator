@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_2.setEnabled(False)
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, -2097, 402, 2935))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, -2952, 402, 4241))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_4.setObjectName("gridLayout_4")
@@ -56,9 +56,6 @@ class Ui_MainWindow(object):
         self.quizVerticalLayout.setObjectName("quizVerticalLayout")
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
-        self.titleLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.titleLabel.setObjectName("titleLabel")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.titleLabel)
         self.titleLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_2)
         self.titleLineEdit.setObjectName("titleLineEdit")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.titleLineEdit)
@@ -70,17 +67,20 @@ class Ui_MainWindow(object):
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.subtitleLineEdit)
         self.authorLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.authorLabel.setObjectName("authorLabel")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.authorLabel)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.authorLabel)
         self.authorLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_2)
         self.authorLineEdit.setObjectName("authorLineEdit")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.authorLineEdit)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.authorLineEdit)
         self.publishOnLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.publishOnLabel.setObjectName("publishOnLabel")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.publishOnLabel)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.publishOnLabel)
         self.publishOnDateEdit = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_2)
         self.publishOnDateEdit.setCalendarPopup(True)
         self.publishOnDateEdit.setObjectName("publishOnDateEdit")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.publishOnDateEdit)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.publishOnDateEdit)
+        self.titleLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
+        self.titleLabel.setObjectName("titleLabel")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.titleLabel)
         self.quizVerticalLayout.addLayout(self.formLayout)
         self.line = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
@@ -97,6 +97,8 @@ class Ui_MainWindow(object):
         self.q1Question1Label.setObjectName("q1Question1Label")
         self.q1VerticalLayout.addWidget(self.q1Question1Label)
         self.q1QuestionPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q1QuestionPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
+        self.q1QuestionPlainTextEdit.setBaseSize(QtCore.QSize(0, 0))
         self.q1QuestionPlainTextEdit.setObjectName("q1QuestionPlainTextEdit")
         self.q1VerticalLayout.addWidget(self.q1QuestionPlainTextEdit)
         self.q1ChoiceGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents_2)
@@ -104,26 +106,6 @@ class Ui_MainWindow(object):
         self.q1ChoiceGroupBox.setObjectName("q1ChoiceGroupBox")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.q1ChoiceGroupBox)
         self.gridLayout_3.setObjectName("gridLayout_3")
-        self.q1ChoiceHorizontalLayout_1 = QtWidgets.QHBoxLayout()
-        self.q1ChoiceHorizontalLayout_1.setObjectName("q1ChoiceHorizontalLayout_1")
-        self.q1ChoiceRadioButton_1 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
-        self.q1ChoiceRadioButton_1.setText("")
-        self.q1ChoiceRadioButton_1.setObjectName("q1ChoiceRadioButton_1")
-        self.q1ChoiceHorizontalLayout_1.addWidget(self.q1ChoiceRadioButton_1)
-        self.q1ChoiceLineEdit_1 = QtWidgets.QLineEdit(self.q1ChoiceGroupBox)
-        self.q1ChoiceLineEdit_1.setObjectName("q1ChoiceLineEdit_1")
-        self.q1ChoiceHorizontalLayout_1.addWidget(self.q1ChoiceLineEdit_1)
-        self.gridLayout_3.addLayout(self.q1ChoiceHorizontalLayout_1, 0, 0, 1, 1)
-        self.q1ChoiceHorizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.q1ChoiceHorizontalLayout_2.setObjectName("q1ChoiceHorizontalLayout_2")
-        self.q1ChoiceRadioButton_2 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
-        self.q1ChoiceRadioButton_2.setText("")
-        self.q1ChoiceRadioButton_2.setObjectName("q1ChoiceRadioButton_2")
-        self.q1ChoiceHorizontalLayout_2.addWidget(self.q1ChoiceRadioButton_2)
-        self.q1ChoiceLineEdit_2 = QtWidgets.QLineEdit(self.q1ChoiceGroupBox)
-        self.q1ChoiceLineEdit_2.setObjectName("q1ChoiceLineEdit_2")
-        self.q1ChoiceHorizontalLayout_2.addWidget(self.q1ChoiceLineEdit_2)
-        self.gridLayout_3.addLayout(self.q1ChoiceHorizontalLayout_2, 1, 0, 1, 1)
         self.q1ChoiceHorizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.q1ChoiceHorizontalLayout_3.setObjectName("q1ChoiceHorizontalLayout_3")
         self.q1ChoiceRadioButton_3 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
@@ -134,6 +116,16 @@ class Ui_MainWindow(object):
         self.q1ChoiceLineEdit_3.setObjectName("q1ChoiceLineEdit_3")
         self.q1ChoiceHorizontalLayout_3.addWidget(self.q1ChoiceLineEdit_3)
         self.gridLayout_3.addLayout(self.q1ChoiceHorizontalLayout_3, 2, 0, 1, 1)
+        self.q1ChoiceHorizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.q1ChoiceHorizontalLayout_2.setObjectName("q1ChoiceHorizontalLayout_2")
+        self.q1ChoiceRadioButton_2 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
+        self.q1ChoiceRadioButton_2.setText("")
+        self.q1ChoiceRadioButton_2.setObjectName("q1ChoiceRadioButton_2")
+        self.q1ChoiceHorizontalLayout_2.addWidget(self.q1ChoiceRadioButton_2)
+        self.q1ChoiceLineEdit_2 = QtWidgets.QLineEdit(self.q1ChoiceGroupBox)
+        self.q1ChoiceLineEdit_2.setObjectName("q1ChoiceLineEdit_2")
+        self.q1ChoiceHorizontalLayout_2.addWidget(self.q1ChoiceLineEdit_2)
+        self.gridLayout_3.addLayout(self.q1ChoiceHorizontalLayout_2, 1, 0, 1, 1)
         self.q1ChoiceHorizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.q1ChoiceHorizontalLayout_4.setObjectName("q1ChoiceHorizontalLayout_4")
         self.q1ChoiceRadioButton_4 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
@@ -144,11 +136,22 @@ class Ui_MainWindow(object):
         self.q1ChoiceLineEdit_4.setObjectName("q1ChoiceLineEdit_4")
         self.q1ChoiceHorizontalLayout_4.addWidget(self.q1ChoiceLineEdit_4)
         self.gridLayout_3.addLayout(self.q1ChoiceHorizontalLayout_4, 3, 0, 1, 1)
+        self.q1ChoiceHorizontalLayout_1 = QtWidgets.QHBoxLayout()
+        self.q1ChoiceHorizontalLayout_1.setObjectName("q1ChoiceHorizontalLayout_1")
+        self.q1ChoiceRadioButton_1 = QtWidgets.QRadioButton(self.q1ChoiceGroupBox)
+        self.q1ChoiceRadioButton_1.setText("")
+        self.q1ChoiceRadioButton_1.setObjectName("q1ChoiceRadioButton_1")
+        self.q1ChoiceHorizontalLayout_1.addWidget(self.q1ChoiceRadioButton_1)
+        self.q1ChoiceLineEdit_1 = QtWidgets.QLineEdit(self.q1ChoiceGroupBox)
+        self.q1ChoiceLineEdit_1.setObjectName("q1ChoiceLineEdit_1")
+        self.q1ChoiceHorizontalLayout_1.addWidget(self.q1ChoiceLineEdit_1)
+        self.gridLayout_3.addLayout(self.q1ChoiceHorizontalLayout_1, 0, 0, 1, 1)
         self.q1VerticalLayout.addWidget(self.q1ChoiceGroupBox)
         self.q1Answer1abel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.q1Answer1abel.setObjectName("q1Answer1abel")
         self.q1VerticalLayout.addWidget(self.q1Answer1abel)
         self.q1AnswerPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q1AnswerPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q1AnswerPlainTextEdit.setObjectName("q1AnswerPlainTextEdit")
         self.q1VerticalLayout.addWidget(self.q1AnswerPlainTextEdit)
         self.q1ImageUrlLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
@@ -181,6 +184,7 @@ class Ui_MainWindow(object):
         self.q2Question1Label.setObjectName("q2Question1Label")
         self.q2VerticalLayout1.addWidget(self.q2Question1Label)
         self.q2QuestionPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q2QuestionPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q2QuestionPlainTextEdit.setObjectName("q2QuestionPlainTextEdit")
         self.q2VerticalLayout1.addWidget(self.q2QuestionPlainTextEdit)
         self.q2ChoiceGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents_2)
@@ -233,6 +237,7 @@ class Ui_MainWindow(object):
         self.q2Answer1abel.setObjectName("q2Answer1abel")
         self.q2VerticalLayout1.addWidget(self.q2Answer1abel)
         self.q2AnswerPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q2AnswerPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q2AnswerPlainTextEdit.setObjectName("q2AnswerPlainTextEdit")
         self.q2VerticalLayout1.addWidget(self.q2AnswerPlainTextEdit)
         self.q2ImageUrlLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
@@ -266,6 +271,7 @@ class Ui_MainWindow(object):
         self.q3Question1Label.setObjectName("q3Question1Label")
         self.q3VerticalLayout1.addWidget(self.q3Question1Label)
         self.q3QuestionPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q3QuestionPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q3QuestionPlainTextEdit.setObjectName("q3QuestionPlainTextEdit")
         self.q3VerticalLayout1.addWidget(self.q3QuestionPlainTextEdit)
         self.q3ChoiceGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents_2)
@@ -318,6 +324,7 @@ class Ui_MainWindow(object):
         self.q3Answer1abel.setObjectName("q3Answer1abel")
         self.q3VerticalLayout1.addWidget(self.q3Answer1abel)
         self.q3AnswerPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q3AnswerPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q3AnswerPlainTextEdit.setObjectName("q3AnswerPlainTextEdit")
         self.q3VerticalLayout1.addWidget(self.q3AnswerPlainTextEdit)
         self.q3ImageUrlLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
@@ -349,6 +356,7 @@ class Ui_MainWindow(object):
         self.q4Question1Label.setObjectName("q4Question1Label")
         self.q4VerticalLayout.addWidget(self.q4Question1Label)
         self.q4QuestionPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q4QuestionPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q4QuestionPlainTextEdit.setObjectName("q4QuestionPlainTextEdit")
         self.q4VerticalLayout.addWidget(self.q4QuestionPlainTextEdit)
         self.q4ChoiceGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents_2)
@@ -401,6 +409,7 @@ class Ui_MainWindow(object):
         self.q4Answer1abel.setObjectName("q4Answer1abel")
         self.q4VerticalLayout.addWidget(self.q4Answer1abel)
         self.q4AnswerPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q4AnswerPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q4AnswerPlainTextEdit.setObjectName("q4AnswerPlainTextEdit")
         self.q4VerticalLayout.addWidget(self.q4AnswerPlainTextEdit)
         self.q4ImageUrlLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
@@ -431,6 +440,7 @@ class Ui_MainWindow(object):
         self.q5Question1Label.setObjectName("q5Question1Label")
         self.q5VerticalLayout.addWidget(self.q5Question1Label)
         self.q5QuestionPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q5QuestionPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q5QuestionPlainTextEdit.setObjectName("q5QuestionPlainTextEdit")
         self.q5VerticalLayout.addWidget(self.q5QuestionPlainTextEdit)
         self.q5ChoiceGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents_2)
@@ -483,6 +493,7 @@ class Ui_MainWindow(object):
         self.q5Answer1abel.setObjectName("q5Answer1abel")
         self.q5VerticalLayout.addWidget(self.q5Answer1abel)
         self.q5AnswerPlainTextEdit = QtWidgets.QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.q5AnswerPlainTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q5AnswerPlainTextEdit.setObjectName("q5AnswerPlainTextEdit")
         self.q5VerticalLayout.addWidget(self.q5AnswerPlainTextEdit)
         self.q5ImageUrlLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
@@ -585,7 +596,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Kwiz Kreator"))
-        self.titleLabel.setText(_translate("MainWindow", "Title"))
         self.titleLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Main\n"
 "                                                                    Quiz Title</p></body></html>\n"
 "                                                                "))
@@ -603,29 +613,25 @@ class Ui_MainWindow(object):
 "                                                                    date do you want to quiz to appear on?</p></body></html>\n"
 "                                                                "))
         self.publishOnDateEdit.setDisplayFormat(_translate("MainWindow", "yyyy/MM/dd"))
+        self.titleLabel.setText(_translate("MainWindow", "Title"))
         self.q1Question1Label.setText(_translate("MainWindow", "Question 1"))
         self.q1QuestionPlainTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\'s\n"
 "                                                                    the question you want folks to answer?</p></body></html>\n"
 "                                                                "))
         self.q1ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
-        self.q1ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-"                                                                                        which choice is the correct\n"
-"                                                                                        answer</p></body></html>\n"
-"                                                                                    "))
-        self.q1ChoiceLineEdit_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>The first possible answer</p></body></html>"))
-        self.q1ChoiceRadioButton_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-"                                                                                        which choice is the correct\n"
-"                                                                                        answer</p></body></html>\n"
-"                                                                                    "))
-        self.q1ChoiceLineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-"                                                                                        second possible answer</p></body></html>\n"
-"                                                                                    "))
         self.q1ChoiceRadioButton_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
 "                                                                                        answer</p></body></html>\n"
 "                                                                                    "))
         self.q1ChoiceLineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
 "                                                                                        third possible answer</p></body></html>\n"
+"                                                                                    "))
+        self.q1ChoiceRadioButton_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
+        self.q1ChoiceLineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
+"                                                                                        second possible answer</p></body></html>\n"
 "                                                                                    "))
         self.q1ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
 "                                                                                        which choice is the correct\n"
@@ -634,6 +640,11 @@ class Ui_MainWindow(object):
         self.q1ChoiceLineEdit_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
 "                                                                                        fourth possible answer</p></body></html>\n"
 "                                                                                    "))
+        self.q1ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
+        self.q1ChoiceLineEdit_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>The first possible answer</p></body></html>"))
         self.q1Answer1abel.setText(_translate("MainWindow", "Answer"))
         self.q1AnswerPlainTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>A\n"
 "                                                                    longer explanation about the correct answer</p></body></html>\n"
