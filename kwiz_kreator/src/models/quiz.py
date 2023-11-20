@@ -79,7 +79,7 @@ class Quiz:
     def from_json(quiz):
         return Quiz(
             quiz.get('title', ''),
-            quiz.get('subTitle', ''),
+            quiz.get('subtitle', ''),
             quiz.get('publishDate', ''),
             quiz.get('author', ''),
             [Question.from_json(q) for q in quiz['questions']],
