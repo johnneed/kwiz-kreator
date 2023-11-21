@@ -264,13 +264,15 @@ class App(QMainWindow, Ui_MainWindow):
             self.listWidget.addItem(list_item)
         if current_index >= 0:
             self.listWidget.setCurrentRow(current_index)
+        else:
+            self.listWidget.setCurrentRow(0)
         print('Updated Trivia List')
 
     def __select_quiz(self):
         quiz_id = self.listWidget.currentItem().data(1)
         if quiz_id is None:
             return
-        if self.app_state.is_dirty:
+        if self.app_state.is_dirty and self.app_state.get_selected_quiz() is not None:
             print('Save Question Asked')
             reply = QMessageBox.question(self, 'Message',
                                          "You have unsaved changes. Do you want to save them?",
@@ -311,7 +313,10 @@ class App(QMainWindow, Ui_MainWindow):
                 with open(file_name) as json_file:
                     data = json.load(json_file)
                     trivia = Trivia.from_json(data)
+                    self.listWidget.setCurrentRow(0)
                     self.app_state.set_trivia(trivia)
+                    self.app_state.set_dirty(False)
+
                 self.opened_file_name = file_name
             except Exception as e:
                 QMessageBox.about(self, "Error", "That does not look like a valid Trail Trivia file\n\n " + str(e))
