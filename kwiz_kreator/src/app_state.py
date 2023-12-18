@@ -40,12 +40,11 @@ class AppState:
         self.set_dirty(True)
         self.publish('quiz_added')
 
-    def delete_selected_quiz(self):
-        quiz_id = self.selected_quiz.id
+    def delete_quiz(self, quiz_id):
         new_quizzes = [quiz for quiz in self.trivia.quizzes if quiz.id != quiz_id]
         self.trivia.quizzes = new_quizzes
         self.selected_quiz = None
-        self.set_dirty(True)
+        self.set_dirty(False)
         self.publish('quiz_deleted')
 
     def get_selected_quiz(self):

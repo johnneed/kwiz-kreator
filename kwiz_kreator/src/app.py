@@ -55,6 +55,9 @@ class App(QMainWindow, Ui_MainWindow):
             case "quiz_updated":
                 self.__update_trivia_list()
                 self.__set_menu_state()
+            case "quiz_deleted":
+                self.__update_trivia_list()
+                self.__set_menu_state()
             case _:
                 pass
 
@@ -132,8 +135,10 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionSave.triggered.connect(self.save_file)
         self.actionSave_As.triggered.connect(self.save_file_as)
         # self.action_Find_Replace.triggered.connect(self.findAndReplace)
+        self.actionRemove_Quiz.triggered.connect(self.__delete_selected_quiz)
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
+
 
     def connect_selected_quiz_signal_slots(self):
         # Quiz Controls
@@ -300,6 +305,16 @@ class App(QMainWindow, Ui_MainWindow):
         self.listWidget.setCurrentRow(0)
         print('New Trivia Created')
 
+    def __delete_selected_quiz(self):
+        reply = QMessageBox.question(self, 'Message',
+                                     "Are you sure you want to delete this quiz: " + self.app_state.get_selected_quiz().title + "?",
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            quiz_id = self.app_state.get_selected_quiz().id
+            self.app_state.delete_quiz(quiz_id)
+            print('Quiz Deleted: ' + quiz_id)
+            self.save_file()
+
     def open_file(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -430,6 +445,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionSave_As.setEnabled(has_quizzes)
         self.scrollAreaWidgetContents_1.setEnabled(has_quizzes)
         quiz_is_selected = self.app_state.get_selected_quiz() is not None
+        self.actionRemove_Quiz.setEnabled(quiz_is_selected)
         self.scrollAreaWidgetContents_2.setEnabled(quiz_is_selected)
 
     def about(self):
