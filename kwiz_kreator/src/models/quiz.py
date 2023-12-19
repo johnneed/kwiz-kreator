@@ -69,7 +69,7 @@ class Quiz:
         return {
             'id': self._id,
             'title': self._title,
-            'subTitle': self._subtitle,
+            'subtitle': self._subtitle,
             'publishDate': self._publish_date,
             'author': self._author,
             'questions': [q.to_json() for q in self._questions]
