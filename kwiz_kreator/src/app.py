@@ -66,8 +66,8 @@ class App(QMainWindow, Ui_MainWindow):
         self.subtitleLineEdit.disconnect()
         self.authorLineEdit.disconnect()
         self.publishOnDateEdit.disconnect()
-        self.q1QuestionPlainTextEdit.disconnect()
-        self.q1AnswerPlainTextEdit.disconnect()
+        self.q1QuestionTextEdit.disconnect()
+        self.q1AnswerTextEdit.disconnect()
         self.q1ImageCaptionLineEdit.disconnect()
         self.q1ImageUrlLineEdit.disconnect()
         self.q1ChoiceRadioButton_1.disconnect()
@@ -78,8 +78,8 @@ class App(QMainWindow, Ui_MainWindow):
         self.q1ChoiceLineEdit_2.disconnect()
         self.q1ChoiceLineEdit_3.disconnect()
         self.q1ChoiceLineEdit_4.disconnect()
-        self.q2QuestionPlainTextEdit.disconnect()
-        self.q2AnswerPlainTextEdit.disconnect()
+        self.q2QuestionTextEdit.disconnect()
+        self.q2AnswerTextEdit.disconnect()
         self.q2ImageCaptionLineEdit.disconnect()
         self.q2ImageUrlLineEdit.disconnect()
         self.q2ChoiceRadioButton_1.disconnect()
@@ -90,8 +90,8 @@ class App(QMainWindow, Ui_MainWindow):
         self.q2ChoiceLineEdit_2.disconnect()
         self.q2ChoiceLineEdit_3.disconnect()
         self.q2ChoiceLineEdit_4.disconnect()
-        self.q3QuestionPlainTextEdit.disconnect()
-        self.q3AnswerPlainTextEdit.disconnect()
+        self.q3QuestionTextEdit.disconnect()
+        self.q3AnswerTextEdit.disconnect()
         self.q3ImageCaptionLineEdit.disconnect()
         self.q3ImageUrlLineEdit.disconnect()
         self.q3ChoiceRadioButton_1.disconnect()
@@ -102,8 +102,8 @@ class App(QMainWindow, Ui_MainWindow):
         self.q3ChoiceLineEdit_2.disconnect()
         self.q3ChoiceLineEdit_3.disconnect()
         self.q3ChoiceLineEdit_4.disconnect()
-        self.q4QuestionPlainTextEdit.disconnect()
-        self.q4AnswerPlainTextEdit.disconnect()
+        self.q4QuestionTextEdit.disconnect()
+        self.q4AnswerTextEdit.disconnect()
         self.q4ImageCaptionLineEdit.disconnect()
         self.q4ImageUrlLineEdit.disconnect()
         self.q4ChoiceRadioButton_1.disconnect()
@@ -114,8 +114,8 @@ class App(QMainWindow, Ui_MainWindow):
         self.q4ChoiceLineEdit_2.disconnect()
         self.q4ChoiceLineEdit_3.disconnect()
         self.q4ChoiceLineEdit_4.disconnect()
-        self.q5QuestionPlainTextEdit.disconnect()
-        self.q5AnswerPlainTextEdit.disconnect()
+        self.q5QuestionTextEdit.disconnect()
+        self.q5AnswerTextEdit.disconnect()
         self.q5ImageCaptionLineEdit.disconnect()
         self.q5ImageUrlLineEdit.disconnect()
         self.q5ChoiceRadioButton_1.disconnect()
@@ -149,11 +149,11 @@ class App(QMainWindow, Ui_MainWindow):
             lambda q_date: self.app_state.set_selected_quiz_property('publish_date', q_date.toString('yyyy/MM/dd')))
 
         # Question 1
-        self.q1QuestionPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q1QuestionPlainTextEdit,
+        self.q1QuestionTextEdit.textChanged.connect(
+            extract_text_area_value(self.q1QuestionTextEdit,
                                     self.app_state.set_question_property(0, 'question_text')))
-        self.q1AnswerPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q1AnswerPlainTextEdit,
+        self.q1AnswerTextEdit.textChanged.connect(
+            extract_text_area_value(self.q1AnswerTextEdit,
                                     self.app_state.set_question_property(0, 'answer_text')))
         self.q1ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image'))
         self.q1ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image_caption'))
@@ -171,11 +171,11 @@ class App(QMainWindow, Ui_MainWindow):
         self.q1ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(0, 3))
 
         # Question 2
-        self.q2QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q2QuestionPlainTextEdit,
+        self.q2QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q2QuestionTextEdit,
                                                                                  self.app_state.set_question_property(1,
                                                                                                                       'question_text')))
-        self.q2AnswerPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q2AnswerPlainTextEdit, self.app_state.set_question_property(1, 'answer_text')))
+        self.q2AnswerTextEdit.textChanged.connect(
+            extract_text_area_value(self.q2AnswerTextEdit, self.app_state.set_question_property(1, 'answer_text')))
         self.q2ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image'))
         self.q2ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image_caption'))
         question_2_choice_radios = [self.q2ChoiceRadioButton_1,
@@ -193,11 +193,11 @@ class App(QMainWindow, Ui_MainWindow):
         self.q2ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(1, 3))
 
         # Question 3
-        self.q3QuestionPlainTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionPlainTextEdit,
+        self.q3QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionTextEdit,
                                                                                  self.app_state.set_question_property(2,
                                                                                                                       'question_text')))
-        self.q3AnswerPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q3AnswerPlainTextEdit, self.app_state.set_question_property(2, 'answer_text')))
+        self.q3AnswerTextEdit.textChanged.connect(
+            extract_text_area_value(self.q3AnswerTextEdit, self.app_state.set_question_property(2, 'answer_text')))
         self.q3ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(2, 'answer_image'))
         self.q3ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(2,
                                                                                             'answer_image_caption'))
@@ -213,11 +213,11 @@ class App(QMainWindow, Ui_MainWindow):
         self.q3ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(2, 3))
 
         # Question 4
-        self.q4QuestionPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q4QuestionPlainTextEdit,
+        self.q4QuestionTextEdit.textChanged.connect(
+            extract_text_area_value(self.q4QuestionTextEdit,
                                     self.app_state.set_question_property(3, 'question_text')))
-        self.q4AnswerPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q4AnswerPlainTextEdit,
+        self.q4AnswerTextEdit.textChanged.connect(
+            extract_text_area_value(self.q4AnswerTextEdit,
                                     self.app_state.set_question_property(3, 'answer_text')))
         self.q4ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image'))
         self.q4ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image_caption'))
@@ -235,11 +235,11 @@ class App(QMainWindow, Ui_MainWindow):
         self.q4ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(3, 3))
 
         # Question 5
-        self.q5QuestionPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q5QuestionPlainTextEdit,
+        self.q5QuestionTextEdit.textChanged.connect(
+            extract_text_area_value(self.q5QuestionTextEdit,
                                     self.app_state.set_question_property(4, 'question_text')))
-        self.q5AnswerPlainTextEdit.textChanged.connect(
-            extract_text_area_value(self.q5AnswerPlainTextEdit,
+        self.q5AnswerTextEdit.textChanged.connect(
+            extract_text_area_value(self.q5AnswerTextEdit,
                                     self.app_state.set_question_property(4, 'answer_text')))
         self.q5ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image'))
         self.q5ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image_caption'))
@@ -381,8 +381,8 @@ class App(QMainWindow, Ui_MainWindow):
             self.publishOnDateEdit.setDate(QDate.fromString(quiz.publish_date, 'yyyy/MM/dd'))
             self.authorLineEdit.setText(quiz.author)
             # Update Question 1
-            self.q1QuestionPlainTextEdit.setPlainText(quiz.questions[0].question_text)
-            self.q1AnswerPlainTextEdit.setPlainText(quiz.questions[0].answer_text)
+            self.q1QuestionTextEdit.setPlainText(quiz.questions[0].question_text)
+            self.q1AnswerTextEdit.setPlainText(quiz.questions[0].answer_text)
             self.q1ImageUrlLineEdit.setText(quiz.questions[0].answer_image)
             self.q1ImageCaptionLineEdit.setText(quiz.questions[0].answer_image_caption)
             self.q1ChoiceLineEdit_1.setText(quiz.questions[0].choices[0].text)
@@ -392,8 +392,8 @@ class App(QMainWindow, Ui_MainWindow):
             [self.q1ChoiceRadioButton_1, self.q1ChoiceRadioButton_2, self.q1ChoiceRadioButton_3,
              self.q1ChoiceRadioButton_4][quiz.questions[0].correct_answer_index].setChecked(True)
             # Update Question 2
-            self.q2QuestionPlainTextEdit.setPlainText(quiz.questions[1].question_text)
-            self.q2AnswerPlainTextEdit.setPlainText(quiz.questions[1].answer_text)
+            self.q2QuestionTextEdit.setPlainText(quiz.questions[1].question_text)
+            self.q2AnswerTextEdit.setPlainText(quiz.questions[1].answer_text)
             self.q2ImageUrlLineEdit.setText(quiz.questions[1].answer_image)
             self.q2ImageCaptionLineEdit.setText(quiz.questions[1].answer_image_caption)
             self.q2ChoiceLineEdit_1.setText(quiz.questions[1].choices[0].text)
@@ -403,8 +403,8 @@ class App(QMainWindow, Ui_MainWindow):
             [self.q2ChoiceRadioButton_1, self.q2ChoiceRadioButton_2, self.q2ChoiceRadioButton_3,
              self.q2ChoiceRadioButton_4][quiz.questions[1].correct_answer_index].setChecked(True)
             # Update Question 3
-            self.q3QuestionPlainTextEdit.setPlainText(quiz.questions[2].question_text)
-            self.q3AnswerPlainTextEdit.setPlainText(quiz.questions[2].answer_text)
+            self.q3QuestionTextEdit.setPlainText(quiz.questions[2].question_text)
+            self.q3AnswerTextEdit.setPlainText(quiz.questions[2].answer_text)
             self.q3ImageUrlLineEdit.setText(quiz.questions[2].answer_image)
             self.q3ImageCaptionLineEdit.setText(quiz.questions[2].answer_image_caption)
             self.q3ChoiceLineEdit_1.setText(quiz.questions[2].choices[0].text)
@@ -414,8 +414,8 @@ class App(QMainWindow, Ui_MainWindow):
             [self.q3ChoiceRadioButton_1, self.q3ChoiceRadioButton_2, self.q3ChoiceRadioButton_3,
              self.q3ChoiceRadioButton_4][quiz.questions[2].correct_answer_index].setChecked(True)
             # Update Question 4
-            self.q4QuestionPlainTextEdit.setPlainText(quiz.questions[3].question_text)
-            self.q4AnswerPlainTextEdit.setPlainText(quiz.questions[3].answer_text)
+            self.q4QuestionTextEdit.setPlainText(quiz.questions[3].question_text)
+            self.q4AnswerTextEdit.setPlainText(quiz.questions[3].answer_text)
             self.q4ImageUrlLineEdit.setText(quiz.questions[3].answer_image)
             self.q4ImageCaptionLineEdit.setText(quiz.questions[3].answer_image_caption)
             self.q4ChoiceLineEdit_1.setText(quiz.questions[3].choices[0].text)
@@ -425,8 +425,8 @@ class App(QMainWindow, Ui_MainWindow):
             [self.q4ChoiceRadioButton_1, self.q4ChoiceRadioButton_2, self.q4ChoiceRadioButton_3,
              self.q4ChoiceRadioButton_4][quiz.questions[3].correct_answer_index].setChecked(True)
             # Update Question 5
-            self.q5QuestionPlainTextEdit.setPlainText(quiz.questions[4].question_text)
-            self.q5AnswerPlainTextEdit.setPlainText(quiz.questions[4].answer_text)
+            self.q5QuestionTextEdit.setPlainText(quiz.questions[4].question_text)
+            self.q5AnswerTextEdit.setPlainText(quiz.questions[4].answer_text)
             self.q5ImageUrlLineEdit.setText(quiz.questions[4].answer_image)
             self.q5ImageCaptionLineEdit.setText(quiz.questions[4].answer_image_caption)
             self.q5ChoiceLineEdit_1.setText(quiz.questions[4].choices[0].text)
