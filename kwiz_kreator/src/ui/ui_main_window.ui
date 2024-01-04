@@ -65,7 +65,7 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-2952</y>
+          <y>0</y>
           <width>402</width>
           <height>4241</height>
          </rect>
@@ -189,7 +189,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPlainTextEdit" name="q1QuestionPlainTextEdit">
+              <widget class="QTextEdit" name="q1QuestionTextEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -206,6 +206,9 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;What's
                                                                     the question you want folks to answer?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                                                 </string>
+               </property>
+               <property name="tabChangesFocus">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -334,7 +337,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPlainTextEdit" name="q1AnswerPlainTextEdit">
+              <widget class="QTextEdit" name="q1AnswerTextEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -408,7 +411,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPlainTextEdit" name="q2QuestionPlainTextEdit">
+                <widget class="QTextEdit" name="q2QuestionTextEdit">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -549,7 +552,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPlainTextEdit" name="q2AnswerPlainTextEdit">
+                <widget class="QTextEdit" name="q2AnswerTextEdit">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -625,7 +628,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPlainTextEdit" name="q3QuestionPlainTextEdit">
+                <widget class="QTextEdit" name="q3QuestionTextEdit">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -766,7 +769,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPlainTextEdit" name="q3AnswerPlainTextEdit">
+                <widget class="QTextEdit" name="q3AnswerTextEdit">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -840,7 +843,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPlainTextEdit" name="q4QuestionPlainTextEdit">
+              <widget class="QTextEdit" name="q4QuestionTextEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -981,7 +984,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPlainTextEdit" name="q4AnswerPlainTextEdit">
+              <widget class="QTextEdit" name="q4AnswerTextEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -1053,7 +1056,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPlainTextEdit" name="q5QuestionPlainTextEdit">
+              <widget class="QTextEdit" name="q5QuestionTextEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -1194,7 +1197,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPlainTextEdit" name="q5AnswerPlainTextEdit">
+              <widget class="QTextEdit" name="q5AnswerTextEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -1277,7 +1280,6 @@
     </property>
     <addaction name="actionNew_Quiz"/>
     <addaction name="actionRevert_ChangesUndo_All"/>
-    <addaction name="actionSpell_Check"/>
     <addaction name="actionPreview"/>
     <addaction name="actionRemove_Quiz"/>
    </widget>
