@@ -47,12 +47,6 @@ class SpellTextEdit(QTextEdit):
             if len(suggestions) > 0:
                 self.contextMenu.addSeparator()
                 self.contextMenu.addMenu(self.createSuggestionsMenu(suggestions))
-            # if not self.speller.check(wordToCheck):
-            #     addToDictionary_action = SpecialAction(
-            #         "Add to dictionary", self.contextMenu
-            #     )
-            #     addToDictionary_action.triggered.connect(self.addToDictionary)
-            #     self.contextMenu.addAction(addToDictionary_action)
 
         self.contextMenu.exec_(event.globalPos())
 
@@ -72,10 +66,3 @@ class SpellTextEdit(QTextEdit):
         textCursor.removeSelectedText()
         textCursor.insertText(word)
         textCursor.endEditBlock()
-
-    # @pyqtSlot()
-    # def addToDictionary(self):
-    #     textCursor = self.textCursor()
-    #     new_word = textCursor.selectedText()
-    #     self.speller.add(new_word)
-    #     self.highlighter.rehighlight()

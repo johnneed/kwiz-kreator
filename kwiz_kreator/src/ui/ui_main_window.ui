@@ -65,7 +65,7 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-3475</y>
+          <y>0</y>
           <width>402</width>
           <height>4241</height>
          </rect>
@@ -1280,7 +1280,6 @@
     </property>
     <addaction name="actionNew_Quiz"/>
     <addaction name="actionRevert_ChangesUndo_All"/>
-    <addaction name="actionSpell_Check"/>
     <addaction name="actionPreview"/>
     <addaction name="actionRemove_Quiz"/>
    </widget>
