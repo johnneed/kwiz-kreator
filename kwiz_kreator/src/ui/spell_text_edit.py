@@ -19,7 +19,7 @@ class SpellTextEdit(QTextEdit):
         if hasattr(self, "speller"):
             self.highlighter.setSpeller(self.speller)
 
-    def setSpeller(self, speller):
+    def set_speller(self, speller):
         self.speller = speller
         self.highlighter.setSpeller(self.speller)
 
@@ -36,33 +36,32 @@ class SpellTextEdit(QTextEdit):
 
     def contextMenuEvent(self, event: QContextMenuEvent) -> None:
         self.contextMenu = self.createStandardContextMenu(event.pos())
+        text_cursor = self.textCursor()
+        text_cursor.select(QTextCursor.WordUnderCursor)
+        self.setTextCursor(text_cursor)
+        word_to_check = text_cursor.selectedText()
+        if word_to_check != "":
+            suggestions = self.speller.suggestions(word_to_check)
 
-        textCursor = self.textCursor()
-        textCursor.select(QTextCursor.WordUnderCursor)
-        self.setTextCursor(textCursor)
-        wordToCheck = textCursor.selectedText()
-        if wordToCheck != "":
-            suggestions = self.speller.suggestions(wordToCheck)
-
-            if len(suggestions) > 0:
+            if suggestions is not None and len(suggestions) > 0:
                 self.contextMenu.addSeparator()
-                self.contextMenu.addMenu(self.createSuggestionsMenu(suggestions))
+                self.contextMenu.addMenu(self.create_suggestions_menu(suggestions))
 
         self.contextMenu.exec_(event.globalPos())
 
-    def createSuggestionsMenu(self, suggestions: list[str]):
-        suggestionsMenu = QMenu("Change to", self)
+    def create_suggestions_menu(self, suggestions: list[str]):
+        suggestions_menu = QMenu("Change to", self)
         for word in suggestions:
             action = SpecialAction(word, self.contextMenu)
-            action.actionTriggered.connect(self.correctWord)
-            suggestionsMenu.addAction(action)
+            action.actionTriggered.connect(self.correct_word)
+            suggestions_menu.addAction(action)
 
-        return suggestionsMenu
+        return suggestions_menu
 
     @pyqtSlot(str)
-    def correctWord(self, word: str):
-        textCursor = self.textCursor()
-        textCursor.beginEditBlock()
-        textCursor.removeSelectedText()
-        textCursor.insertText(word)
-        textCursor.endEditBlock()
+    def correct_word(self, word: str):
+        text_cursor = self.textCursor()
+        text_cursor.beginEditBlock()
+        text_cursor.removeSelectedText()
+        text_cursor.insertText(word)
+        text_cursor.endEditBlock()

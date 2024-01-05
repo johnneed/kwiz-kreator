@@ -859,7 +859,7 @@ class Ui_MainWindow(object):
         self.actionSave.setToolTip(_translate("MainWindow", "Save your Trail Trivia file"))
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
         self.actionNew_Quiz.setText(_translate("MainWindow", "New Quiz"))
-        self.actionPreview.setText(_translate("MainWindow", "Preview"))
+        self.actionPreview.setText(_translate("MainWindow", "Preview Selected Quiz"))
         self.actionRemove_Quiz.setText(_translate("MainWindow", "Remove Quiz"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
         self.actionSave_As.setText(_translate("MainWindow", "Save As"))

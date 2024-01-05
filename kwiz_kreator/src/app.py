@@ -5,13 +5,13 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
 )
-
+from datetime import datetime
 from .app_state import AppState
 from .lib.connect_controls import extract_text_area_value, set_answer_index
 from .models import Trivia, Quiz
 from .ui import Ui_MainWindow
 from spellchecker import SpellChecker
-
+from .preview.launch import preview_quiz
 spell = SpellChecker()
 
 # from autocorrect import Speller
@@ -134,7 +134,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionNew_Quiz.triggered.connect(self.__add_new_quiz)
         self.actionSave.triggered.connect(self.save_file)
         self.actionSave_As.triggered.connect(self.save_file_as)
-        # self.action_Find_Replace.triggered.connect(self.findAndReplace)
+        self.actionPreview.triggered.connect(self.__preview_quiz)
         self.actionRemove_Quiz.triggered.connect(self.__delete_selected_quiz)
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
@@ -336,6 +336,13 @@ class App(QMainWindow, Ui_MainWindow):
             except Exception as e:
                 QMessageBox.about(self, "Error", "That does not look like a valid Trail Trivia file\n\n " + str(e))
             print("File Opened " + file_name)
+
+    def __preview_quiz(self):
+        quiz = self.app_state.get_selected_quiz()
+        quiz.publish_date = datetime.now().strftime("%Y/%m/%d")
+        preview_trivia = Trivia([self.app_state.get_selected_quiz()])
+        preview_trivia_json = preview_trivia.to_json()
+        preview_quiz(preview_trivia_json)
 
     def save_file_as(self):
         original_file_path = self.opened_file_name or ""
