@@ -1360,7 +1360,7 @@
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Preview</string>
+    <string>Preview Selected Quiz</string>
    </property>
   </action>
   <action name="actionRemove_Quiz">
