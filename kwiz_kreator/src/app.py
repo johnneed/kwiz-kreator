@@ -1,18 +1,23 @@
 import json
+import os
+from datetime import datetime
 
 from PyQt5.QtCore import QDate
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
 )
-from datetime import datetime
+from spellchecker import SpellChecker
+
 from .app_state import AppState
 from .lib.connect_controls import extract_text_area_value, set_answer_index
+from .lib.recent_files import RecentFiles
 from .models import Trivia, Quiz
-from .ui import Ui_MainWindow
-from spellchecker import SpellChecker
 from .preview.launch import preview_quiz
+from .ui import Ui_MainWindow
+
 spell = SpellChecker()
+
 
 # from autocorrect import Speller
 class App(QMainWindow, Ui_MainWindow):
@@ -21,19 +26,28 @@ class App(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.app_state = AppState()
+        recent_file_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/recent_files.json'
+        print("Recent File Path: " + recent_file_path)
+        self.recent_files = RecentFiles(recent_file_path)
+        print(self.recent_files)
         self.setupUi(self)
         self.connect_main_signals_slots()
         self.connect_selected_quiz_signal_slots()
+        self.__display_recent_files()
         self.subscribe()
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
         self.setWindowIcon(QIcon("./images/icon.png"))
 
+
     def subscribe(self):
         self.app_state.subscribe(self)
+        self.recent_files.subscribe(self)
 
     def receive(self, message):
         match message:
+            case "recent_files_changed":
+                self.__display_recent_files()
             case "trivia_loaded":
                 self.__update_trivia_list()
                 self.__set_menu_state()
@@ -138,7 +152,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionRemove_Quiz.triggered.connect(self.__delete_selected_quiz)
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
-
+        self.actionClear_Menu.triggered.connect(self.recent_files.clear)
 
     def connect_selected_quiz_signal_slots(self):
         # Quiz Controls
@@ -172,8 +186,8 @@ class App(QMainWindow, Ui_MainWindow):
 
         # Question 2
         self.q2QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q2QuestionTextEdit,
-                                                                                 self.app_state.set_question_property(1,
-                                                                                                                      'question_text')))
+                                                                            self.app_state.set_question_property(1,
+                                                                                                                 'question_text')))
         self.q2AnswerTextEdit.textChanged.connect(
             extract_text_area_value(self.q2AnswerTextEdit, self.app_state.set_question_property(1, 'answer_text')))
         self.q2ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image'))
@@ -194,8 +208,8 @@ class App(QMainWindow, Ui_MainWindow):
 
         # Question 3
         self.q3QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionTextEdit,
-                                                                                 self.app_state.set_question_property(2,
-                                                                                                                      'question_text')))
+                                                                            self.app_state.set_question_property(2,
+                                                                                                                 'question_text')))
         self.q3AnswerTextEdit.textChanged.connect(
             extract_text_area_value(self.q3AnswerTextEdit, self.app_state.set_question_property(2, 'answer_text')))
         self.q3ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(2, 'answer_image'))
@@ -315,6 +329,22 @@ class App(QMainWindow, Ui_MainWindow):
             print('Quiz Deleted: ' + quiz_id)
             self.save_file()
 
+    def __load_file(self, file_name):
+        print("Loading File " + file_name)
+        try:
+            with open(file_name) as json_file:
+                data = json.load(json_file)
+                trivia = Trivia.from_json(data)
+                self.listWidget.setCurrentRow(0)
+                self.app_state.set_trivia(trivia)
+                self.app_state.set_dirty(False)
+
+            self.opened_file_name = file_name
+        except Exception as e:
+            QMessageBox.about(self, "Error", "That does not look like a valid Trail Trivia file\n\n " + str(e))
+        print("File Opened " + file_name)
+        self.recent_files.add_recent_file(file_name)
+
     def open_file(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -324,18 +354,7 @@ class App(QMainWindow, Ui_MainWindow):
                                                    "JSON Files (*.json)",
                                                    options=options)
         if file_name:
-            try:
-                with open(file_name) as json_file:
-                    data = json.load(json_file)
-                    trivia = Trivia.from_json(data)
-                    self.listWidget.setCurrentRow(0)
-                    self.app_state.set_trivia(trivia)
-                    self.app_state.set_dirty(False)
-
-                self.opened_file_name = file_name
-            except Exception as e:
-                QMessageBox.about(self, "Error", "That does not look like a valid Trail Trivia file\n\n " + str(e))
-            print("File Opened " + file_name)
+            self.__load_file(file_name)
 
     def __preview_quiz(self):
         quiz = self.app_state.get_selected_quiz()
@@ -445,15 +464,44 @@ class App(QMainWindow, Ui_MainWindow):
         else:
             pass
 
+
+
+    def __bind_recent_file(self, file_name):
+        return lambda: self.__load_file(file_name)
+
+    def __display_recent_files(self):
+        print("Display Recent Files")
+        recent_file_actions = [self.actionrecent_file_01, self.actionrecent_file_02, self.actionrecent_file_03,
+                               self.actionrecent_file_04, self.actionrecent_file_05, self.actionrecent_file_06,
+                               self.actionrecent_file_07, self.actionrecent_file_08, self.actionrecent_file_09]
+        has_recent_files = self.recent_files.get_recent_files() is not None and len(self.recent_files.get_recent_files()) > 0
+        print('Has Recent Files: ' + str(has_recent_files))
+        self.menuRecent_Files.setEnabled(has_recent_files)
+        for i in range(len(recent_file_actions)):
+            file_name = self.recent_files.get_file_name(i)
+            recent_file_action = recent_file_actions[i]
+
+            if file_name is not None:
+                print("BINDING FILE NAME IS: " + file_name)
+                recent_file_action.triggered.connect(self.__bind_recent_file(file_name))
+                recent_file_action.setText(file_name)
+                recent_file_action.setVisible(True)
+            else:
+                recent_file_action.setVisible(False)
+
     def __set_menu_state(self):
         has_quizzes = len(self.app_state.get_trivia().quizzes) > 0
         self.actionNew_Quiz.setEnabled(has_quizzes)
         self.actionSave.setEnabled(self.app_state.is_dirty)
         self.actionSave_As.setEnabled(has_quizzes)
+        self.actionAnalyze.setEnabled(has_quizzes)
+        self.actionDeploy.setEnabled(has_quizzes)
         self.scrollAreaWidgetContents_1.setEnabled(has_quizzes)
         quiz_is_selected = self.app_state.get_selected_quiz() is not None
         self.actionRemove_Quiz.setEnabled(quiz_is_selected)
         self.scrollAreaWidgetContents_2.setEnabled(quiz_is_selected)
+        self.actionPreview.setEnabled(quiz_is_selected)
+
 
     def about(self):
         QMessageBox.about(

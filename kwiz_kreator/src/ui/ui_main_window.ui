@@ -65,9 +65,9 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
+          <y>-110</y>
           <width>402</width>
-          <height>4241</height>
+          <height>4259</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
@@ -176,17 +176,46 @@
            <item>
             <layout class="QVBoxLayout" name="q1VerticalLayout">
              <item>
-              <widget class="QLabel" name="q1Question1Label">
-               <property name="font">
-                <font>
-                 <pointsize>16</pointsize>
-                 <bold>false</bold>
-                </font>
+              <layout class="QHBoxLayout" name="q1QLabelhorizontalLayout">
+               <property name="spacing">
+                <number>1</number>
                </property>
-               <property name="text">
-                <string>Question 1</string>
-               </property>
-              </widget>
+               <item>
+                <widget class="QLabel" name="q1Question1Label">
+                 <property name="font">
+                  <font>
+                   <pointsize>16</pointsize>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Question 1</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="q1DownButton">
+                 <property name="maximumSize">
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-down"/>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="q1QuestionLabelLayout"/>
              </item>
              <item>
               <widget class="QTextEdit" name="q1QuestionTextEdit">
@@ -398,17 +427,62 @@
              <item>
               <layout class="QVBoxLayout" name="q2VerticalLayout">
                <item>
-                <widget class="QLabel" name="q2Question1Label">
-                 <property name="font">
-                  <font>
-                   <pointsize>16</pointsize>
-                   <bold>false</bold>
-                  </font>
+                <layout class="QHBoxLayout" name="q2QLabelHorizontalLayout">
+                 <property name="spacing">
+                  <number>1</number>
                  </property>
-                 <property name="text">
-                  <string>Question 2</string>
-                 </property>
-                </widget>
+                 <item>
+                  <widget class="QLabel" name="q2Question1Label">
+                   <property name="font">
+                    <font>
+                     <pointsize>16</pointsize>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Question 2</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="q2UpButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>30</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="go-up"/>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="q2DownButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>30</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="go-down"/>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
                <item>
                 <widget class="QTextEdit" name="q2QuestionTextEdit">
@@ -615,17 +689,62 @@
              <item>
               <layout class="QVBoxLayout" name="q3VerticalLayout">
                <item>
-                <widget class="QLabel" name="q3Question1Label">
-                 <property name="font">
-                  <font>
-                   <pointsize>16</pointsize>
-                   <bold>false</bold>
-                  </font>
+                <layout class="QHBoxLayout" name="q3QLabelHorizontalLayout">
+                 <property name="spacing">
+                  <number>1</number>
                  </property>
-                 <property name="text">
-                  <string>Question 3</string>
-                 </property>
-                </widget>
+                 <item>
+                  <widget class="QLabel" name="q3Question1Label">
+                   <property name="font">
+                    <font>
+                     <pointsize>16</pointsize>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Question 3</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="q3UpButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>30</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="go-up"/>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="q3DownButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>30</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="go-down"/>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
                <item>
                 <widget class="QTextEdit" name="q3QuestionTextEdit">
@@ -830,17 +949,62 @@
            <item>
             <layout class="QVBoxLayout" name="q4VerticalLayout">
              <item>
-              <widget class="QLabel" name="q4Question1Label">
-               <property name="font">
-                <font>
-                 <pointsize>16</pointsize>
-                 <bold>false</bold>
-                </font>
+              <layout class="QHBoxLayout" name="q4QLabelHorizontalLayout">
+               <property name="spacing">
+                <number>1</number>
                </property>
-               <property name="text">
-                <string>Question 4</string>
-               </property>
-              </widget>
+               <item>
+                <widget class="QLabel" name="q4Question1Label">
+                 <property name="font">
+                  <font>
+                   <pointsize>16</pointsize>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Question 4</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="q4UpButton">
+                 <property name="maximumSize">
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-up"/>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="q4DownButton">
+                 <property name="maximumSize">
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-down"/>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
               <widget class="QTextEdit" name="q4QuestionTextEdit">
@@ -1043,17 +1207,43 @@
            <item>
             <layout class="QVBoxLayout" name="q5VerticalLayout">
              <item>
-              <widget class="QLabel" name="q5Question1Label">
-               <property name="font">
-                <font>
-                 <pointsize>16</pointsize>
-                 <bold>false</bold>
-                </font>
+              <layout class="QHBoxLayout" name="q5QLabelHorizontalLayout">
+               <property name="spacing">
+                <number>1</number>
                </property>
-               <property name="text">
-                <string>Question 5</string>
-               </property>
-              </widget>
+               <item>
+                <widget class="QLabel" name="q5Question1Label">
+                 <property name="font">
+                  <font>
+                   <pointsize>16</pointsize>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Question 5</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="q5UpButton">
+                 <property name="maximumSize">
+                  <size>
+                   <width>30</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-up"/>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
               <widget class="QTextEdit" name="q5QuestionTextEdit">
@@ -1268,8 +1458,25 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
+    <widget class="QMenu" name="menuRecent_Files">
+     <property name="title">
+      <string>Recent Files</string>
+     </property>
+     <addaction name="actionrecent_file_01"/>
+     <addaction name="actionrecent_file_02"/>
+     <addaction name="actionrecent_file_03"/>
+     <addaction name="actionrecent_file_04"/>
+     <addaction name="actionrecent_file_05"/>
+     <addaction name="actionrecent_file_06"/>
+     <addaction name="actionrecent_file_07"/>
+     <addaction name="actionrecent_file_08"/>
+     <addaction name="actionrecent_file_09"/>
+     <addaction name="separator"/>
+     <addaction name="actionClear_Menu"/>
+    </widget>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
+    <addaction name="menuRecent_Files"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
     <addaction name="actionQuit"/>
@@ -1280,7 +1487,6 @@
     </property>
     <addaction name="actionNew_Quiz"/>
     <addaction name="actionRevert_ChangesUndo_All"/>
-    <addaction name="actionPreview"/>
     <addaction name="actionRemove_Quiz"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -1289,8 +1495,17 @@
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <addaction name="actionAnalyze"/>
+    <addaction name="actionDeploy"/>
+    <addaction name="actionPreview"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_Edit"/>
+   <addaction name="menuTools"/>
    <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -1354,15 +1569,6 @@
     <string>New Quiz</string>
    </property>
   </action>
-  <action name="actionPreview">
-   <property name="icon">
-    <iconset theme="document-print-preview">
-     <normaloff>.</normaloff>.</iconset>
-   </property>
-   <property name="text">
-    <string>Preview Selected Quiz</string>
-   </property>
-  </action>
   <action name="actionRemove_Quiz">
    <property name="enabled">
     <bool>false</bool>
@@ -1409,6 +1615,9 @@
    </property>
   </action>
   <action name="actionRevert_ChangesUndo_All">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset theme="edit-undo">
      <normaloff>.</normaloff>.</iconset>
@@ -1430,6 +1639,131 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionAnalyze">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="applications-science"/>
+   </property>
+   <property name="text">
+    <string>Check for Problems</string>
+   </property>
+   <property name="toolTip">
+    <string>Check Trivia File for Problems</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionDeploy">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="network-transmit"/>
+   </property>
+   <property name="text">
+    <string>Deploy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionPreview">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="media-playback-start"/>
+   </property>
+   <property name="text">
+    <string>Preview Selected Quiz</string>
+   </property>
+   <property name="toolTip">
+    <string>Preview Selected Quiz</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_01">
+   <property name="text">
+    <string>&amp;1| recent_file_01</string>
+   </property>
+   <property name="iconText">
+    <string>recent_file_01</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_02">
+   <property name="text">
+    <string>&amp;2| recent_file_02</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_03">
+   <property name="text">
+    <string>&amp;3| recent_file_03</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_04">
+   <property name="text">
+    <string>&amp;4| recent_file_04</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_05">
+   <property name="text">
+    <string>&amp;5| recent_file_05</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_06">
+   <property name="text">
+    <string>&amp;6| recent_file_06</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_07">
+   <property name="text">
+    <string>&amp;7| recent_file_07</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_08">
+   <property name="text">
+    <string>&amp;8| recent_file_08</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionrecent_file_09">
+   <property name="text">
+    <string>&amp;9| recent_file_09</string>
+   </property>
+   <property name="toolTip">
+    <string>Open This File</string>
+   </property>
+  </action>
+  <action name="actionClear_Menu">
+   <property name="text">
+    <string>Clear Menu</string>
    </property>
   </action>
  </widget>

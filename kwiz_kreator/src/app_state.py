@@ -88,7 +88,6 @@ class AppState:
             self.set_dirty(True)
             self.publish('selected_quiz_changed')
 
-
     def set_dirty(self, value=True):
         self.is_dirty = value
         self.publish('dirty_changed')
