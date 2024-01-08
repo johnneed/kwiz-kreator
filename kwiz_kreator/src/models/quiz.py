@@ -98,7 +98,8 @@ class Quiz:
             quiz.id
         )
     def __str__(self):
-        return f'Quiz: {self._id} - {self._title}'
+        return f'Quiz(title="{self._title}", subtitle="{self._subtitle}", publish_date="{self._publish_date}", ' \
+               f'author="{self._author}", questions="{self._questions}", id_="{self._id}")'
 
     def __repr__(self):
         return f'Quiz(title="{self._title}", subtitle="{self._subtitle}", publish_date="{self._publish_date}", ' \

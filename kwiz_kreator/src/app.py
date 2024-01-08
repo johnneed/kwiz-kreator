@@ -39,7 +39,6 @@ class App(QMainWindow, Ui_MainWindow):
         self.opened_file_name = None
         self.setWindowIcon(QIcon("./images/icon.png"))
 
-
     def subscribe(self):
         self.app_state.subscribe(self)
         self.recent_files.subscribe(self)
@@ -72,6 +71,8 @@ class App(QMainWindow, Ui_MainWindow):
             case "quiz_deleted":
                 self.__update_trivia_list()
                 self.__set_menu_state()
+            case "questions_reordered":
+                self.__display_selected_quiz()
             case _:
                 pass
 
@@ -153,7 +154,14 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
         self.actionClear_Menu.triggered.connect(self.recent_files.clear)
-
+        self.q1DownButton.clicked.connect(self.app_state.swap_questions(0, 1))
+        self.q2UpButton.clicked.connect(self.app_state.swap_questions(1, 0))
+        self.q2DownButton.clicked.connect(self.app_state.swap_questions(1, 2))
+        self.q3UpButton.clicked.connect(self.app_state.swap_questions(2, 1))
+        self.q3DownButton.clicked.connect(self.app_state.swap_questions(2, 3))
+        self.q4UpButton.clicked.connect(self.app_state.swap_questions(3, 2))
+        self.q4DownButton.clicked.connect(self.app_state.swap_questions(3, 4))
+        self.q5UpButton.clicked.connect(self.app_state.swap_questions(4, 3))
     def connect_selected_quiz_signal_slots(self):
         # Quiz Controls
         self.titleLineEdit.textEdited.connect(self.app_state.set_selected_quiz_property('title'))
@@ -207,6 +215,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.q2ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(1, 3))
 
         # Question 3
+
         self.q3QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionTextEdit,
                                                                             self.app_state.set_question_property(2,
                                                                                                                  'question_text')))
@@ -227,6 +236,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.q3ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(2, 3))
 
         # Question 4
+
         self.q4QuestionTextEdit.textChanged.connect(
             extract_text_area_value(self.q4QuestionTextEdit,
                                     self.app_state.set_question_property(3, 'question_text')))
@@ -249,6 +259,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.q4ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(3, 3))
 
         # Question 5
+
         self.q5QuestionTextEdit.textChanged.connect(
             extract_text_area_value(self.q5QuestionTextEdit,
                                     self.app_state.set_question_property(4, 'question_text')))
@@ -464,8 +475,6 @@ class App(QMainWindow, Ui_MainWindow):
         else:
             pass
 
-
-
     def __bind_recent_file(self, file_name):
         return lambda: self.__load_file(file_name)
 
@@ -474,7 +483,8 @@ class App(QMainWindow, Ui_MainWindow):
         recent_file_actions = [self.actionrecent_file_01, self.actionrecent_file_02, self.actionrecent_file_03,
                                self.actionrecent_file_04, self.actionrecent_file_05, self.actionrecent_file_06,
                                self.actionrecent_file_07, self.actionrecent_file_08, self.actionrecent_file_09]
-        has_recent_files = self.recent_files.get_recent_files() is not None and len(self.recent_files.get_recent_files()) > 0
+        has_recent_files = self.recent_files.get_recent_files() is not None and len(
+            self.recent_files.get_recent_files()) > 0
         print('Has Recent Files: ' + str(has_recent_files))
         self.menuRecent_Files.setEnabled(has_recent_files)
         for i in range(len(recent_file_actions)):
@@ -502,7 +512,6 @@ class App(QMainWindow, Ui_MainWindow):
         self.scrollAreaWidgetContents_2.setEnabled(quiz_is_selected)
         self.actionPreview.setEnabled(quiz_is_selected)
 
-
     def about(self):
         QMessageBox.about(
             self,
@@ -511,3 +520,5 @@ class App(QMainWindow, Ui_MainWindow):
             "<p>Play Trail Trivia at:</p>"
             "<p><a src='https://gmcburlington.org/trail-trivia/'>https://gmcburlington.org/trail-trivia/</a></p>"
         )
+
+

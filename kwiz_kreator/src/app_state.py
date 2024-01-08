@@ -106,3 +106,26 @@ class AppState:
             self.selected_quiz = Quiz.clone(self.trivia.quizzes[idx])
             self.set_dirty(False)
             self.publish('selected_quiz_reset')
+
+    def __swap_questions(self, index1, index2):
+        print("Swapping Questions: " + str(index1) + " and " + str(index2))
+        print("PreSwap Question 1 Text " + self.selected_quiz.questions[index1].question_text)
+        print("PreSwap Question 2 Text " + self.selected_quiz.questions[index2].question_text)
+        self.selected_quiz.questions[index1], self.selected_quiz.questions[index2] = self.selected_quiz.questions[index2], self.selected_quiz.questions[index1]
+        print("PostSwap Question 1 Text " + self.selected_quiz.questions[index1].question_text)
+        print("PostSwap Question 2 Text " + self.selected_quiz.questions[index2].question_text)
+        self.set_dirty(True)
+        self.publish('questions_reordered')
+
+
+    def swap_questions(self, index1, index2):
+        # sanity check
+        if index1 >= 5 or index2 >= 5 or index1 < 0 or index2 < 0:
+            return lambda: None
+        return lambda: self.__swap_questions(index1, index2)
+
+    def __str__(self):
+        return f'AppState:\n\t isDirty: {self.is_dirty}\n\t selected_quiz:{self.selected_quiz}'
+
+    def __repr__(self):
+        return f'AppState:\n\t isDirty: {self.is_dirty}\n\t selected_quiz:{self.selected_quiz}'

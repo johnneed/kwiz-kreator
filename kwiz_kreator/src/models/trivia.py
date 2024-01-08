@@ -44,7 +44,7 @@ class Trivia:
         return my_friday
 
     def __str__(self):
-        return f'Trivia: {self._id}'
+        return f'Trivia(title="{self.quizzes}", id_="{self._id}")'
 
     def __repr__(self):
         return f'Trivia(title="{self.quizzes}", id_="{self._id}")'
