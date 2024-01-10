@@ -12,6 +12,7 @@ from spellchecker import SpellChecker
 from .app_state import AppState
 from .lib.connect_controls import extract_text_area_value, set_answer_index
 from .lib.recent_files import RecentFiles
+from .lib.upload_via_ftp import UploadViaFTP
 from .models import Trivia, Quiz
 from .preview.launch import preview_quiz
 from .ui import Ui_MainWindow
@@ -29,7 +30,9 @@ class App(QMainWindow, Ui_MainWindow):
         recent_file_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/recent_files.json'
         print("Recent File Path: " + recent_file_path)
         self.recent_files = RecentFiles(recent_file_path)
-        print(self.recent_files)
+        ftp_config_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/ftp_config.json'
+        print("FTP Config Path: " + ftp_config_path)
+        self.upload = UploadViaFTP(ftp_config_path)
         self.setupUi(self)
         self.connect_main_signals_slots()
         self.connect_selected_quiz_signal_slots()
@@ -42,6 +45,7 @@ class App(QMainWindow, Ui_MainWindow):
     def subscribe(self):
         self.app_state.subscribe(self)
         self.recent_files.subscribe(self)
+        self.upload.subscribe(self)
 
     def receive(self, message):
         match message:
@@ -73,6 +77,8 @@ class App(QMainWindow, Ui_MainWindow):
                 self.__set_menu_state()
             case "questions_reordered":
                 self.__display_selected_quiz()
+            case "trivia_deployed":
+                self.__alert_file_deployed()
             case _:
                 pass
 
@@ -151,6 +157,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionSave_As.triggered.connect(self.save_file_as)
         self.actionPreview.triggered.connect(self.__preview_quiz)
         self.actionRemove_Quiz.triggered.connect(self.__delete_selected_quiz)
+        self.actionDeploy.triggered.connect(self.__deploy_trivia)
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
         self.actionClear_Menu.triggered.connect(self.recent_files.clear)
@@ -162,6 +169,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.q4UpButton.clicked.connect(self.app_state.swap_questions(3, 2))
         self.q4DownButton.clicked.connect(self.app_state.swap_questions(3, 4))
         self.q5UpButton.clicked.connect(self.app_state.swap_questions(4, 3))
+
     def connect_selected_quiz_signal_slots(self):
         # Quiz Controls
         self.titleLineEdit.textEdited.connect(self.app_state.set_selected_quiz_property('title'))
@@ -409,6 +417,37 @@ class App(QMainWindow, Ui_MainWindow):
             self.app_state.set_dirty(False)
             print("Saved to " + self.opened_file_name)
 
+    def __deploy_trivia(self):
+        #create temp directory if it doesn't exist
+        temp_file_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/temp'
+        if not os.path.exists( temp_file_path):
+            os.makedirs( temp_file_path)
+
+        # clean file and save
+        if self.app_state.is_dirty:
+            self.app_state.update_trivia_with_selected_quiz()
+            self.app_state.set_dirty(False)
+        trivia_data = self.app_state.get_trivia().to_json()
+        if self.opened_file_name is not None:
+            self.save_file()
+        else:
+            self.save_file_as()
+
+        # save file to temp directory
+        try:
+            with open(temp_file_path + "/trivia.json", 'w') as outfile:
+                json.dump(trivia_data, outfile)
+                outfile.close()
+        except Exception as e:
+            QMessageBox.about(self, "Error",
+                              "<p>Unable to save trivia data to:" + temp_file_path + "</p><p>" + str(e) + "</p>")
+
+        # upload file to server
+
+        print("Uploading to server")
+        self.upload.push_to_server(temp_file_path)
+
+
     def __display_selected_quiz(self):
         quiz = self.app_state.get_selected_quiz()
         if quiz:
@@ -511,6 +550,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionRemove_Quiz.setEnabled(quiz_is_selected)
         self.scrollAreaWidgetContents_2.setEnabled(quiz_is_selected)
         self.actionPreview.setEnabled(quiz_is_selected)
+        self.actionDeploy.setEnabled(has_quizzes)
 
     def about(self):
         QMessageBox.about(
@@ -521,4 +561,9 @@ class App(QMainWindow, Ui_MainWindow):
             "<p><a src='https://gmcburlington.org/trail-trivia/'>https://gmcburlington.org/trail-trivia/</a></p>"
         )
 
-
+    def __alert_file_deployed(self):
+        QMessageBox.about(
+            self,
+            "Trivia Uploaded",
+            "<p>Your trivia has been uploaded to the server.</p>"
+        )
