@@ -157,6 +157,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+kwiz_kreator/data/*
 ftp_config.json
 temp.json
 .Python
