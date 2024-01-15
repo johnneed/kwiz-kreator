@@ -7,7 +7,6 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
 )
-from spellchecker import SpellChecker
 
 from .app_state import AppState
 from .lib.connect_controls import extract_text_area_value, set_answer_index
@@ -16,8 +15,6 @@ from .lib.upload_via_ftp import UploadViaFTP
 from .models import Trivia, Quiz
 from .preview.launch import preview_quiz
 from .ui import Ui_MainWindow
-
-spell = SpellChecker()
 
 
 # from autocorrect import Speller
@@ -418,10 +415,10 @@ class App(QMainWindow, Ui_MainWindow):
             print("Saved to " + self.opened_file_name)
 
     def __deploy_trivia(self):
-        #create temp directory if it doesn't exist
+        # create temp directory if it doesn't exist
         temp_file_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/temp'
-        if not os.path.exists( temp_file_path):
-            os.makedirs( temp_file_path)
+        if not os.path.exists(temp_file_path):
+            os.makedirs(temp_file_path)
 
         # clean file and save
         if self.app_state.is_dirty:
@@ -446,7 +443,6 @@ class App(QMainWindow, Ui_MainWindow):
 
         print("Uploading to server")
         self.upload.push_to_server(temp_file_path)
-
 
     def __display_selected_quiz(self):
         quiz = self.app_state.get_selected_quiz()
