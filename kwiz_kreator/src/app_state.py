@@ -36,7 +36,7 @@ class AppState:
     def add_quiz(self, quiz):
         self.trivia.quizzes.append(quiz)
         self.selected_quiz = Quiz.clone(quiz)
-        self.trivia.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
+        self.trivia.sort_quizzes()
         self.set_dirty(True)
         self.publish('quiz_added')
 
@@ -69,6 +69,10 @@ class AppState:
             setattr(self.selected_quiz, prop, value)
             self.set_dirty(True)
             self.publish('selected_quiz_changed')
+            if prop == "publish_date":
+                self.update_trivia_with_selected_quiz()
+
+
 
     @curry
     def set_question_property(self, index, prop, value):
@@ -97,7 +101,7 @@ class AppState:
             if quiz.id == self.selected_quiz.id:
                 self.trivia.quizzes[idx] = Quiz.clone(self.selected_quiz)
                 break
-
+        self.trivia.sort_quizzes()
         self.set_dirty(False)
         self.publish('quiz_updated')
 

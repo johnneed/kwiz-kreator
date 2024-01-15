@@ -8,9 +8,7 @@ class Trivia:
     def __init__(self, quizzes=[], id_=None):
         self._id = id_ or str(uuid.uuid4())
         self._quizzes = quizzes
-        self._quizzes.sort(reverse=True, key=lambda q: q.publish_date)
-
-
+        self.sort_quizzes()
     @property
     def quizzes(self):
         return self._quizzes
@@ -18,7 +16,7 @@ class Trivia:
     @quizzes.setter
     def quizzes(self, quizzes):
         self._quizzes = quizzes
-        self._quizzes.sort(reverse=True, key=lambda q: q.publish_date)
+        self.sort_quizzes()
 
     @property
     def id(self):
@@ -43,6 +41,8 @@ class Trivia:
             my_friday += timedelta(7)
         return my_friday
 
+    def sort_quizzes(self):
+        self.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
     def __str__(self):
         return f'Trivia(title="{self.quizzes}", id_="{self._id}")'
 

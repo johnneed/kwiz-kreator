@@ -25,7 +25,6 @@ class App(QMainWindow, Ui_MainWindow):
         app_config_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/app_config.json'
         self.app_config = AppConfig(app_config_path)
         self.app_state = AppState()
-        print("FTP CONFIG: " + str(self.app_config.ftp_config.to_dict()))
         self.upload = UploadViaFTP(self.app_config.ftp_config)
         self.subscribe()
         self.setupUi(self)
@@ -43,11 +42,10 @@ class App(QMainWindow, Ui_MainWindow):
 
 
     def receive(self, message):
+        print('Received Message: ' + message)
         match message:
             case "app_config_loaded":
-                self.upload.subscribe(self)
                 self.upload.sftp_config = self.app_config.ftp_config
-                print("App Config Loaded" + str(self.app_config.to_dict()))
             case "recent_files_changed":
                 self.__display_recent_files()
             case "trivia_loaded":
@@ -295,15 +293,13 @@ class App(QMainWindow, Ui_MainWindow):
         if len(trivia.quizzes) == 0:
             self.app_state.clear_selected_quiz()
             return
+        self.listWidget.setCurrentRow(0)
         for idx, quiz in enumerate(trivia.quizzes):
             list_item = QListWidgetItem(quiz.title)
             list_item.setData(1, quiz.id)
             self.listWidget.addItem(list_item)
-        if current_index >= 0:
-            self.listWidget.setCurrentRow(current_index)
-        else:
-            self.listWidget.setCurrentRow(0)
-        print('Updated Trivia List')
+            if self.app_state.get_selected_quiz() and quiz.id == self.app_state.get_selected_quiz().id:
+                self.listWidget.setCurrentRow(idx)
 
     def __select_quiz(self):
         quiz_id = self.listWidget.currentItem().data(1)
@@ -315,7 +311,7 @@ class App(QMainWindow, Ui_MainWindow):
                                          "You have unsaved changes. Do you want to save them?",
                                          QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
             if reply == QMessageBox.Yes:
-                if (self.opened_file_name):
+                if self.opened_file_name:
                     self.save_file()
                 else:
                     self.save_file_as()
