@@ -9,8 +9,8 @@ from PyQt5.QtWidgets import (
 )
 
 from .app_state import AppState
+from .lib.app_config import AppConfig
 from .lib.connect_controls import extract_text_area_value, set_answer_index
-from .lib.recent_files import RecentFiles
 from .lib.upload_via_ftp import UploadViaFTP
 from .models import Trivia, Quiz
 from .preview.launch import preview_quiz
@@ -20,32 +20,34 @@ from .ui import Ui_MainWindow
 # from autocorrect import Speller
 class App(QMainWindow, Ui_MainWindow):
 
-    # spell = Speller(lang='en')
     def __init__(self, parent=None):
         super().__init__(parent)
+        app_config_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/app_config.json'
+        self.app_config = AppConfig(app_config_path)
         self.app_state = AppState()
-        recent_file_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/recent_files.json'
-        print("Recent File Path: " + recent_file_path)
-        self.recent_files = RecentFiles(recent_file_path)
-        ftp_config_path = os.path.dirname(os.path.realpath(__file__)) + '/../data/ftp_config.json'
-        print("FTP Config Path: " + ftp_config_path)
-        self.upload = UploadViaFTP(ftp_config_path)
+        print("FTP CONFIG: " + str(self.app_config.ftp_config.to_dict()))
+        self.upload = UploadViaFTP(self.app_config.ftp_config)
+        self.subscribe()
         self.setupUi(self)
         self.connect_main_signals_slots()
         self.connect_selected_quiz_signal_slots()
         self.__display_recent_files()
-        self.subscribe()
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
         self.setWindowIcon(QIcon("./images/icon.png"))
 
     def subscribe(self):
         self.app_state.subscribe(self)
-        self.recent_files.subscribe(self)
+        self.app_config.subscribe(self)
         self.upload.subscribe(self)
+
 
     def receive(self, message):
         match message:
+            case "app_config_loaded":
+                self.upload.subscribe(self)
+                self.upload.sftp_config = self.app_config.ftp_config
+                print("App Config Loaded" + str(self.app_config.to_dict()))
             case "recent_files_changed":
                 self.__display_recent_files()
             case "trivia_loaded":
@@ -157,7 +159,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionDeploy.triggered.connect(self.__deploy_trivia)
         self.actionAbout.triggered.connect(self.about)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
-        self.actionClear_Menu.triggered.connect(self.recent_files.clear)
+        self.actionClear_Menu.triggered.connect(self.app_config.clear_recent_files)
         self.q1DownButton.clicked.connect(self.app_state.swap_questions(0, 1))
         self.q2UpButton.clicked.connect(self.app_state.swap_questions(1, 0))
         self.q2DownButton.clicked.connect(self.app_state.swap_questions(1, 2))
@@ -358,8 +360,10 @@ class App(QMainWindow, Ui_MainWindow):
             self.opened_file_name = file_name
         except Exception as e:
             QMessageBox.about(self, "Error", "That does not look like a valid Trail Trivia file\n\n " + str(e))
+            self.app_config.remove_recent_file(file_name)
+            return
         print("File Opened " + file_name)
-        self.recent_files.add_recent_file(file_name)
+        self.app_config.add_recent_file(file_name)
 
     def open_file(self):
         options = QFileDialog.Options()
@@ -518,12 +522,12 @@ class App(QMainWindow, Ui_MainWindow):
         recent_file_actions = [self.actionrecent_file_01, self.actionrecent_file_02, self.actionrecent_file_03,
                                self.actionrecent_file_04, self.actionrecent_file_05, self.actionrecent_file_06,
                                self.actionrecent_file_07, self.actionrecent_file_08, self.actionrecent_file_09]
-        has_recent_files = self.recent_files.get_recent_files() is not None and len(
-            self.recent_files.get_recent_files()) > 0
+        has_recent_files = self.app_config.get_recent_files() is not None and len(
+            self.app_config.get_recent_files()) > 0
         print('Has Recent Files: ' + str(has_recent_files))
         self.menuRecent_Files.setEnabled(has_recent_files)
         for i in range(len(recent_file_actions)):
-            file_name = self.recent_files.get_file_name(i)
+            file_name = self.app_config.get_recent_file_name(i)
             recent_file_action = recent_file_actions[i]
 
             if file_name is not None:
