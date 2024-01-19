@@ -1,7 +1,5 @@
 import queue
-
 from toolz import curry
-
 from .models.quiz import Quiz
 from .models.trivia import Trivia
 
@@ -22,7 +20,7 @@ class AppState:
         self.message_queue.put(message)
         for subscriber in self.subscribers:
             subscriber.receive(message)
-        print('State Change: ' + message)
+
 
     def get_trivia(self):
         return self.trivia
@@ -112,12 +110,7 @@ class AppState:
             self.publish('selected_quiz_reset')
 
     def __swap_questions(self, index1, index2):
-        print("Swapping Questions: " + str(index1) + " and " + str(index2))
-        print("PreSwap Question 1 Text " + self.selected_quiz.questions[index1].question_text)
-        print("PreSwap Question 2 Text " + self.selected_quiz.questions[index2].question_text)
         self.selected_quiz.questions[index1], self.selected_quiz.questions[index2] = self.selected_quiz.questions[index2], self.selected_quiz.questions[index1]
-        print("PostSwap Question 1 Text " + self.selected_quiz.questions[index1].question_text)
-        print("PostSwap Question 2 Text " + self.selected_quiz.questions[index2].question_text)
         self.set_dirty(True)
         self.publish('questions_reordered')
 

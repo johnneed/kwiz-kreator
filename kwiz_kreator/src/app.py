@@ -145,7 +145,6 @@ class App(QMainWindow, Ui_MainWindow):
         self.q5ChoiceLineEdit_4.disconnect()
 
     def connect_main_signals_slots(self):
-        print('Connecting Signals and Slots')
         self.actionNew.triggered.connect(self.__create_new_trivia)
         self.actionOpen.triggered.connect(self.open_file)
         self.actionNew_Quiz.triggered.connect(self.__add_new_quiz)
@@ -181,7 +180,8 @@ class App(QMainWindow, Ui_MainWindow):
 
         # Question 1
         self.q1QuestionTextEdit.textChanged.connect(
-            extract_text_area_value(self.q1QuestionTextEdit, self.process_text(self.q1QuestionTextEdit.id, 0, 'question_text')))
+            extract_text_area_value(self.q1QuestionTextEdit,
+                                    self.process_text(self.q1QuestionTextEdit.id, 0, 'question_text')))
         self.q1AnswerTextEdit.textChanged.connect(
             extract_text_area_value(self.q1AnswerTextEdit,
                                     self.app_state.set_question_property(0, 'answer_text')))
@@ -309,7 +309,6 @@ class App(QMainWindow, Ui_MainWindow):
         if quiz_id is None:
             return
         if self.app_state.is_dirty and self.app_state.get_selected_quiz() is not None:
-            print('Save Question Asked')
             reply = QMessageBox.question(self, 'Message',
                                          "You have unsaved changes. Do you want to save them?",
                                          QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
@@ -321,20 +320,17 @@ class App(QMainWindow, Ui_MainWindow):
         self.disconnect_selected_quiz_signal_slots()
         self.app_state.set_selected_quiz_by_id(quiz_id)
         self.connect_selected_quiz_signal_slots()
-        print('New Quiz Selected: ' + quiz_id)
 
     def __add_new_quiz(self):
         first_friday = self.app_state.get_trivia().get_first_available_friday().strftime("%Y/%m/%d")
         quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_friday, author="", questions=[])
         self.app_state.add_quiz(quiz)
-        print('New Quiz Added: ' + quiz.id)
 
     def __create_new_trivia(self):
         new_trivia = Trivia(quizzes=[Quiz(title="New Quiz")])
         self.app_state.set_trivia(new_trivia)
         self.opened_file_name = None
         self.listWidget.setCurrentRow(0)
-        print('New Trivia Created')
 
     def __delete_selected_quiz(self):
         reply = QMessageBox.question(self, 'Message',
@@ -343,7 +339,6 @@ class App(QMainWindow, Ui_MainWindow):
         if reply == QMessageBox.Yes:
             quiz_id = self.app_state.get_selected_quiz().id
             self.app_state.delete_quiz(quiz_id)
-            print('Quiz Deleted: ' + quiz_id)
             self.save_file()
 
     def __load_file(self, file_name):
@@ -517,7 +512,6 @@ class App(QMainWindow, Ui_MainWindow):
         return lambda: self.__load_file(file_name)
 
     def __display_recent_files(self):
-        print("Display Recent Files")
         recent_file_actions = [self.actionrecent_file_01, self.actionrecent_file_02, self.actionrecent_file_03,
                                self.actionrecent_file_04, self.actionrecent_file_05, self.actionrecent_file_06,
                                self.actionrecent_file_07, self.actionrecent_file_08, self.actionrecent_file_09]
@@ -530,7 +524,6 @@ class App(QMainWindow, Ui_MainWindow):
             recent_file_action = recent_file_actions[i]
 
             if file_name is not None:
-                print("BINDING FILE NAME IS: " + file_name)
                 recent_file_action.triggered.connect(self.__bind_recent_file(file_name))
                 recent_file_action.setText(file_name)
                 recent_file_action.setVisible(True)

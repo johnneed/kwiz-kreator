@@ -51,9 +51,7 @@ def get_main_file():  # pragma: no cover
 
 @app.route('/<path:path>', methods=['GET'])
 def get_resources(path):
-    print("GETTING RESOURCE: ", path, end="\n")
     complete_path = os.path.join(root_dir(), path)
-    print("ABS PATH: ", complete_path, end="\n")
     mimetype = get_mime_type(complete_path)
     content = get_file(complete_path)
     return Response(content, mimetype=mimetype)
@@ -61,9 +59,7 @@ def get_resources(path):
 
 @app.route('/static/js/<path:path>', methods=['GET'])
 def get_js(path):  # pragma: no cover
-    print("GETTING JS: ", path, end="\n")
     complete_path = os.path.join(root_dir() + "static/js/", path)
-    print("ABS PATH: ", complete_path, end="\n")
     mimetype = get_mime_type(complete_path)
     content = get_file(complete_path)
     return Response(content, mimetype=mimetype)
@@ -71,9 +67,7 @@ def get_js(path):  # pragma: no cover
 
 @app.route('/static/css/<path:path>', methods=['GET'])
 def get_css(path):  # pragma: no cover
-    print("GETTING CSS: ", path, end="\n")
     complete_path = os.path.join(root_dir() + "static/css/", path)
-    print("ABS PATH: ", complete_path, end="\n")
     mimetype = get_mime_type(complete_path)
     content = get_file(complete_path)
     return Response(content, mimetype=mimetype)

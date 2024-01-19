@@ -3,7 +3,7 @@ import uuid
 from PyQt5.QtCore import QEvent, Qt, pyqtSlot
 from PyQt5.QtGui import QContextMenuEvent, QMouseEvent, QTextCursor, QTextCharFormat
 from PyQt5.QtWidgets import QMenu, QTextEdit
-
+from toolz import curry
 from .correction_action import SpecialAction
 from .highlighter import GrammarCheckHighlighter
 from ..lib.grammar_checker import GrammarChecker, GrammarMatch
@@ -31,7 +31,6 @@ class SpellTextEdit(QTextEdit):
                     self.highlighter.matches = message.matches
                     self.highlighter.highlightBlock(self.toPlainText())
             case _:
-                print("PASSING")
                 pass
 
     def set_grammar_checker(self, grammar_checker):
@@ -56,10 +55,9 @@ class SpellTextEdit(QTextEdit):
         self.setTextCursor(text_cursor)
         word_to_check = text_cursor.selectedText()
         start = text_cursor.selectionStart()
-        # end = text_cursor.selectionEnd()
+
         if word_to_check != "":
             match = next((m for m in self.highlighter.matches if m.offset == start), None)
-            print("MATCH IS: " + str(match))
             if match is not None and match.suggestions is not None and len(match.suggestions) > 0:
                 self.contextMenu.addSeparator()
                 self.contextMenu.addMenu(self.create_suggestions_menu(match))
@@ -71,13 +69,14 @@ class SpellTextEdit(QTextEdit):
         suggestions = match.suggestions
         for word in suggestions:
             action = SpecialAction(word, self.contextMenu)
-            action.actionTriggered.connect(lambda: self.correct_word(word, match))
+            action.actionTriggered.connect( self.correct_word(match))
             suggestions_menu.addAction(action)
 
         return suggestions_menu
 
     @pyqtSlot(str)
-    def correct_word(self, word, match):
+    @curry
+    def correct_word(self, match, word):
         text_cursor = self.textCursor()
         text_cursor.beginEditBlock()
         text_cursor.removeSelectedText()
