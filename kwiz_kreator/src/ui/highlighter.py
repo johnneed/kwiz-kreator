@@ -49,6 +49,10 @@ class GrammarCheckHighlighter(QSyntaxHighlighter):
     def errorFormat(self, value):
         self._errorFormat = value
 
+
+    def get_suggestions(self, word):
+        return self.speller.suggestions(word)
+
     def highlightBlock(self, text: str) -> None:
 
         for match in self._matches:
