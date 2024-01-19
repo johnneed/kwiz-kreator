@@ -184,7 +184,7 @@ class App(QMainWindow, Ui_MainWindow):
                                     self.process_text(self.q1QuestionTextEdit.id, 0, 'question_text')))
         self.q1AnswerTextEdit.textChanged.connect(
             extract_text_area_value(self.q1AnswerTextEdit,
-                                    self.app_state.set_question_property(0, 'answer_text')))
+                                    self.process_text(self.q1AnswerTextEdit.id, 0, 'question_text')))
         self.q1ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image'))
         self.q1ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image_caption'))
         question_1_choice_radios = [self.q1ChoiceRadioButton_1,
@@ -201,11 +201,11 @@ class App(QMainWindow, Ui_MainWindow):
         self.q1ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(0, 3))
 
         # Question 2
-        self.q2QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q2QuestionTextEdit,
-                                                                            self.app_state.set_question_property(1,
-                                                                                                                 'question_text')))
-        self.q2AnswerTextEdit.textChanged.connect(
-            extract_text_area_value(self.q2AnswerTextEdit, self.app_state.set_question_property(1, 'answer_text')))
+        self.q2QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q2QuestionTextEdit, self.process_text(
+            self.q2QuestionTextEdit.id, 0, 'question_text')))
+        self.q2AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q2AnswerTextEdit,
+                                                                          self.process_text(self.q2AnswerTextEdit.id, 0,
+                                                                                            'question_text')))
         self.q2ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image'))
         self.q2ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image_caption'))
         question_2_choice_radios = [self.q2ChoiceRadioButton_1,
@@ -224,11 +224,11 @@ class App(QMainWindow, Ui_MainWindow):
 
         # Question 3
 
-        self.q3QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionTextEdit,
-                                                                            self.app_state.set_question_property(2,
-                                                                                                                 'question_text')))
-        self.q3AnswerTextEdit.textChanged.connect(
-            extract_text_area_value(self.q3AnswerTextEdit, self.app_state.set_question_property(2, 'answer_text')))
+        self.q3QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionTextEdit, self.process_text(
+            self.q3QuestionTextEdit.id, 0, 'question_text')))
+        self.q3AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q3AnswerTextEdit,
+                                                                          self.process_text(self.q3AnswerTextEdit.id, 0,
+                                                                                            'question_text')))
         self.q3ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(2, 'answer_image'))
         self.q3ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(2,
                                                                                             'answer_image_caption'))
@@ -247,10 +247,10 @@ class App(QMainWindow, Ui_MainWindow):
 
         self.q4QuestionTextEdit.textChanged.connect(
             extract_text_area_value(self.q4QuestionTextEdit,
-                                    self.app_state.set_question_property(3, 'question_text')))
-        self.q4AnswerTextEdit.textChanged.connect(
-            extract_text_area_value(self.q4AnswerTextEdit,
-                                    self.app_state.set_question_property(3, 'answer_text')))
+                                    self.process_text(self.q4QuestionTextEdit.id, 0, 'question_text')))
+        self.q4AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q4AnswerTextEdit,
+                                                                          self.process_text(self.q4AnswerTextEdit.id, 0,
+                                                                                            'question_text')))
         self.q4ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image'))
         self.q4ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image_caption'))
         question_4_choice_radios = [self.q4ChoiceRadioButton_1,
@@ -270,10 +270,10 @@ class App(QMainWindow, Ui_MainWindow):
 
         self.q5QuestionTextEdit.textChanged.connect(
             extract_text_area_value(self.q5QuestionTextEdit,
-                                    self.app_state.set_question_property(4, 'question_text')))
-        self.q5AnswerTextEdit.textChanged.connect(
-            extract_text_area_value(self.q5AnswerTextEdit,
-                                    self.app_state.set_question_property(4, 'answer_text')))
+                                    self.process_text(self.q5QuestionTextEdit.id, 0, 'question_text')))
+        self.q5AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q5AnswerTextEdit,
+                                                                          self.process_text(self.q5AnswerTextEdit.id, 0,
+                                                                                            'question_text')))
         self.q5ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image'))
         self.q5ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image_caption'))
         question_5_choice_radios = [self.q5ChoiceRadioButton_1,
