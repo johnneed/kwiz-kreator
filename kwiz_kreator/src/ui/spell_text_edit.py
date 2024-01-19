@@ -4,6 +4,7 @@ from PyQt5.QtCore import QEvent, Qt, pyqtSlot
 from PyQt5.QtGui import QContextMenuEvent, QMouseEvent, QTextCursor, QTextCharFormat
 from PyQt5.QtWidgets import QMenu, QTextEdit
 from toolz import curry
+
 from .correction_action import SpecialAction
 from .highlighter import GrammarCheckHighlighter
 from ..lib.grammar_checker import GrammarChecker, GrammarMatch
@@ -25,11 +26,13 @@ class SpellTextEdit(QTextEdit):
         self.highlighter.errorFormat.setUnderlineColor(Qt.red)
 
     def receive(self, message):
-        match message.type:
+        print("CONTROL: " + self.id + " RECEIVED MESSAGE '" + message.message_type + "' FOR: " + message.control_id)
+        match message.message_type:
             case "MATCHES_FOUND":
-                if self.id == message.id:
+                if self.id == message.control_id:
+                    print("MESSAGE RECEIVED!!!!!!!!!!!!!!!!!!!!")
                     self.highlighter.matches = message.matches
-                    self.highlighter.highlightBlock(self.toPlainText())
+                    self.highlighter.rehighlight()
             case _:
                 pass
 
@@ -69,7 +72,7 @@ class SpellTextEdit(QTextEdit):
         suggestions = match.suggestions
         for word in suggestions:
             action = SpecialAction(word, self.contextMenu)
-            action.actionTriggered.connect( self.correct_word(match))
+            action.actionTriggered.connect(self.correct_word(match))
             suggestions_menu.addAction(action)
 
         return suggestions_menu
