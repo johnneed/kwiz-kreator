@@ -372,6 +372,16 @@ requests = "*"
 tqdm = "*"
 
 [[package]]
+name = "lock"
+version = "2018.3.25.2110"
+description = "module for enabling file locks"
+optional = false
+python-versions = "*"
+files = [
+    {file = "lock-2018.3.25.2110.tar.gz", hash = "sha256:cc5ac770930493eed7a8cfd0cf2568a125faf112eb8aa6b6149b3e581523d0c7"},
+]
+
+[[package]]
 name = "markupsafe"
 version = "2.1.3"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -599,6 +609,32 @@ files = [
 ]
 
 [[package]]
+name = "python-debouncer"
+version = "0.1.3"
+description = "Debouncer and friends for Python"
+optional = false
+python-versions = ">=3.9,<4.0"
+files = [
+    {file = "python_debouncer-0.1.3-py3-none-any.whl", hash = "sha256:25908a6ff1e28485c5ac346002d79597261357fbb7ee0fdf372365cac6fe796e"},
+    {file = "python_debouncer-0.1.3.tar.gz", hash = "sha256:b5bb28d28bfa0914cfcc52c6ee54f03543c1e003a23c3433a3d7bd304b4f9bbe"},
+]
+
+[package.dependencies]
+lock = ">=2018.3.25.2110,<2019.0.0.0"
+python-immutable = ">=1.0.0,<2.0.0"
+
+[[package]]
+name = "python-immutable"
+version = "1.0.2"
+description = "Immutable implementation for Python using dataclasses"
+optional = false
+python-versions = ">=3.9,<4.0"
+files = [
+    {file = "python_immutable-1.0.2-py3-none-any.whl", hash = "sha256:603e1275ea79969106d999e553465364b284c90cd4fbae89dadfd1ca597d2d2f"},
+    {file = "python_immutable-1.0.2.tar.gz", hash = "sha256:42de875494a5eefd0288ee9a4e18d8767a2cc4fdd3aa34a3e5b49b72f3bcc7fb"},
+]
+
+[[package]]
 name = "requests"
 version = "2.31.0"
 description = "Python HTTP for Humans."
@@ -686,4 +722,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "7161bd8ff2fa2d27a908aa0f969f2706f4a1c055a4598d92bd13269be751b27d"
+content-hash = "0a05aaa552ba27a38443bef1f27be65f5e9af18e29c627e45573b9d9991a4c86"

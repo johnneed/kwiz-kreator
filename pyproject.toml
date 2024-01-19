@@ -21,6 +21,7 @@ pyspellchecker = "^0.7.2"
 flask = "^3.0.0"
 pysftp = "^0.2.9"
 language-tool-python = "^2.7.1"
+python-debouncer = "^0.1.3"
 
 
 [build-system]

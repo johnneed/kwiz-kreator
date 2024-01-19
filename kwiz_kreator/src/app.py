@@ -7,6 +7,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
 )
+from toolz import curry
 
 from .app_state import AppState
 from .lib.app_config import AppConfig
@@ -17,7 +18,6 @@ from .preview.launch import preview_quiz
 from .ui import Ui_MainWindow
 
 
-# from autocorrect import Speller
 class App(QMainWindow, Ui_MainWindow):
 
     def __init__(self, parent=None):
@@ -39,7 +39,6 @@ class App(QMainWindow, Ui_MainWindow):
         self.app_state.subscribe(self)
         self.app_config.subscribe(self)
         self.upload.subscribe(self)
-
 
     def receive(self, message):
         print('Received Message: ' + message)
@@ -167,6 +166,11 @@ class App(QMainWindow, Ui_MainWindow):
         self.q4DownButton.clicked.connect(self.app_state.swap_questions(3, 4))
         self.q5UpButton.clicked.connect(self.app_state.swap_questions(4, 3))
 
+    @curry
+    def process_text(self, control_id, index: int, property_name: str, text: str):
+        self.app_state.set_question_property(index, property_name, text)
+        self.speller.match(control_id, text)
+
     def connect_selected_quiz_signal_slots(self):
         # Quiz Controls
         self.titleLineEdit.textEdited.connect(self.app_state.set_selected_quiz_property('title'))
@@ -177,8 +181,7 @@ class App(QMainWindow, Ui_MainWindow):
 
         # Question 1
         self.q1QuestionTextEdit.textChanged.connect(
-            extract_text_area_value(self.q1QuestionTextEdit,
-                                    self.app_state.set_question_property(0, 'question_text')))
+            extract_text_area_value(self.q1QuestionTextEdit, self.process_text(self.q1QuestionTextEdit.id, 0, 'question_text')))
         self.q1AnswerTextEdit.textChanged.connect(
             extract_text_area_value(self.q1AnswerTextEdit,
                                     self.app_state.set_question_property(0, 'answer_text')))

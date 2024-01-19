@@ -12,13 +12,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 from .spell_check_wrapper import SpellCheckWrapper
 from .spell_text_edit import SpellTextEdit
-
+from ..lib.grammar_checker import GrammarChecker
 
 class Ui_MainWindow(object):
     def __init__(self):
         super().__init__()
-        self.speller = SpellCheckWrapper()
-
+        self.speller = GrammarChecker()
+ 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(853, 830)

@@ -1,27 +1,43 @@
+import uuid
+
 from PyQt5.QtCore import QEvent, Qt, pyqtSlot
-from PyQt5.QtGui import QContextMenuEvent, QMouseEvent, QTextCursor
+from PyQt5.QtGui import QContextMenuEvent, QMouseEvent, QTextCursor, QTextCharFormat
 from PyQt5.QtWidgets import QMenu, QTextEdit
 
 from .correction_action import SpecialAction
-from .highlighter import SpellCheckHighlighter
-from .spell_check_wrapper import SpellCheckWrapper
+from .highlighter import GrammarCheckHighlighter
+from ..lib.grammar_checker import GrammarChecker
 
 
 class SpellTextEdit(QTextEdit):
     def __init__(self, *args):
-        if args and type(args[0]) == SpellCheckWrapper:
+        if args and type(args[0]) == GrammarChecker:
             super().__init__(*args[1:])
-            self.speller = args[0]
+            self.grammar_checker = args[0]
+            self.id = str(uuid.uuid4())
+            self.grammar_checker.subscribe(self)
+
         else:
             super().__init__(*args)
 
-        self.highlighter = SpellCheckHighlighter(self.document())
-        if hasattr(self, "speller"):
-            self.highlighter.setSpeller(self.speller)
+        self.highlighter = GrammarCheckHighlighter(self.document())
+        self.highlighter.errorFormat.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
+        self.highlighter.errorFormat.setUnderlineColor(Qt.red)
 
-    def set_speller(self, speller):
-        self.speller = speller
-        self.highlighter.setSpeller(self.speller)
+    def receive(self, message):
+        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ID: ' + self.id + ' Received Message: ' + str(message))
+        match message.type:
+            case "MATCHES_FOUND":
+                if self.id == message.id:
+                    self.highlighter.matches = message.matches
+                    self.highlighter.highlightBlock(self.toPlainText())
+            case _:
+                print("PASSING")
+                pass
+
+    def set_grammar_checker(self, grammar_checker):
+        self.grammar_checker = grammar_checker
+        self.grammar_checker.subscribe(self)
 
     def mousePressEvent(self, event: QMouseEvent) -> None:
         if event.button() == Qt.RightButton:
@@ -65,3 +81,4 @@ class SpellTextEdit(QTextEdit):
         text_cursor.removeSelectedText()
         text_cursor.insertText(word)
         text_cursor.endEditBlock()
+
