@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime
 
-from PyQt5.QtCore import QDate
+from PyQt5.QtCore import QDate, Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
@@ -30,6 +30,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.connect_main_signals_slots()
         self.connect_selected_quiz_signal_slots()
+        self.__set_window_dimensions()
         self.__display_recent_files()
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
@@ -41,10 +42,12 @@ class App(QMainWindow, Ui_MainWindow):
         self.upload.subscribe(self)
 
     def receive(self, message):
-        print('Received Message: ' + message)
+        print('APP RECEIVED MESSAGE: ' + message)
         match message:
             case "app_config_loaded":
+                print("App Config Loaded")
                 self.upload.sftp_config = self.app_config.ftp_config
+                self.splitter.setSizes(self.app_config.splitter_position)
             case "recent_files_changed":
                 self.__display_recent_files()
             case "trivia_loaded":
@@ -144,7 +147,17 @@ class App(QMainWindow, Ui_MainWindow):
         self.q5ChoiceLineEdit_3.disconnect()
         self.q5ChoiceLineEdit_4.disconnect()
 
+    def save_splitter_sizes(self):
+        sizes = self.splitter.sizes()
+        print("SIZES ARE:" + str(sizes))
+        self.app_config.save_window_preference(AppConfig.window_preferences.SPLITTER_POSITION, sizes)
+
+    def save_window_state(self, state):
+        print("WINDOW STATE IS:" + str(state))
+        self.app_config.save_window_preference(AppConfig.window_preferences.WINDOW_MODE, state)
+
     def connect_main_signals_slots(self):
+        self.splitter.splitterMoved.connect(self.save_splitter_sizes)
         self.actionNew.triggered.connect(self.__create_new_trivia)
         self.actionOpen.triggered.connect(self.open_file)
         self.actionNew_Quiz.triggered.connect(self.__add_new_quiz)
@@ -510,6 +523,22 @@ class App(QMainWindow, Ui_MainWindow):
 
     def __bind_recent_file(self, file_name):
         return lambda: self.__load_file(file_name)
+
+    def __set_window_dimensions(self):
+        print('SETTING WINDOW PREFS')
+        print(str(self.app_config))
+        match self.app_config.window_mode:
+            case AppConfig.window_modes.MAXIMIZED:
+                self.setWindowState(Qt.WindowMaximized)
+            case AppConfig.window_modes.FULLSCREEN:
+                self.setWindowState(Qt.WindowFullScreen)
+            case AppConfig.window_modes.WINDOWED:
+                self.setWindowState(Qt.WindowNoState)
+                self.resize(self.app_config.window_width, self.app_config.window_height)
+            case _:
+                pass
+
+        self.splitter.setSizes(self.app_config.splitter_position)
 
     def __display_recent_files(self):
         recent_file_actions = [self.actionrecent_file_01, self.actionrecent_file_02, self.actionrecent_file_03,
