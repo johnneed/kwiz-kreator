@@ -32,7 +32,9 @@ class SpellTextEdit(QTextEdit):
                 if self.id == message.control_id:
                     print("MESSAGE RECEIVED!!!!!!!!!!!!!!!!!!!!")
                     self.highlighter.matches = message.matches
-                    self.highlighter.rehighlight()
+                    # The next line is the one that causes the infinite recursion and seg fault
+                    # self.highlighter.rehighlight()
+
             case _:
                 pass
 

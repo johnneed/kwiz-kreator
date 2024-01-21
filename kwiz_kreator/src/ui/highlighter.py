@@ -1,8 +1,10 @@
 import re
-import uuid
+
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QSyntaxHighlighter, QTextCharFormat
+
 from .spell_check_wrapper import SpellCheckWrapper
+
 
 class SpellCheckHighlighter(QSyntaxHighlighter):
     wordRegEx = re.compile(r"\b([A-Za-z]{2,})\b")
@@ -49,16 +51,10 @@ class GrammarCheckHighlighter(QSyntaxHighlighter):
     def errorFormat(self, value):
         self._errorFormat = value
 
-
-    def get_suggestions(self, word):
-        return self.speller.suggestions(word)
-
     def highlightBlock(self, text: str) -> None:
-
         for match in self._matches:
             self.setFormat(
                 match.offset,
                 match.length,
                 self.errorFormat,
             )
-
