@@ -2,7 +2,7 @@ import uuid
 
 from PyQt5.QtCore import QEvent, Qt, pyqtSlot
 from PyQt5.QtGui import QContextMenuEvent, QMouseEvent, QTextCursor, QTextCharFormat
-from PyQt5.QtWidgets import QMenu, QTextEdit
+from PyQt5.QtWidgets import QMenu, QPlainTextEdit
 from toolz import curry
 
 from .correction_action import SpecialAction
@@ -10,7 +10,7 @@ from .highlighter import GrammarCheckHighlighter
 from ..lib.grammar_checker import GrammarChecker, GrammarMatch
 
 
-class SpellTextEdit(QTextEdit):
+class SpellTextEdit(QPlainTextEdit):
     def __init__(self, *args):
         if args and type(args[0]) == GrammarChecker:
             super().__init__(*args[1:])
@@ -29,8 +29,7 @@ class SpellTextEdit(QTextEdit):
         print("CONTROL: " + self.id + " RECEIVED MESSAGE '" + message.message_type + "' FOR: " + message.control_id)
         match message.message_type:
             case "MATCHES_FOUND":
-                if self.id == message.control_id:
-                    print("MESSAGE RECEIVED!!!!!!!!!!!!!!!!!!!!")
+                if self.id == message.control_id and self.highlighter.matches != message.matches:
                     self.highlighter.matches = message.matches
                     self.highlighter.rehighlight()
             case _:
@@ -86,6 +85,8 @@ class SpellTextEdit(QTextEdit):
         text_cursor.insertText(word)
         text_cursor.endEditBlock()
         match_index = next((index for (index, m) in enumerate(self.highlighter.matches) if m.id == match.id), None)
+        if match_index is None:
+            return
         len_diff = len(word) - match.length
         corrected = [GrammarMatch(m.context, m.offset + len_diff, m.length, m.ruleId, m.message, m.suggestions) for
                      m in self.highlighter.matches]
