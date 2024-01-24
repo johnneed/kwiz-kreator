@@ -9,16 +9,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-from .spell_check_wrapper import SpellCheckWrapper
 from .spell_text_edit import SpellTextEdit
 from ..lib.grammar_checker import GrammarChecker
+
 
 class Ui_MainWindow(object):
     def __init__(self):
         super().__init__()
-        self.speller = GrammarChecker()
- 
+        self.grammar_checker = GrammarChecker()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(853, 830)
@@ -52,7 +51,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_2.setEnabled(False)
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, -110, 402, 4259))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 402, 4259))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_4.setObjectName("gridLayout_4")
@@ -118,7 +117,7 @@ class Ui_MainWindow(object):
         self.q1QuestionLabelLayout = QtWidgets.QHBoxLayout()
         self.q1QuestionLabelLayout.setObjectName("q1QuestionLabelLayout")
         self.q1VerticalLayout.addLayout(self.q1QuestionLabelLayout)
-        self.q1QuestionTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q1QuestionTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q1QuestionTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q1QuestionTextEdit.setBaseSize(QtCore.QSize(0, 0))
         self.q1QuestionTextEdit.setTabChangesFocus(True)
@@ -173,7 +172,7 @@ class Ui_MainWindow(object):
         self.q1Answer1abel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.q1Answer1abel.setObjectName("q1Answer1abel")
         self.q1VerticalLayout.addWidget(self.q1Answer1abel)
-        self.q1AnswerTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q1AnswerTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q1AnswerTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q1AnswerTextEdit.setObjectName("q1AnswerTextEdit")
         self.q1VerticalLayout.addWidget(self.q1AnswerTextEdit)
@@ -226,7 +225,7 @@ class Ui_MainWindow(object):
         self.q2DownButton.setObjectName("q2DownButton")
         self.q2QLabelHorizontalLayout.addWidget(self.q2DownButton)
         self.q2VerticalLayout1.addLayout(self.q2QLabelHorizontalLayout)
-        self.q2QuestionTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q2QuestionTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q2QuestionTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q2QuestionTextEdit.setObjectName("q2QuestionTextEdit")
         self.q2VerticalLayout1.addWidget(self.q2QuestionTextEdit)
@@ -279,7 +278,7 @@ class Ui_MainWindow(object):
         self.q2Answer1abel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.q2Answer1abel.setObjectName("q2Answer1abel")
         self.q2VerticalLayout1.addWidget(self.q2Answer1abel)
-        self.q2AnswerTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q2AnswerTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q2AnswerTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q2AnswerTextEdit.setObjectName("q2AnswerTextEdit")
         self.q2VerticalLayout1.addWidget(self.q2AnswerTextEdit)
@@ -333,7 +332,7 @@ class Ui_MainWindow(object):
         self.q3DownButton.setObjectName("q3DownButton")
         self.q3QLabelHorizontalLayout.addWidget(self.q3DownButton)
         self.q3VerticalLayout1.addLayout(self.q3QLabelHorizontalLayout)
-        self.q3QuestionTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q3QuestionTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q3QuestionTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q3QuestionTextEdit.setObjectName("q3QuestionTextEdit")
         self.q3VerticalLayout1.addWidget(self.q3QuestionTextEdit)
@@ -386,7 +385,7 @@ class Ui_MainWindow(object):
         self.q3Answer1abel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.q3Answer1abel.setObjectName("q3Answer1abel")
         self.q3VerticalLayout1.addWidget(self.q3Answer1abel)
-        self.q3AnswerTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q3AnswerTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q3AnswerTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q3AnswerTextEdit.setObjectName("q3AnswerTextEdit")
         self.q3VerticalLayout1.addWidget(self.q3AnswerTextEdit)
@@ -438,7 +437,7 @@ class Ui_MainWindow(object):
         self.q4DownButton.setObjectName("q4DownButton")
         self.q4QLabelHorizontalLayout.addWidget(self.q4DownButton)
         self.q4VerticalLayout.addLayout(self.q4QLabelHorizontalLayout)
-        self.q4QuestionTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q4QuestionTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q4QuestionTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q4QuestionTextEdit.setObjectName("q4QuestionTextEdit")
         self.q4VerticalLayout.addWidget(self.q4QuestionTextEdit)
@@ -491,7 +490,7 @@ class Ui_MainWindow(object):
         self.q4Answer1abel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.q4Answer1abel.setObjectName("q4Answer1abel")
         self.q4VerticalLayout.addWidget(self.q4Answer1abel)
-        self.q4AnswerTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q4AnswerTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q4AnswerTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q4AnswerTextEdit.setObjectName("q4AnswerTextEdit")
         self.q4VerticalLayout.addWidget(self.q4AnswerTextEdit)
@@ -534,7 +533,7 @@ class Ui_MainWindow(object):
         self.q5UpButton.setObjectName("q5UpButton")
         self.q5QLabelHorizontalLayout.addWidget(self.q5UpButton)
         self.q5VerticalLayout.addLayout(self.q5QLabelHorizontalLayout)
-        self.q5QuestionTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q5QuestionTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q5QuestionTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q5QuestionTextEdit.setObjectName("q5QuestionTextEdit")
         self.q5VerticalLayout.addWidget(self.q5QuestionTextEdit)
@@ -587,7 +586,7 @@ class Ui_MainWindow(object):
         self.q5Answer1abel = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         self.q5Answer1abel.setObjectName("q5Answer1abel")
         self.q5VerticalLayout.addWidget(self.q5Answer1abel)
-        self.q5AnswerTextEdit = SpellTextEdit(self.speller, self.centralwidget)
+        self.q5AnswerTextEdit = SpellTextEdit(self.grammar_checker, self.centralwidget)
         self.q5AnswerTextEdit.setMinimumSize(QtCore.QSize(0, 200))
         self.q5AnswerTextEdit.setObjectName("q5AnswerTextEdit")
         self.q5VerticalLayout.addWidget(self.q5AnswerTextEdit)
@@ -705,6 +704,8 @@ class Ui_MainWindow(object):
         self.actionrecent_file_09.setObjectName("actionrecent_file_09")
         self.actionClear_Menu = QtWidgets.QAction(MainWindow)
         self.actionClear_Menu.setObjectName("actionClear_Menu")
+        self.actionSettings = QtWidgets.QAction(MainWindow)
+        self.actionSettings.setObjectName("actionSettings")
         self.menuRecent_Files.addAction(self.actionrecent_file_01)
         self.menuRecent_Files.addAction(self.actionrecent_file_02)
         self.menuRecent_Files.addAction(self.actionrecent_file_03)
@@ -719,6 +720,7 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.menuRecent_Files.menuAction())
+        self.menuFile.addAction(self.actionSettings)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
         self.menuFile.addAction(self.actionQuit)
@@ -735,259 +737,258 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menu_Help.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.actionQuit.triggered.connect(MainWindow.close)  # type: ignore
+        self.actionQuit.triggered.connect(MainWindow.close) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Kwiz Kreator"))
         self.titleLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Main\n"
-                                                               "                                                                    Quiz Title</p></body></html>\n"
-                                                               "                                                                "))
+"                                                                    Quiz Title</p></body></html>\n"
+"                                                                "))
         self.subtitleLabel.setText(_translate("MainWindow", "Subtitle"))
         self.subtitleLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>A\n"
-                                                                  "                                                                    brielf subtitle to further explain what the quiz is\n"
-                                                                  "                                                                    about.</p></body></html>\n"
-                                                                  "                                                                "))
+"                                                                    brielf subtitle to further explain what the quiz is\n"
+"                                                                    about.</p></body></html>\n"
+"                                                                "))
         self.authorLabel.setText(_translate("MainWindow", "Author"))
         self.authorLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Who\n"
-                                                                "                                                                    wrote the quiz?</p></body></html>\n"
-                                                                "                                                                "))
+"                                                                    wrote the quiz?</p></body></html>\n"
+"                                                                "))
         self.publishOnLabel.setText(_translate("MainWindow", "Publish On"))
         self.publishOnDateEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\n"
-                                                                   "                                                                    date do you want to quiz to appear on?</p></body></html>\n"
-                                                                   "                                                                "))
+"                                                                    date do you want to quiz to appear on?</p></body></html>\n"
+"                                                                "))
         self.publishOnDateEdit.setDisplayFormat(_translate("MainWindow", "yyyy/MM/dd"))
         self.titleLabel.setText(_translate("MainWindow", "Title"))
         self.q1Question1Label.setText(_translate("MainWindow", "Question 1"))
         self.q1QuestionTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\'s\n"
-                                                                    "                                                                    the question you want folks to answer?</p></body></html>\n"
-                                                                    "                                                                "))
+"                                                                    the question you want folks to answer?</p></body></html>\n"
+"                                                                "))
         self.q1ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
         self.q1ChoiceRadioButton_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q1ChoiceLineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        third possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        third possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q1ChoiceRadioButton_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q1ChoiceLineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        second possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        second possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q1ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q1ChoiceLineEdit_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        fourth possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        fourth possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q1ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
-        self.q1ChoiceLineEdit_1.setToolTip(
-            _translate("MainWindow", "<html><head/><body><p>The first possible answer</p></body></html>"))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
+        self.q1ChoiceLineEdit_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>The first possible answer</p></body></html>"))
         self.q1Answer1abel.setText(_translate("MainWindow", "Answer"))
         self.q1AnswerTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>A\n"
-                                                                  "                                                                    longer explanation about the correct answer</p></body></html>\n"
-                                                                  "                                                                "))
+"                                                                    longer explanation about the correct answer</p></body></html>\n"
+"                                                                "))
         self.q1ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q1ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                    url of the image you want to appear next to your\n"
-                                                                    "                                                                    answer</p></body></html>\n"
-                                                                    "                                                                "))
+"                                                                    url of the image you want to appear next to your\n"
+"                                                                    answer</p></body></html>\n"
+"                                                                "))
         self.q1ImageCaptionLabel.setText(_translate("MainWindow", "Image Caption"))
         self.q1ImageCaptionLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Words\n"
-                                                                        "                                                                    you want appear under the picture</p></body></html>\n"
-                                                                        "                                                                "))
+"                                                                    you want appear under the picture</p></body></html>\n"
+"                                                                "))
         self.q2Question1Label.setText(_translate("MainWindow", "Question 2"))
         self.q2QuestionTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\'s\n"
-                                                                    "                                                                            the question you want folks to answer?</p></body></html>\n"
-                                                                    "                                                                        "))
+"                                                                            the question you want folks to answer?</p></body></html>\n"
+"                                                                        "))
         self.q2ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
         self.q2ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q2ChoiceLineEdit_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                first possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                first possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q2ChoiceRadioButton_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q2ChoiceLineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                second possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                second possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q2ChoiceRadioButton_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q2ChoiceLineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                third possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                third possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q2ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q2ChoiceLineEdit_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                fourth possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                fourth possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q2Answer1abel.setText(_translate("MainWindow", "Answer"))
         self.q2AnswerTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>A\n"
-                                                                  "                                                                            longer explanation about the correct answer</p></body></html>\n"
-                                                                  "                                                                        "))
+"                                                                            longer explanation about the correct answer</p></body></html>\n"
+"                                                                        "))
         self.q2ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q2ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                            url of the image you want to appear next to\n"
-                                                                    "                                                                            your answer</p></body></html>\n"
-                                                                    "                                                                        "))
+"                                                                            url of the image you want to appear next to\n"
+"                                                                            your answer</p></body></html>\n"
+"                                                                        "))
         self.q2ImageCaptionLabel.setText(_translate("MainWindow", "Image Caption"))
         self.q2ImageCaptionLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Words\n"
-                                                                        "                                                                            you want appear under the picture</p></body></html>\n"
-                                                                        "                                                                        "))
+"                                                                            you want appear under the picture</p></body></html>\n"
+"                                                                        "))
         self.q3Question1Label.setText(_translate("MainWindow", "Question 3"))
         self.q3QuestionTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\'s\n"
-                                                                    "                                                                            the question you want folks to answer?</p></body></html>\n"
-                                                                    "                                                                        "))
+"                                                                            the question you want folks to answer?</p></body></html>\n"
+"                                                                        "))
         self.q3ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
         self.q3ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q3ChoiceLineEdit_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                first possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                first possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q3ChoiceRadioButton_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q3ChoiceLineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                second possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                second possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q3ChoiceRadioButton_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q3ChoiceLineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                third possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                third possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q3ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                                which choice is the\n"
-                                                                       "                                                                                                correct answer</p></body></html>\n"
-                                                                       "                                                                                            "))
+"                                                                                                which choice is the\n"
+"                                                                                                correct answer</p></body></html>\n"
+"                                                                                            "))
         self.q3ChoiceLineEdit_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                                fourth possible answer</p></body></html>\n"
-                                                                    "                                                                                            "))
+"                                                                                                fourth possible answer</p></body></html>\n"
+"                                                                                            "))
         self.q3Answer1abel.setText(_translate("MainWindow", "Answer"))
         self.q3AnswerTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>A\n"
-                                                                  "                                                                            longer explanation about the correct answer</p></body></html>\n"
-                                                                  "                                                                        "))
+"                                                                            longer explanation about the correct answer</p></body></html>\n"
+"                                                                        "))
         self.q3ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q3ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                            url of the image you want to appear next to\n"
-                                                                    "                                                                            your answer</p></body></html>\n"
-                                                                    "                                                                        "))
+"                                                                            url of the image you want to appear next to\n"
+"                                                                            your answer</p></body></html>\n"
+"                                                                        "))
         self.q3ImageCaptionLabel.setText(_translate("MainWindow", "Image Caption"))
         self.q3ImageCaptionLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Words\n"
-                                                                        "                                                                            you want appear under the picture</p></body></html>\n"
-                                                                        "                                                                        "))
+"                                                                            you want appear under the picture</p></body></html>\n"
+"                                                                        "))
         self.q4Question1Label.setText(_translate("MainWindow", "Question 4"))
         self.q4QuestionTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\'s\n"
-                                                                    "                                                                    the question you want folks to answer?</p></body></html>\n"
-                                                                    "                                                                "))
+"                                                                    the question you want folks to answer?</p></body></html>\n"
+"                                                                "))
         self.q4ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
         self.q4ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q4ChoiceLineEdit_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        first possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        first possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q4ChoiceRadioButton_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q4ChoiceLineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        second possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        second possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q4ChoiceRadioButton_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q4ChoiceLineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        third possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        third possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q4ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q4ChoiceLineEdit_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        fourth possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        fourth possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q4Answer1abel.setText(_translate("MainWindow", "Answer"))
         self.q4AnswerTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>A\n"
-                                                                  "                                                                    longer explanation about the correct answer</p></body></html>\n"
-                                                                  "                                                                "))
+"                                                                    longer explanation about the correct answer</p></body></html>\n"
+"                                                                "))
         self.q4ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q4ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                    url of the image you want to appear next to your\n"
-                                                                    "                                                                    answer</p></body></html>\n"
-                                                                    "                                                                "))
+"                                                                    url of the image you want to appear next to your\n"
+"                                                                    answer</p></body></html>\n"
+"                                                                "))
         self.q4ImageCaptionLabel.setText(_translate("MainWindow", "Image Caption"))
         self.q4ImageCaptionLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Words\n"
-                                                                        "                                                                    you want appear under the picture</p></body></html>\n"
-                                                                        "                                                                "))
+"                                                                    you want appear under the picture</p></body></html>\n"
+"                                                                "))
         self.q5Question1Label.setText(_translate("MainWindow", "Question 5"))
         self.q5QuestionTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>What\'s\n"
-                                                                    "                                                                    the question you want folks to answer?</p></body></html>\n"
-                                                                    "                                                                "))
+"                                                                    the question you want folks to answer?</p></body></html>\n"
+"                                                                "))
         self.q5ChoiceGroupBox.setTitle(_translate("MainWindow", "Choices"))
         self.q5ChoiceRadioButton_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q5ChoiceLineEdit_1.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        first possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        first possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q5ChoiceRadioButton_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q5ChoiceLineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        second possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        second possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q5ChoiceRadioButton_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q5ChoiceLineEdit_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        third possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        third possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q5ChoiceRadioButton_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Choose\n"
-                                                                       "                                                                                        which choice is the correct\n"
-                                                                       "                                                                                        answer</p></body></html>\n"
-                                                                       "                                                                                    "))
+"                                                                                        which choice is the correct\n"
+"                                                                                        answer</p></body></html>\n"
+"                                                                                    "))
         self.q5ChoiceLineEdit_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                                        fourth possible answer</p></body></html>\n"
-                                                                    "                                                                                    "))
+"                                                                                        fourth possible answer</p></body></html>\n"
+"                                                                                    "))
         self.q5Answer1abel.setText(_translate("MainWindow", "Answer"))
         self.q5AnswerTextEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>A\n"
-                                                                  "                                                                    longer explanation about the correct answer</p></body></html>\n"
-                                                                  "                                                                "))
+"                                                                    longer explanation about the correct answer</p></body></html>\n"
+"                                                                "))
         self.q5ImageUrlLabel.setText(_translate("MainWindow", "Image URL"))
         self.q5ImageUrlLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>The\n"
-                                                                    "                                                                    url of the image you want to appear next to your\n"
-                                                                    "                                                                    answer</p></body></html>\n"
-                                                                    "                                                                "))
+"                                                                    url of the image you want to appear next to your\n"
+"                                                                    answer</p></body></html>\n"
+"                                                                "))
         self.q5ImageCaptionLabel.setText(_translate("MainWindow", "Image Caption"))
         self.q5ImageCaptionLineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Words\n"
-                                                                        "                                                                    you want appear under the picture</p></body></html>\n"
-                                                                        "                                                                "))
+"                                                                    you want appear under the picture</p></body></html>\n"
+"                                                                "))
         self.menuFile.setTitle(_translate("MainWindow", "&File"))
         self.menuRecent_Files.setTitle(_translate("MainWindow", "Recent Files"))
         self.menu_Edit.setTitle(_translate("MainWindow", "&Edit"))
@@ -1039,11 +1040,11 @@ class Ui_MainWindow(object):
         self.actionrecent_file_09.setText(_translate("MainWindow", "&9| recent_file_09"))
         self.actionrecent_file_09.setToolTip(_translate("MainWindow", "Open This File"))
         self.actionClear_Menu.setText(_translate("MainWindow", "Clear Menu"))
+        self.actionSettings.setText(_translate("MainWindow", "Settings"))
 
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
