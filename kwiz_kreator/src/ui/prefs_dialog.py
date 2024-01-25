@@ -1,20 +1,30 @@
 from PyQt5 import QtCore, QtWidgets
-
-
+from toolz import curry
+from ..lib.app_config import Preferences
 
 
 class PrefsDialog(QtWidgets.QDialog):
+    _preferences: Preferences
 
-    def __init__(self):
+    def __init__(self, config=None):
         super().__init__()
+        if config is None:
+            config = {}
+        self._preferences = Preferences(config)
         self.setupUi()
+
+    @curry
+    def _set_property(self, prop, value):
+        if value != self[prop]:
+            setattr(self, prop, value)
+
     def setupUi(self):
-        self.setObjectName("Dialog")
+        self.setObjectName("PrefsDialog")
         self.resize(400, 300)
         self.buttonBox = QtWidgets.QDialogButtonBox(self)
         self.buttonBox.setGeometry(QtCore.QRect(30, 240, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayoutWidget = QtWidgets.QWidget(self)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 381, 221))
@@ -32,36 +42,36 @@ class PrefsDialog(QtWidgets.QDialog):
         self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.checkBox_3 = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
-        self.checkBox_3.setObjectName("checkBox_3")
-        self.gridLayout_2.addWidget(self.checkBox_3, 1, 1, 1, 1)
+        self.tue_checkbox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        self.tue_checkbox.setObjectName("tue_checkbox")
+        self.gridLayout_2.addWidget(self.tue_checkbox, 1, 1, 1, 1)
         self.timeEdit = QtWidgets.QTimeEdit(self.gridLayoutWidget_2)
         self.timeEdit.setObjectName("timeEdit")
         self.gridLayout_2.addWidget(self.timeEdit, 5, 1, 1, 1)
-        self.checkBox_5 = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
-        self.checkBox_5.setObjectName("checkBox_5")
-        self.gridLayout_2.addWidget(self.checkBox_5, 2, 0, 1, 1)
-        self.checkBox_7 = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
-        self.checkBox_7.setObjectName("checkBox_7")
-        self.gridLayout_2.addWidget(self.checkBox_7, 2, 2, 1, 1)
+        self.fri_checkbox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        self.fri_checkbox.setObjectName("fri_checkbox")
+        self.gridLayout_2.addWidget(self.fri_checkbox, 2, 0, 1, 1)
+        self.sun_checkbox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        self.sun_checkbox.setObjectName("sun_checkbox")
+        self.gridLayout_2.addWidget(self.sun_checkbox, 2, 2, 1, 1)
         self.label_6 = QtWidgets.QLabel(self.gridLayoutWidget_2)
         self.label_6.setObjectName("label_6")
         self.gridLayout_2.addWidget(self.label_6, 5, 0, 1, 1)
-        self.checkBox_6 = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
-        self.checkBox_6.setObjectName("checkBox_6")
-        self.gridLayout_2.addWidget(self.checkBox_6, 1, 3, 1, 1)
-        self.checkBox_4 = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
-        self.checkBox_4.setObjectName("checkBox_4")
-        self.gridLayout_2.addWidget(self.checkBox_4, 1, 0, 1, 1)
+        self.thu_checkbox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        self.thu_checkbox.setObjectName("thu_checkbox")
+        self.gridLayout_2.addWidget(self.thu_checkbox, 1, 3, 1, 1)
+        self.mon_checkbox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        self.mon_checkbox.setObjectName("mon_checkbox")
+        self.gridLayout_2.addWidget(self.mon_checkbox, 1, 0, 1, 1)
         self.label_5 = QtWidgets.QLabel(self.gridLayoutWidget_2)
         self.label_5.setObjectName("label_5")
         self.gridLayout_2.addWidget(self.label_5, 0, 0, 1, 1)
-        self.checkBox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
-        self.checkBox.setObjectName("checkBox")
-        self.gridLayout_2.addWidget(self.checkBox, 2, 1, 1, 1)
-        self.checkBox_2 = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
-        self.checkBox_2.setObjectName("checkBox_2")
-        self.gridLayout_2.addWidget(self.checkBox_2, 1, 2, 1, 1)
+        self.sat_checkbox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        self.sat_checkbox.setObjectName("sat_checkbox")
+        self.gridLayout_2.addWidget(self.sat_checkbox, 2, 1, 1, 1)
+        self.wed_checkbox = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        self.wed_checkbox.setObjectName("wed_checkbox")
+        self.gridLayout_2.addWidget(self.wed_checkbox, 1, 2, 1, 1)
         self.label_7 = QtWidgets.QLabel(self.gridLayoutWidget_2)
         self.label_7.setEnabled(False)
         self.label_7.setText("")
@@ -71,7 +81,7 @@ class PrefsDialog(QtWidgets.QDialog):
         self.ftp_tab = QtWidgets.QWidget()
         self.ftp_tab.setObjectName("ftp_tab")
         self.formLayoutWidget = QtWidgets.QWidget(self.ftp_tab)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(10, 10, 351, 141))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(10, 10, 351, 171))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -106,6 +116,14 @@ class PrefsDialog(QtWidgets.QDialog):
         self.label = QtWidgets.QLabel(self.formLayoutWidget)
         self.label.setObjectName("label")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.label_8 = QtWidgets.QLabel(self.formLayoutWidget)
+        self.label_8.setObjectName("label_8")
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_8)
+        self.lineEdit_4 = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.lineEdit_4.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.lineEdit_4.setText("")
+        self.lineEdit_4.setObjectName("lineEdit_4")
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
         self.tabWidget.addTab(self.ftp_tab, "")
         self.verticalLayout.addWidget(self.tabWidget)
         self.gridLayout_3 = QtWidgets.QGridLayout()
@@ -114,32 +132,34 @@ class PrefsDialog(QtWidgets.QDialog):
 
         self.retranslateUi()
         self.tabWidget.setCurrentIndex(1)
-        self.buttonBox.accepted.connect(self.accept) # type: ignore
-        self.buttonBox.rejected.connect(self.reject) # type: ignore
+        self.buttonBox.accepted.connect(PrefsDialog.accept)  # type: ignore
+        self.buttonBox.rejected.connect(PrefsDialog.reject)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(self)
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("Dialog", "Settings"))
-        self.checkBox_3.setText(_translate("Dialog", "Tue"))
-        self.checkBox_5.setText(_translate("Dialog", "Fri"))
-        self.checkBox_7.setText(_translate("Dialog", "Sun"))
-        self.label_6.setText(_translate("Dialog", "Premier Time"))
-        self.checkBox_6.setText(_translate("Dialog", "Thu"))
-        self.checkBox_4.setText(_translate("Dialog", "Mon"))
-        self.label_5.setText(_translate("Dialog", "Premier Days"))
-        self.checkBox.setText(_translate("Dialog", "Sat"))
-        self.checkBox_2.setText(_translate("Dialog", "Wed"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.schedule_tab), _translate("Dialog", "Schedule"))
-        self.label_2.setText(_translate("Dialog", "User"))
-        self.label_3.setText(_translate("Dialog", "Password"))
-        self.label_4.setText(_translate("Dialog", "Port"))
-        self.label.setText(_translate("Dialog", "Host"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.ftp_tab), _translate("Dialog", "FTP"))
+        self.setWindowTitle(_translate("PrefsDialog", "Settings"))
+        self.tue_checkbox.setText(_translate("PrefsDialog", "Tue"))
+        self.fri_checkbox.setText(_translate("PrefsDialog", "Fri"))
+        self.sun_checkbox.setText(_translate("PrefsDialog", "Sun"))
+        self.label_6.setText(_translate("PrefsDialog", "Premier Time"))
+        self.thu_checkbox.setText(_translate("PrefsDialog", "Thu"))
+        self.mon_checkbox.setText(_translate("PrefsDialog", "Mon"))
+        self.label_5.setText(_translate("PrefsDialog", "Premier Days"))
+        self.sat_checkbox.setText(_translate("PrefsDialog", "Sat"))
+        self.wed_checkbox.setText(_translate("PrefsDialog", "Wed"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.schedule_tab), _translate("PrefsDialog", "Schedule"))
+        self.label_2.setText(_translate("PrefsDialog", "User"))
+        self.label_3.setText(_translate("PrefsDialog", "Password"))
+        self.label_4.setText(_translate("PrefsDialog", "Port"))
+        self.label.setText(_translate("PrefsDialog", "Host"))
+        self.label_8.setText(_translate("PrefsDialog", "Remote Path"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.ftp_tab), _translate("PrefsDialog", "FTP"))
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
     ui = PrefsDialog()

@@ -578,8 +578,10 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionDeploy.setEnabled(has_quizzes)
 
     def __set_settings(self):
-        dialog = PrefsDialog()
-        dialog.exec_()
+        dialog = PrefsDialog(self.app_config.to_dict())
+        result = dialog.exec_()
+        if result == 1:
+            print("CHANGE SETTINGS")
 
     def about(self):
         QMessageBox.about(
