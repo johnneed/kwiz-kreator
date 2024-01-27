@@ -42,7 +42,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="schedule_tab">
        <attribute name="title">
@@ -59,7 +59,7 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="1" column="1">
-          <widget class="QCheckBox" name="checkBox_3">
+          <widget class="QCheckBox" name="tue_checkbox">
            <property name="text">
             <string>Tue</string>
            </property>
@@ -90,14 +90,14 @@
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QCheckBox" name="checkBox_6">
+          <widget class="QCheckBox" name="thu_checkbox">
            <property name="text">
             <string>Thu</string>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QCheckBox" name="checkBox_4">
+          <widget class="QCheckBox" name="mon_checkbox">
            <property name="text">
             <string>Mon</string>
            </property>
@@ -111,14 +111,14 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QCheckBox" name="checkBox">
+          <widget class="QCheckBox" name="sat_checkbox">
            <property name="text">
             <string>Sat</string>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QCheckBox" name="checkBox_2">
+          <widget class="QCheckBox" name="wed_checkbox">
            <property name="text">
             <string>Wed</string>
            </property>
