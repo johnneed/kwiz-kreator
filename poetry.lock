@@ -225,6 +225,7 @@ files = [
     {file = "charset_normalizer-3.3.2-py3-none-any.whl", hash = "sha256:3e4d1f6587322d2788836a99c69062fbb091331ec940e02d12d179c1d53e25fc"},
 ]
 
+
 [[package]]
 name = "click"
 version = "8.1.7"
@@ -722,4 +723,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "0a05aaa552ba27a38443bef1f27be65f5e9af18e29c627e45573b9d9991a4c86"
+content-hash = "db4b9c42bd73d1b10d4754753f72b79945f0e5bd7ba4c7fae19affda6b17a350"
