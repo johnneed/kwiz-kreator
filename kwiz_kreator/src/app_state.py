@@ -1,5 +1,7 @@
 import queue
+
 from toolz import curry
+
 from .models.quiz import Quiz
 from .models.trivia import Trivia
 
@@ -20,7 +22,6 @@ class AppState:
         self.message_queue.put(message)
         for subscriber in self.subscribers:
             subscriber.receive(message)
-
 
     def get_trivia(self):
         return self.trivia
@@ -70,8 +71,6 @@ class AppState:
             if prop == "publish_date":
                 self.update_trivia_with_selected_quiz()
 
-
-
     @curry
     def set_question_property(self, index, prop, value):
         if self.selected_quiz is not None and value != getattr(self.selected_quiz.questions[index], prop):
@@ -110,10 +109,10 @@ class AppState:
             self.publish('selected_quiz_reset')
 
     def __swap_questions(self, index1, index2):
-        self.selected_quiz.questions[index1], self.selected_quiz.questions[index2] = self.selected_quiz.questions[index2], self.selected_quiz.questions[index1]
+        self.selected_quiz.questions[index1], self.selected_quiz.questions[index2] = self.selected_quiz.questions[
+            index2], self.selected_quiz.questions[index1]
         self.set_dirty(True)
         self.publish('questions_reordered')
-
 
     def swap_questions(self, index1, index2):
         # sanity check

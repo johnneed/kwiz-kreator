@@ -16,6 +16,7 @@ from .lib.upload_via_ftp import UploadViaFTP
 from .models import Trivia, Quiz
 from .preview.launch import preview_quiz
 from .ui import Ui_MainWindow
+from .ui.prefs_dialog import PrefsDialog
 
 
 class App(QMainWindow, Ui_MainWindow):
@@ -157,7 +158,9 @@ class App(QMainWindow, Ui_MainWindow):
         self.app_config.save_window_preference(AppConfig.window_preferences.WINDOW_MODE, state)
 
     def connect_main_signals_slots(self):
+
         self.splitter.splitterMoved.connect(self.save_splitter_sizes)
+        self.actionSettings.triggered.connect(self.__set_settings)
         self.actionNew.triggered.connect(self.__create_new_trivia)
         self.actionOpen.triggered.connect(self.open_file)
         self.actionNew_Quiz.triggered.connect(self.__add_new_quiz)
@@ -180,10 +183,8 @@ class App(QMainWindow, Ui_MainWindow):
 
     @curry
     def process_text(self, control_id, index: int, property_name: str, text: str):
-        print("PROCESSING TEXT!!!!!!!!!!!!!!!!!!!" + text)
         self.app_state.set_question_property(index, property_name, text)
-        self.speller.match(control_id, text)
-
+        self.grammar_checker.match(control_id, text)
 
     def connect_selected_quiz_signal_slots(self):
         # Quiz Controls
@@ -199,7 +200,7 @@ class App(QMainWindow, Ui_MainWindow):
                                     self.process_text(self.q1QuestionTextEdit.id, 0, 'question_text')))
         self.q1AnswerTextEdit.textChanged.connect(
             extract_text_area_value(self.q1AnswerTextEdit,
-                                    self.process_text(self.q1AnswerTextEdit.id, 0, 'question_text')))
+                                    self.process_text(self.q1AnswerTextEdit.id, 0, 'answer_text')))
         self.q1ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image'))
         self.q1ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(0, 'answer_image_caption'))
         question_1_choice_radios = [self.q1ChoiceRadioButton_1,
@@ -217,10 +218,10 @@ class App(QMainWindow, Ui_MainWindow):
 
         # Question 2
         self.q2QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q2QuestionTextEdit, self.process_text(
-            self.q2QuestionTextEdit.id, 0, 'question_text')))
+            self.q2QuestionTextEdit.id, 1, 'question_text')))
         self.q2AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q2AnswerTextEdit,
-                                                                          self.process_text(self.q2AnswerTextEdit.id, 0,
-                                                                                            'question_text')))
+                                                                          self.process_text(self.q2AnswerTextEdit.id, 1,
+                                                                                            'answer_text')))
         self.q2ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image'))
         self.q2ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(1, 'answer_image_caption'))
         question_2_choice_radios = [self.q2ChoiceRadioButton_1,
@@ -240,10 +241,10 @@ class App(QMainWindow, Ui_MainWindow):
         # Question 3
 
         self.q3QuestionTextEdit.textChanged.connect(extract_text_area_value(self.q3QuestionTextEdit, self.process_text(
-            self.q3QuestionTextEdit.id, 0, 'question_text')))
+            self.q3QuestionTextEdit.id, 2, 'question_text')))
         self.q3AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q3AnswerTextEdit,
-                                                                          self.process_text(self.q3AnswerTextEdit.id, 0,
-                                                                                            'question_text')))
+                                                                          self.process_text(self.q3AnswerTextEdit.id, 2,
+                                                                                            'answer_text')))
         self.q3ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(2, 'answer_image'))
         self.q3ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(2,
                                                                                             'answer_image_caption'))
@@ -262,10 +263,10 @@ class App(QMainWindow, Ui_MainWindow):
 
         self.q4QuestionTextEdit.textChanged.connect(
             extract_text_area_value(self.q4QuestionTextEdit,
-                                    self.process_text(self.q4QuestionTextEdit.id, 0, 'question_text')))
+                                    self.process_text(self.q4QuestionTextEdit.id, 3, 'question_text')))
         self.q4AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q4AnswerTextEdit,
-                                                                          self.process_text(self.q4AnswerTextEdit.id, 0,
-                                                                                            'question_text')))
+                                                                          self.process_text(self.q4AnswerTextEdit.id, 3,
+                                                                                            'answer_text')))
         self.q4ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image'))
         self.q4ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(3, 'answer_image_caption'))
         question_4_choice_radios = [self.q4ChoiceRadioButton_1,
@@ -285,10 +286,10 @@ class App(QMainWindow, Ui_MainWindow):
 
         self.q5QuestionTextEdit.textChanged.connect(
             extract_text_area_value(self.q5QuestionTextEdit,
-                                    self.process_text(self.q5QuestionTextEdit.id, 0, 'question_text')))
+                                    self.process_text(self.q5QuestionTextEdit.id, 4, 'question_text')))
         self.q5AnswerTextEdit.textChanged.connect(extract_text_area_value(self.q5AnswerTextEdit,
-                                                                          self.process_text(self.q5AnswerTextEdit.id, 0,
-                                                                                            'question_text')))
+                                                                          self.process_text(self.q5AnswerTextEdit.id, 4,
+                                                                                            'answer_text')))
         self.q5ImageUrlLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image'))
         self.q5ImageCaptionLineEdit.textEdited.connect(self.app_state.set_question_property(4, 'answer_image_caption'))
         question_5_choice_radios = [self.q5ChoiceRadioButton_1,
@@ -574,6 +575,14 @@ class App(QMainWindow, Ui_MainWindow):
         self.scrollAreaWidgetContents_2.setEnabled(quiz_is_selected)
         self.actionPreview.setEnabled(quiz_is_selected)
         self.actionDeploy.setEnabled(has_quizzes)
+
+    def __set_settings(self):
+        dialog = PrefsDialog(self.app_config.to_dict())
+        result = dialog.exec_()
+        if result == 1:
+            prefs = dialog.get_config()
+            self.app_config.save_preferences(prefs)
+
 
     def about(self):
         QMessageBox.about(

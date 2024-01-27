@@ -65,7 +65,7 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-110</y>
+          <y>0</y>
           <width>402</width>
           <height>4259</height>
          </rect>
@@ -205,7 +205,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset theme="go-down"/>
+                  <iconset theme="go-down">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -456,7 +457,8 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset theme="go-up"/>
+                    <iconset theme="go-up">
+                     <normaloff>.</normaloff>.</iconset>
                    </property>
                    <property name="flat">
                     <bool>true</bool>
@@ -475,7 +477,8 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset theme="go-down"/>
+                    <iconset theme="go-down">
+                     <normaloff>.</normaloff>.</iconset>
                    </property>
                    <property name="flat">
                     <bool>true</bool>
@@ -718,7 +721,8 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset theme="go-up"/>
+                    <iconset theme="go-up">
+                     <normaloff>.</normaloff>.</iconset>
                    </property>
                    <property name="flat">
                     <bool>true</bool>
@@ -737,7 +741,8 @@
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset theme="go-down"/>
+                    <iconset theme="go-down">
+                     <normaloff>.</normaloff>.</iconset>
                    </property>
                    <property name="flat">
                     <bool>true</bool>
@@ -978,7 +983,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset theme="go-up"/>
+                  <iconset theme="go-up">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -997,7 +1003,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset theme="go-down"/>
+                  <iconset theme="go-down">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -1236,7 +1243,8 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset theme="go-up"/>
+                  <iconset theme="go-up">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -1477,6 +1485,7 @@
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="menuRecent_Files"/>
+    <addaction name="actionSettings"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
     <addaction name="actionQuit"/>
@@ -1646,7 +1655,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="applications-science"/>
+    <iconset theme="applications-science">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Check for Problems</string>
@@ -1663,7 +1673,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="network-transmit"/>
+    <iconset theme="network-transmit">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Deploy</string>
@@ -1677,7 +1688,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="media-playback-start"/>
+    <iconset theme="media-playback-start">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Preview Selected Quiz</string>
@@ -1764,6 +1776,11 @@
   <action name="actionClear_Menu">
    <property name="text">
     <string>Clear Menu</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>
