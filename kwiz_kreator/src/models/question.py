@@ -49,7 +49,7 @@ class Question:
 
     @choices.setter
     def choices(self, choices):
-        self._choices = choices
+        self._choices = choices + [Choice()] * (4 - len(choices))
 
     @property
     def correct_answer_index(self):
@@ -122,7 +122,7 @@ class Question:
         return f'Question: {self._id} - {self._question_text}'
 
     def __repr__(self):
-        return f'Question(  question_text="{self._question_text}", choices="{self._choices}", tags="{self._tags}", ' \
-               f'answer_index="{self._correct_answer_index}", answer_text="{self._answer_text}", ' \
+        return f'Question(question_text="{self._question_text}", choices={self._choices}, tags={self._tags}, ' \
+               f'answer_index={self._correct_answer_index}, answer_text="{self._answer_text}", ' \
                f'answer_image="{self._answer_image}", answer_image_caption="{self._answer_image_caption}", ' \
                f'id_="{self._id}")'

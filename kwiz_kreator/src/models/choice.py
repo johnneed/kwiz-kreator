@@ -27,7 +27,9 @@ class Choice:
         }
 
     @staticmethod
-    def from_json(choice):
+    def from_json(choice: dict):
+        if not isinstance(choice, dict):
+            raise TypeError(f'choice must be a dict, not {type(choice)}')
         return Choice(
             choice.get('text', ""),
             choice.get('id', None)
@@ -35,6 +37,8 @@ class Choice:
 
     @staticmethod
     def clone(choice):
+        if not isinstance(choice, Choice):
+            raise TypeError(f'choice must be of type Choice, not {type(choice)}')
         return Choice(
             choice.text,
             choice.id
@@ -43,4 +47,4 @@ class Choice:
         return f'Choice {self._id} - {self._text}'
 
     def __repr__(self):
-        return f'Choice(text="{self._text}", id_="{self._id}")'
+        return f'Choice(id="{self._id}", text="{self._text}")'
