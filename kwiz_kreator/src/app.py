@@ -9,15 +9,15 @@ from PyQt5.QtWidgets import (
 )
 from toolz import curry
 
-from kwiz_kreator.src.app_state import AppState
-from kwiz_kreator.src.lib.app_config import AppConfig
-from kwiz_kreator.src.lib.connect_controls import extract_text_area_value, set_answer_index
-from kwiz_kreator.src.lib.upload_via_ftp import UploadViaFTP
-from kwiz_kreator.src.models.trivia import Trivia
-from kwiz_kreator.src.models.quiz import Quiz
-from kwiz_kreator.src.preview.launch import preview_quiz
-from kwiz_kreator.src.ui.ui_main_window import Ui_MainWindow
-from kwiz_kreator.src.ui.prefs_dialog import PrefsDialog
+from src.app_state import AppState
+from src.lib.app_config import AppConfig
+from src.lib.connect_controls import extract_text_area_value, set_answer_index
+from src.lib.upload_via_ftp import UploadViaFTP
+from src.models.trivia import Trivia
+from src.models.quiz import Quiz
+from src.preview.launch import preview_quiz
+from src.ui.ui_main_window import Ui_MainWindow
+from src.ui.prefs_dialog import PrefsDialog
 
 
 class App(QMainWindow, Ui_MainWindow):
