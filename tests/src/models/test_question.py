@@ -54,7 +54,8 @@ class TestQuestion(unittest.TestCase):
             "answerText": "answer text",
             "answerImage": "image",
             "answerImageCaption": "caption",
-            "choices": [{"id": "foo", "text": "FOO"}, {"id": "bar", "text": "BAR"}, {"id": "baz", "text": "BAZ"}, {"id": "qux", "text": "QUX"}],
+            "choices": [{"id": "foo", "text": "FOO"}, {"id": "bar", "text": "BAR"}, {"id": "baz", "text": "BAZ"},
+                        {"id": "qux", "text": "QUX"}],
             "correctAnswerIndex": 1,
             "tags": ["tag"]
         }
@@ -96,7 +97,8 @@ class TestQuestion(unittest.TestCase):
             "answerText": "answer text",
             "answerImage": "image",
             "answerImageCaption": "caption",
-            "choices": [{"id": "foo", "text": "FOO"}, {"id": "bar", "text": "BAR"}, {"id": "baz", "text": "BAZ"}, {"id": "qux", "text": "QUX"}],
+            "choices": [{"id": "foo", "text": "FOO"}, {"id": "bar", "text": "BAR"}, {"id": "baz", "text": "BAZ"},
+                        {"id": "qux", "text": "QUX"}],
             "correctAnswerIndex": 1,
             "tags": ["tag"]
         }
@@ -104,7 +106,8 @@ class TestQuestion(unittest.TestCase):
         test_repr = repr(instance)
         print("REPR STRING")
         print(test_repr)
-        self.assertEqual(test_repr, 'Question(question_text="question text", choices=[Choice(id="foo", text="FOO"), Choice(id="bar", text="BAR"), Choice(id="baz", text="BAZ"), Choice(id="qux", text="QUX")], tags=[\'tag\'], answer_index=1, answer_text="answer text", answer_image="image", answer_image_caption="caption", id_="test_id")')
+        self.assertEqual(test_repr,
+                         'Question(question_text="question text", choices=[Choice(id="foo", text="FOO"), Choice(id="bar", text="BAR"), Choice(id="baz", text="BAZ"), Choice(id="qux", text="QUX")], tags=[\'tag\'], answer_index=1, answer_text="answer text", answer_image="image", answer_image_caption="caption", id_="test_id")')
 
     def test_str(self):
         self.maxDiff = None
@@ -123,6 +126,18 @@ class TestQuestion(unittest.TestCase):
         print("STR STRING")
         print(test_str)
         self.assertEqual(test_str, 'Question: test_id - question text')
+
+    def test_sets_correct_choices_length(self):
+        instance = Question()
+        instance.choices = []
+        self.assertEqual(len(instance.choices), 4)
+        too_few_choices = [{"id": "foo", "text": "FOO"}]
+        instance.choices = too_few_choices
+        self.assertEqual(len(instance.choices), 4)
+        too_many_choices = [{"id": "foo", "text": "FOO"}, {"id": "bar", "text": "BAR"}, {"id": "baz", "text": "BAZ"},
+                            {"id": "qux", "text": "QUX"}, {"id": "quux", "text": "QUUX"}]
+        instance.choices = too_many_choices
+        self.assertEqual(len(instance.choices), 4)
 
 
 if __name__ == '__main__':

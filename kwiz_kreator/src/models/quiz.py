@@ -1,4 +1,3 @@
-import json
 import uuid
 from datetime import datetime
 
@@ -7,6 +6,7 @@ from .question import Question
 
 class Quiz:
     def __init__(self, title="", subtitle="", publish_date=None, author="", questions=None, id_=None):
+        self.question_count = 5
         if id_ is None:
             id_ = str(uuid.uuid4())
         if questions is None:
@@ -18,7 +18,18 @@ class Quiz:
         self._subtitle = subtitle
         self._publish_date = publish_date
         self._author = author
-        self._questions = questions + [Question()] * (5 - len(questions))
+        self._questions = questions + [Question()] * (self.question_count - len(questions))
+
+    @property
+    def question_count(self):
+        return self._question_count
+
+    @question_count.setter
+    def question_count(self, question_count: int):
+        if question_count < 1:
+            raise ValueError("question_count must be greater than 0")
+        self._question_count = question_count
+
 
     @property
     def id(self):
@@ -62,8 +73,9 @@ class Quiz:
 
     @questions.setter
     def questions(self, questions):
-        self._questions = questions
-
+        my_questions = [q if isinstance(q, Question) else Question.from_json(q) for q in questions][
+                       :self.question_count]
+        self._questions = my_questions + [Question()] * (self.question_count - len(my_questions))
 
     def to_json(self):
         return {
@@ -86,7 +98,6 @@ class Quiz:
             quiz.get('id', None)
         )
 
-
     @staticmethod
     def clone(quiz):
         return Quiz(
@@ -97,6 +108,7 @@ class Quiz:
             [Question.clone(q) for q in quiz.questions],
             quiz.id
         )
+
     def __str__(self):
         return f'Quiz(title="{self._title}", subtitle="{self._subtitle}", publish_date="{self._publish_date}", ' \
                f'author="{self._author}", questions="{self._questions}", id_="{self._id}")'

@@ -6,6 +6,7 @@ from .choice import Choice
 class Question:
     def __init__(self, question_text="", choices=None,  tags=None, correct_answer_index=0, answer_text="",
                  answer_image="", answer_image_caption="", id_=None):
+        self._choices_count = 4
         if id_ is None:
             id_ = str(uuid.uuid4())
         if tags is None:
@@ -16,12 +17,21 @@ class Question:
         self._tags = tags
         self._question_text = question_text
         self._correct_answer_index = correct_answer_index
-        self._choices = choices + [Choice()] * (4 - len(choices))
+        self._choices = choices + [Choice()] * (self.choices_count - len(choices))
         self._answer_text = answer_text
         self._answer_image = answer_image
         self._answer_image_caption = answer_image_caption
 
 
+    @property
+    def choices_count(self):
+        return self._choices_count
+
+    @choices_count.setter
+    def choices_count(self, choices_count: int):
+        if choices_count < 1:
+            raise ValueError("choice_count must be greater than 0")
+        self._choices_count = choices_count
 
     @property
     def id(self):
@@ -49,7 +59,8 @@ class Question:
 
     @choices.setter
     def choices(self, choices):
-        self._choices = choices + [Choice()] * (4 - len(choices))
+        my_choices = [c if isinstance(c, Choice) else Choice.from_json(c) for c in choices][:self.choices_count]
+        self._choices = my_choices + [Choice()] * (self._choices_count - len(my_choices))
 
     @property
     def correct_answer_index(self):
