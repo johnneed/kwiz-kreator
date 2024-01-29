@@ -15,7 +15,7 @@ class Trivia:
 
     @quizzes.setter
     def quizzes(self, quizzes):
-        self._quizzes = quizzes
+        self._quizzes = [q if isinstance(q, Quiz) else Quiz.from_json(q) for q in quizzes]
         self.sort_quizzes()
 
     @property
@@ -44,7 +44,7 @@ class Trivia:
     def sort_quizzes(self):
         self.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
     def __str__(self):
-        return f'Trivia(title="{self.quizzes}", id_="{self._id}")'
+        return f'Trivia(quizzes="{self.quizzes}", id_="{self._id}")'
 
     def __repr__(self):
-        return f'Trivia(title="{self.quizzes}", id_="{self._id}")'
+        return f'Trivia(quizzes="{self.quizzes}", id_="{self._id}")'
