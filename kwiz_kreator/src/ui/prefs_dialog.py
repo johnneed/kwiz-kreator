@@ -3,7 +3,7 @@ from datetime import time
 from PyQt5 import QtCore, QtWidgets
 from toolz import curry
 
-from ..lib.app_config import Preferences
+from ..modules.app_config import Preferences
 
 
 class PrefsDialog(QtWidgets.QDialog):

@@ -10,9 +10,9 @@ from PyQt5.QtWidgets import (
 from toolz import curry
 
 from src.app_state import AppState
-from src.lib.app_config import AppConfig
-from src.lib.connect_controls import extract_text_area_value, set_answer_index
-from src.lib.upload_via_ftp import UploadViaFTP
+from src.modules.app_config import AppConfig
+from src.modules.connect_controls import extract_text_area_value, set_answer_index
+from src.modules.upload_via_ftp import UploadViaFTP
 from src.models.trivia import Trivia
 from src.models.quiz import Quiz
 from src.preview.launch import preview_quiz

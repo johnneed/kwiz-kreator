@@ -7,7 +7,7 @@ from toolz import curry
 
 from .correction_action import SpecialAction
 from .highlighter import GrammarCheckHighlighter
-from ..lib.grammar_checker import GrammarChecker, GrammarMatch
+from ..modules.grammar_checker import GrammarChecker, GrammarMatch
 
 
 class SpellTextEdit(QPlainTextEdit):
