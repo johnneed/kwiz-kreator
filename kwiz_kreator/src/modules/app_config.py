@@ -76,8 +76,6 @@ class Preferences:
             "ftp_config": self.ftp_config.to_dict()
         }
 
-
-
     @staticmethod
     def from_dict(config):
         return Preferences(ftp_config=FtpConfig.from_dict(config.get("ftp_config", {})),

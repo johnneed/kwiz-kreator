@@ -36,7 +36,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.__display_recent_files()
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
-        self.setWindowIcon(QIcon("./images/icon.png"))
+        self.setWindowIcon(QIcon("./kwiz_kreator/images/icon.png"))
 
     def subscribe(self):
         self.app_state.subscribe(self)
