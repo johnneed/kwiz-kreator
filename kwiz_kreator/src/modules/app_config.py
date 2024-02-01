@@ -3,7 +3,7 @@ import queue
 from dataclasses import dataclass
 from enum import Enum  # for enum34, or the stdlib version
 
-from src.modules.decorators import debounce
+from kwiz_kreator.src.modules.decorators import debounce
 
 _default_max_recent_files = 9
 _default_default_question_count = 5
