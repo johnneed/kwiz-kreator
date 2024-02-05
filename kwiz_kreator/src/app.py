@@ -19,7 +19,7 @@ from kwiz_kreator.src.modules.upload_via_ftp import UploadViaFTP
 from kwiz_kreator.src.preview.launch import preview_quiz
 from kwiz_kreator.src.ui.prefs_dialog import PrefsDialog
 from kwiz_kreator.src.ui.ui_main_window import Ui_MainWindow
-
+from kwiz_kreator.src.modules.date_check import date_check
 
 class App(QMainWindow, Ui_MainWindow):
 
@@ -160,7 +160,6 @@ class App(QMainWindow, Ui_MainWindow):
         self.app_config.save_window_preference(AppConfig.window_preferences.WINDOW_MODE, state)
 
     def connect_main_signals_slots(self):
-
         self.splitter.splitterMoved.connect(self.save_splitter_sizes)
         self.actionSettings.triggered.connect(self.__set_settings)
         self.actionNew.triggered.connect(self.__create_new_trivia)
@@ -172,6 +171,7 @@ class App(QMainWindow, Ui_MainWindow):
         self.actionRemove_Quiz.triggered.connect(self.__delete_selected_quiz)
         self.actionDeploy.triggered.connect(self.__deploy_trivia)
         self.actionAbout.triggered.connect(self.about)
+        self.actionAnalyze.triggered.connect(self.__analyze_trivia)
         self.listWidget.itemSelectionChanged.connect(self.__select_quiz)
         self.actionClear_Menu.triggered.connect(self.app_config.clear_recent_files)
         self.q1DownButton.clicked.connect(self.app_state.swap_questions(0, 1))
@@ -322,11 +322,13 @@ class App(QMainWindow, Ui_MainWindow):
             if self.app_state.get_selected_quiz() and quiz.id == self.app_state.get_selected_quiz().id:
                 self.listWidget.setCurrentRow(idx)
 
-    def __select_quiz(self):
-        quiz_id = self.listWidget.currentItem().data(1)
+    def __select_quiz(self, qid: str = None):
+        quiz_id = qid or self.listWidget.currentItem().data(1)
         if quiz_id is None:
             return
-        # if self.app_state.is_dirty and self.app_state.get_selected_quiz() is not None:
+        if self.app_state.is_dirty and self.app_state.get_selected_quiz() is not None:
+            print("UPDATING QUIZ")
+            self.app_state.update_trivia_with_selected_quiz()
         #     reply = QMessageBox.question(self, 'Message',
         #                                  "You have unsaved changes. Do you want to save them?",
         #                                  QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
@@ -335,14 +337,19 @@ class App(QMainWindow, Ui_MainWindow):
         #             self.save_file()
         #         else:
         #             self.save_file_as()
-        # self.disconnect_selected_quiz_signal_slots()
+        self.disconnect_selected_quiz_signal_slots()
         self.app_state.set_selected_quiz_by_id(quiz_id)
         self.connect_selected_quiz_signal_slots()
 
     def __add_new_quiz(self):
+        if self.app_state.is_dirty:
+            self.app_state.update_trivia_with_selected_quiz()
         first_available_pub_date = find_first_available_publish_date(self.app_config.publish_days, self.app_state.get_trivia())
         quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_available_pub_date, author="", questions=[])
         self.app_state.add_quiz(quiz)
+        self.__select_quiz(quiz.id)
+        row = [q.id for q in self.app_state.get_trivia().quizzes].index(quiz.id)
+        self.listWidget.setCurrentRow(row)
 
     def __create_new_trivia(self):
         new_trivia = Trivia()
@@ -397,6 +404,19 @@ class App(QMainWindow, Ui_MainWindow):
         preview_trivia_json = preview_trivia.to_json()
         preview_quiz(preview_trivia_json)
 
+    def closeEvent(self, event):
+        if self.app_state.is_dirty:
+            reply = QMessageBox.question(self, 'Message',
+                                         "You have unsaved changes. Do you want to save them?",
+                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+            if reply == QMessageBox.Yes:
+                if self.opened_file_name:
+                    self.save_file()
+                else:
+                    self.save_file_as()
+        event.accept()
+
+
     def save_file_as(self):
         original_file_path = self.opened_file_name or ""
         options = QFileDialog.Options()
@@ -431,6 +451,10 @@ class App(QMainWindow, Ui_MainWindow):
                 outfile.close()
             self.app_state.set_dirty(False)
             print("Saved to " + self.opened_file_name)
+
+    def __analyze_trivia(self):
+        errors = date_check(self.app_config.publish_days, self.app_state.get_trivia())
+        print(errors)
 
     def __deploy_trivia(self):
         # create temp directory if it doesn't exist
