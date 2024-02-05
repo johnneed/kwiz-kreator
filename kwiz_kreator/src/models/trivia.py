@@ -34,13 +34,6 @@ class Trivia:
         _id = trivia.get('id', None)
         return Trivia(quizzes, _id)
 
-    def get_first_available_friday(self):
-        publish_dates = [q.publish_date for q in self.quizzes]
-        my_friday = datetime.now().date() + timedelta((4 - datetime.now().weekday()) % 7)
-        while my_friday.strftime("%Y/%m/%d") in publish_dates:
-            my_friday += timedelta(7)
-        return my_friday
-
     def sort_quizzes(self):
         self.quizzes.sort(reverse=True, key=lambda q: q.publish_date)
     def __str__(self):

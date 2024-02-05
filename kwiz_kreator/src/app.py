@@ -10,14 +10,15 @@ from PyQt5.QtWidgets import (
 from toolz import curry
 
 from kwiz_kreator.src.app_state import AppState
+from kwiz_kreator.src.models.quiz import Quiz
+from kwiz_kreator.src.models.trivia import Trivia
 from kwiz_kreator.src.modules.app_config import AppConfig
 from kwiz_kreator.src.modules.connect_controls import extract_text_area_value, set_answer_index
+from kwiz_kreator.src.modules.find_first_available_publish_date import find_first_available_publish_date
 from kwiz_kreator.src.modules.upload_via_ftp import UploadViaFTP
-from kwiz_kreator.src.models.trivia import Trivia
-from kwiz_kreator.src.models.quiz import Quiz
 from kwiz_kreator.src.preview.launch import preview_quiz
-from kwiz_kreator.src.ui.ui_main_window import Ui_MainWindow
 from kwiz_kreator.src.ui.prefs_dialog import PrefsDialog
+from kwiz_kreator.src.ui.ui_main_window import Ui_MainWindow
 
 
 class App(QMainWindow, Ui_MainWindow):
@@ -339,8 +340,9 @@ class App(QMainWindow, Ui_MainWindow):
         self.connect_selected_quiz_signal_slots()
 
     def __add_new_quiz(self):
-        first_friday = self.app_state.get_trivia().get_first_available_friday().strftime("%Y/%m/%d")
-        quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_friday, author="", questions=[])
+        first_available_pub_date = find_first_available_publish_date(self.app_state.get_trivia(),
+                                                                     self.app_config.publish_days).strftime("%Y/%m/%d")
+        quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_available_pub_date, author="", questions=[])
         self.app_state.add_quiz(quiz)
 
     def __create_new_trivia(self):
@@ -583,7 +585,6 @@ class App(QMainWindow, Ui_MainWindow):
         if result == 1:
             prefs = dialog.get_config()
             self.app_config.save_preferences(prefs)
-
 
     def about(self):
         QMessageBox.about(
