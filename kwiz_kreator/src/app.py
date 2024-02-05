@@ -326,28 +326,29 @@ class App(QMainWindow, Ui_MainWindow):
         quiz_id = self.listWidget.currentItem().data(1)
         if quiz_id is None:
             return
-        if self.app_state.is_dirty and self.app_state.get_selected_quiz() is not None:
-            reply = QMessageBox.question(self, 'Message',
-                                         "You have unsaved changes. Do you want to save them?",
-                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
-            if reply == QMessageBox.Yes:
-                if self.opened_file_name:
-                    self.save_file()
-                else:
-                    self.save_file_as()
-        self.disconnect_selected_quiz_signal_slots()
+        # if self.app_state.is_dirty and self.app_state.get_selected_quiz() is not None:
+        #     reply = QMessageBox.question(self, 'Message',
+        #                                  "You have unsaved changes. Do you want to save them?",
+        #                                  QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        #     if reply == QMessageBox.Yes:
+        #         if self.opened_file_name:
+        #             self.save_file()
+        #         else:
+        #             self.save_file_as()
+        # self.disconnect_selected_quiz_signal_slots()
         self.app_state.set_selected_quiz_by_id(quiz_id)
         self.connect_selected_quiz_signal_slots()
 
     def __add_new_quiz(self):
-        first_available_pub_date = find_first_available_publish_date(self.app_state.get_trivia(),
-                                                                     self.app_config.publish_days).strftime("%Y/%m/%d")
+        first_available_pub_date = find_first_available_publish_date(self.app_config.publish_days, self.app_state.get_trivia())
         quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_available_pub_date, author="", questions=[])
         self.app_state.add_quiz(quiz)
 
     def __create_new_trivia(self):
-        new_trivia = Trivia(quizzes=[Quiz(title="New Quiz")])
-        self.app_state.set_trivia(new_trivia)
+        new_trivia = Trivia()
+        first_available_pub_date = find_first_available_publish_date(self.app_config.publish_days, new_trivia)
+        quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_available_pub_date, author="", questions=[])
+        self.app_state.add_quiz(quiz)
         self.opened_file_name = None
         self.listWidget.setCurrentRow(0)
 
