@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 from .spell_text_edit import SpellTextEdit
 from ..modules.grammar_checker import GrammarChecker
 

@@ -50,6 +50,7 @@ class AppState:
         return self.selected_quiz
 
     def set_selected_quiz_by_id(self, quiz_id):
+        print("SELECTED QUIZ BY ID", quiz_id)
         quiz = next((quiz for quiz in self.trivia.quizzes if quiz.id == quiz_id), None)
         if quiz is None:
             self.selected_quiz = None

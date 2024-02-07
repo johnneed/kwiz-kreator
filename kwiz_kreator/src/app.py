@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime
 
-from PyQt5.QtCore import QDate, Qt
+from PyQt5.QtCore import QDate, Qt, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QMainWindow, QMessageBox, QFileDialog, QListWidgetItem
@@ -14,12 +14,13 @@ from kwiz_kreator.src.models.quiz import Quiz
 from kwiz_kreator.src.models.trivia import Trivia
 from kwiz_kreator.src.modules.app_config import AppConfig
 from kwiz_kreator.src.modules.connect_controls import extract_text_area_value, set_answer_index
+from kwiz_kreator.src.modules.date_check import date_check
 from kwiz_kreator.src.modules.find_first_available_publish_date import find_first_available_publish_date
 from kwiz_kreator.src.modules.upload_via_ftp import UploadViaFTP
 from kwiz_kreator.src.preview.launch import preview_quiz
 from kwiz_kreator.src.ui.prefs_dialog import PrefsDialog
 from kwiz_kreator.src.ui.ui_main_window import Ui_MainWindow
-from kwiz_kreator.src.modules.date_check import date_check
+
 
 class App(QMainWindow, Ui_MainWindow):
 
@@ -38,6 +39,9 @@ class App(QMainWindow, Ui_MainWindow):
         self.scrollAreaWidgetContents_2.setEnabled(False)
         self.opened_file_name = None
         self.setWindowIcon(QIcon("./kwiz_kreator/images/icon.png"))
+        self.listWidget.setIconSize(QSize(20, 20))
+        icon_path = os.path.dirname(os.path.realpath(__file__)) + '/../images/'
+        self.icons = {"warning": QIcon(icon_path + 'icon_warning.png'), "blank": QIcon(icon_path + 'icon_blank.png')}
 
     def subscribe(self):
         self.app_state.subscribe(self)
@@ -70,9 +74,6 @@ class App(QMainWindow, Ui_MainWindow):
             case "selected_quiz_cleared":
                 self.__set_menu_state()
             case "dirty_changed":
-                self.__set_menu_state()
-            case "quiz_updated":
-                self.__update_trivia_list()
                 self.__set_menu_state()
             case "quiz_deleted":
                 self.__update_trivia_list()
@@ -308,44 +309,46 @@ class App(QMainWindow, Ui_MainWindow):
         self.q5ChoiceLineEdit_4.textEdited.connect(self.app_state.set_choice_text(4, 3))
 
     def __update_trivia_list(self):
+
         trivia = self.app_state.get_trivia()
-        current_index = self.listWidget.currentRow()
+        print("QUIZ IDS 1: " + str([q.id for q in trivia.quizzes]))
+        errors = date_check(self.app_config.publish_days, trivia)
+        print("QUIZ IDS 2: " + str([q.id for q in trivia.quizzes]))
+        # current_index = self.listWidget.currentRow()
         self.listWidget.clear()
         if len(trivia.quizzes) == 0:
             self.app_state.clear_selected_quiz()
             return
         self.listWidget.setCurrentRow(0)
         for idx, quiz in enumerate(trivia.quizzes):
-            list_item = QListWidgetItem(quiz.title)
-            list_item.setData(1, quiz.id)
+            icon = self.icons.get('warning') if quiz.id in errors else self.icons.get('blank')
+            list_item = QListWidgetItem(icon, quiz.title)
+            tooltip = errors.get(quiz.id)[0] if quiz.id in errors else quiz.id
+            list_item.setToolTip(tooltip)
             self.listWidget.addItem(list_item)
+            print("QUIZ IDS Loop: " + str([q.id for q in trivia.quizzes]))
             if self.app_state.get_selected_quiz() and quiz.id == self.app_state.get_selected_quiz().id:
                 self.listWidget.setCurrentRow(idx)
 
     def __select_quiz(self, qid: str = None):
-        quiz_id = qid or self.listWidget.currentItem().data(1)
-        if quiz_id is None:
-            return
+        if qid is None:
+            current_index = self.listWidget.currentRow()
+            qid = self.app_state.get_trivia().quizzes[current_index].id
+
         if self.app_state.is_dirty and self.app_state.get_selected_quiz() is not None:
-            print("UPDATING QUIZ")
             self.app_state.update_trivia_with_selected_quiz()
-        #     reply = QMessageBox.question(self, 'Message',
-        #                                  "You have unsaved changes. Do you want to save them?",
-        #                                  QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
-        #     if reply == QMessageBox.Yes:
-        #         if self.opened_file_name:
-        #             self.save_file()
-        #         else:
-        #             self.save_file_as()
         self.disconnect_selected_quiz_signal_slots()
-        self.app_state.set_selected_quiz_by_id(quiz_id)
+        self.app_state.set_selected_quiz_by_id(qid)
         self.connect_selected_quiz_signal_slots()
 
     def __add_new_quiz(self):
         if self.app_state.is_dirty:
             self.app_state.update_trivia_with_selected_quiz()
-        first_available_pub_date = find_first_available_publish_date(self.app_config.publish_days, self.app_state.get_trivia())
-        quiz = Quiz(title="New Quiz", subtitle="", publish_date=first_available_pub_date, author="", questions=[])
+        first_available_pub_date = find_first_available_publish_date(self.app_config.publish_days,
+                                                                     self.app_state.get_trivia())
+        title_number = len([q for q in self.app_state.get_trivia().quizzes if q.title.startswith("New Quiz")])
+        title = "New Quiz" if title_number == 0 else "New Quiz " + str(title_number + 1)
+        quiz = Quiz(title=title, subtitle="", publish_date=first_available_pub_date, author="", questions=[])
         self.app_state.add_quiz(quiz)
         self.__select_quiz(quiz.id)
         row = [q.id for q in self.app_state.get_trivia().quizzes].index(quiz.id)
@@ -415,7 +418,6 @@ class App(QMainWindow, Ui_MainWindow):
                 else:
                     self.save_file_as()
         event.accept()
-
 
     def save_file_as(self):
         original_file_path = self.opened_file_name or ""
@@ -550,7 +552,66 @@ class App(QMainWindow, Ui_MainWindow):
             [self.q5ChoiceRadioButton_1, self.q5ChoiceRadioButton_2, self.q5ChoiceRadioButton_3,
              self.q5ChoiceRadioButton_4][quiz.questions[4].correct_answer_index].setChecked(True)
         else:
-            pass
+            title = ""
+            self.titleLineEdit.setText("")
+            self.subtitleLineEdit.setText("")
+            self.publishOnDateEdit.setDate(QDate.fromString(str(datetime.now().date()), 'yyyy/MM/dd'))
+            self.authorLineEdit.setText("")
+            # Update Question 1
+            self.q1QuestionTextEdit.setPlainText("")
+            self.q1AnswerTextEdit.setPlainText("")
+            self.q1ImageUrlLineEdit.setText("")
+            self.q1ImageCaptionLineEdit.setText("")
+            self.q1ChoiceLineEdit_1.setText("")
+            self.q1ChoiceLineEdit_2.setText("")
+            self.q1ChoiceLineEdit_3.setText("")
+            self.q1ChoiceLineEdit_4.setText("")
+            for rb in [self.q1ChoiceRadioButton_1, self.q1ChoiceRadioButton_2, self.q1ChoiceRadioButton_3,
+                       self.q1ChoiceRadioButton_4]: rb.setChecked(False)
+            # Update Question 2
+            self.q2QuestionTextEdit.setPlainText("")
+            self.q2AnswerTextEdit.setPlainText("")
+            self.q2ImageUrlLineEdit.setText("")
+            self.q2ImageCaptionLineEdit.setText("")
+            self.q2ChoiceLineEdit_1.setText("")
+            self.q2ChoiceLineEdit_2.setText("")
+            self.q2ChoiceLineEdit_3.setText("")
+            self.q2ChoiceLineEdit_4.setText("")
+            for rb in [self.q2ChoiceRadioButton_1, self.q2ChoiceRadioButton_2, self.q2ChoiceRadioButton_3,
+             self.q2ChoiceRadioButton_4] : rb.setChecked(False)
+            # Update Question 3
+            self.q3QuestionTextEdit.setPlainText("")
+            self.q3AnswerTextEdit.setPlainText("")
+            self.q3ImageUrlLineEdit.setText("")
+            self.q3ImageCaptionLineEdit.setText("")
+            self.q3ChoiceLineEdit_1.setText("")
+            self.q3ChoiceLineEdit_2.setText("")
+            self.q3ChoiceLineEdit_3.setText("")
+            self.q3ChoiceLineEdit_4.setText("")
+            for rb in [self.q3ChoiceRadioButton_1, self.q3ChoiceRadioButton_2, self.q3ChoiceRadioButton_3,
+                       self.q3ChoiceRadioButton_4]: rb.setChecked(False)
+            # Update Question 4
+            self.q4QuestionTextEdit.setPlainText("")
+            self.q4AnswerTextEdit.setPlainText("")
+            self.q4ImageUrlLineEdit.setText("")
+            self.q4ImageCaptionLineEdit.setText("")
+            self.q4ChoiceLineEdit_1.setText("")
+            self.q4ChoiceLineEdit_2.setText("")
+            self.q4ChoiceLineEdit_3.setText("")
+            self.q4ChoiceLineEdit_4.setText("")
+            for rb in [self.q4ChoiceRadioButton_1, self.q4ChoiceRadioButton_2, self.q4ChoiceRadioButton_3,
+             self.q4ChoiceRadioButton_4] : rb.setChecked(False)
+            # Update Question 5
+            self.q5QuestionTextEdit.setPlainText("")
+            self.q5AnswerTextEdit.setPlainText("")
+            self.q5ImageUrlLineEdit.setText("")
+            self.q5ImageCaptionLineEdit.setText("")
+            self.q5ChoiceLineEdit_1.setText("")
+            self.q5ChoiceLineEdit_2.setText("")
+            self.q5ChoiceLineEdit_3.setText("")
+            self.q5ChoiceLineEdit_4.setText("")
+            for rb in [self.q5ChoiceRadioButton_1, self.q5ChoiceRadioButton_2, self.q5ChoiceRadioButton_3,
+             self.q5ChoiceRadioButton_4] : rb.setChecked(False)
 
     def __bind_recent_file(self, file_name):
         return lambda: self.__load_file(file_name)
